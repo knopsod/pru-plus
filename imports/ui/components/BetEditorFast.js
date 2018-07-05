@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import moment from 'moment';
 import _ from 'lodash';
+import DatePicker from 'react-bootstrap-date-picker';
 
 import { upsertBet } from '../../api/bets/methods.js';
 
@@ -13,7 +14,30 @@ export default class BetEditorFast extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      createdDate: moment().toISOString(),
+      broker: '007'
+    };
+
+    this.handleCreatedDateChange = this.handleCreatedDateChange.bind(this);
+    this.handleBrokerChange = this.handleBrokerChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleCreatedDateChange(value) {
+    const createdDate = value;
+    this.setState({ 
+      ...this.state,
+      createdDate
+    })
+  }
+
+  handleBrokerChange(e) {
+    const broker = e.target.value;
+    this.setState({
+      ...this.state,
+      broker
+    });
   }
 
   handleChange(e) {
@@ -23,7 +47,7 @@ export default class BetEditorFast extends React.Component {
     var upsert = {},
       no = '', 
       up2 = 0, down2 = 0, up3 = 0, down3 = 0, permute = 0, 
-      createdAt = moment().valueOf();
+      createdAt = moment().valueOf(), broker = this.state.broker, createdDate = this.state.createdDate.substr(0, 10);
 
     // up2
     if ( arr.length > 2 &&
@@ -119,7 +143,7 @@ export default class BetEditorFast extends React.Component {
     if ( no !== '' ){
       upsert = { no, 
         up2, down2, up3, down3, permute, 
-        createdAt };
+        createdAt, broker, createdDate };
       console.log(upsert);
       upsertBet.call(upsert, (error, response) => {
         if (error) {
@@ -134,7 +158,15 @@ export default class BetEditorFast extends React.Component {
   render() {
     return (<form>
       <FormGroup>
-        <ControlLabel></ControlLabel>
+        <DatePicker dateFormat="YYYY-MM-DD" name="createdDate" ref="createdDate"
+          value={this.state.createdDate}
+          onChange={this.handleCreatedDateChange}/>
+      </FormGroup>
+      <FormGroup>
+        <ControlLabel>รหัสผู้ส่ง</ControlLabel>
+        <FormControl type="text" name="broker" ref="broker"
+          value={this.state.broker}
+          onChange={this.handleBrokerChange}/>
       </FormGroup>
       <FormGroup>
         <ControlLabel>12 12+ 12- 123 123+ 123* 123-</ControlLabel>

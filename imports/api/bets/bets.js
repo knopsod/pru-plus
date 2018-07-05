@@ -45,7 +45,15 @@ Bets.schema = new SimpleSchema({
   createdAt: {
     type: Number,
     label: 'The createdAt of the bet.',
-  }
+  },
+  broker: {
+    type: String,
+    label: 'The broker of the bet.',
+  },
+  createdDate: {
+    type: String,
+    label: 'The created date of the bet.',
+  },
 });
 
 Bets.attachSchema(Bets.schema);
@@ -58,4 +66,6 @@ Factory.define('bet', Bets, {
   down3: () => 'Factory Down3',
   permute: () => 'Factory Permute',
   createdAt: () => 'Factory Created at',
+  broker: () => 'Factory Broker',
+  createdDate: () => 'Factory Created date',
 });

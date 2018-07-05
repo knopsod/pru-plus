@@ -14,6 +14,8 @@ export const upsertBet = new ValidatedMethod({
     down3: { type: Number, optional: true },
     permute: { type: Number, optional: true },
     createdAt: { type: Number, optional: true },
+    broker: { type: String, optional: true },
+    createdDate: { type: String, optional: true },
   }).validator(),
   run(bet) {
     return Bets.upsert({ _id: bet._id },

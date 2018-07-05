@@ -10,15 +10,17 @@ const handleNav = _id => browserHistory.push(`/bets/${_id}`);
 
 const BetsList = ({ bets }) => (
   bets.length > 0 ? <ListGroup className="BetsList">      
-    {bets.map(({ _id, no, up2, down2, up3, down3, permute }) => (
+    {bets.map(({ _id, no, up2, down2, up3, down3, permute, createdDate, broker }) => (
       <ListGroupItem key={ _id } 
       onClick={ () => handleNav(_id) }>
-        <div className="col-sm-2 text-center"><b>{ no }</b></div>
-        <div className="col-sm-2 text-center">{ up2 === 0 ? '' : up2 }</div>
-        <div className="col-sm-2 text-center">{ down2 === 0 ? '' : down2 }</div>
-        <div className="col-sm-2 text-center">{ up3 === 0 ? '' : up3 }</div>
-        <div className="col-sm-2 text-center">{ permute === 0 ? '' : permute }</div>
-        <div className="col-sm-2 text-center">{ down3 === 0 ? '' : down3 }</div>
+        <div className="col-sm-2 text-center">{ createdDate }</div>
+        <div className="col-sm-3 text-center">{ broker }</div>
+        <div className="col-sm-1 text-center">{ no }</div>
+        <div className="col-sm-1 text-center">{ up2 === 0 ? '' : up2 }</div>
+        <div className="col-sm-1 text-center">{ down2 === 0 ? '' : down2 }</div>
+        <div className="col-sm-1 text-center">{ up3 === 0 ? '' : up3 }</div>
+        <div className="col-sm-1 text-center">{ permute === 0 ? '' : permute }</div>
+        <div className="col-sm-1 text-center">{ down3 === 0 ? '' : down3 }</div>
       </ListGroupItem>
     ))}
   </ListGroup> : <div />
