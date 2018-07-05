@@ -13,7 +13,15 @@ const Bets = () => (
         <div className="page-header clearfix">
           <BetEditorFast />
         </div>
-        <div className="page-header clearfix">
+        <div>
+          <div className="col-sm-2 text-center">NO</div>
+          <div className="col-sm-2 text-center">2ตัวบน</div>
+          <div className="col-sm-2 text-center">2ตัวล่าง</div>
+          <div className="col-sm-2 text-center">3ตัวบน</div>
+          <div className="col-sm-2 text-center">3ตัวล่าง</div>
+          <div className="col-sm-2 text-center">3ตัวโต๊ด</div>
+        </div>
+        {/* <div className="page-header clearfix">
           <h4 className="pull-left">Bets</h4>
           <Link to="/bets/new">
             <Button
@@ -21,7 +29,7 @@ const Bets = () => (
               className="pull-right"
               >New Bet</Button>
           </Link>
-        </div>
+        </div> */}
         <BetsList />
       </Col>
     </Row>

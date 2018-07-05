@@ -9,11 +9,16 @@ import container from '../../modules/container';
 const handleNav = _id => browserHistory.push(`/bets/${_id}`);
 
 const BetsList = ({ bets }) => (
-  bets.length > 0 ? <ListGroup className="BetsList">
-    {bets.map(({ _id, up2 }) => (
+  bets.length > 0 ? <ListGroup className="BetsList">      
+    {bets.map(({ _id, no, up2, down2, up3, down3, permute }) => (
       <ListGroupItem key={ _id } 
       onClick={ () => handleNav(_id) }>
-        { up2 }
+        <div className="col-sm-2 text-center">{ no }</div>
+        <div className="col-sm-2 text-center">{ up2 === 0 ? '' : up2 }</div>
+        <div className="col-sm-2 text-center">{ down2 === 0 ? '' : down2 }</div>
+        <div className="col-sm-2 text-center">{ up3 === 0 ? '' : up3 }</div>
+        <div className="col-sm-2 text-center">{ down3 === 0 ? '' : down3 }</div>
+        <div className="col-sm-2 text-center">{ permute === 0 ? '' : permute }</div>
       </ListGroupItem>
     ))}
   </ListGroup> :
@@ -27,7 +32,7 @@ BetsList.propTypes = {
 export default container((props, onData) => {
   const subscription = Meteor.subscribe('bets.list');
   if (subscription.ready()) {
-    const bets = Bets.find().fetch();
+    const bets = Bets.find({}, {sort: {createdAt: -1}}).fetch();
     onData(null, { bets });
   }
 }, BetsList);
