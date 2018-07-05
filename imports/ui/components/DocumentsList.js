@@ -11,7 +11,8 @@ const handleNav = _id => browserHistory.push(`/documents/${_id}`);
 const DocumentsList = ({ documents }) => (
   documents.length > 0 ? <ListGroup className="DocumentsList">
     {documents.map(({ _id, title }) => (
-      <ListGroupItem key={ _id } onClick={ () => handleNav(_id) }>
+      <ListGroupItem key={ _id } 
+      onClick={ () => handleNav(_id) }>
         { title }
       </ListGroupItem>
     ))}

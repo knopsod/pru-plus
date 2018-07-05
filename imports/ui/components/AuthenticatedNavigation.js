@@ -15,11 +15,14 @@ const userName = () => {
 const AuthenticatedNavigation = () => (
   <div>
     <Nav>
-      <LinkContainer to="/documents">
+      {/* <LinkContainer to="/documents">
         <NavItem eventKey={ 2 } href="/documents">Documents</NavItem>
       </LinkContainer>
       <LinkContainer to="/teams">
         <NavItem eventKey={ 2 } href="/teams">Teams</NavItem>
+      </LinkContainer> */}
+      <LinkContainer to="/bets">
+        <NavItem eventKey={ 2 } href="/bets">Bets</NavItem>
       </LinkContainer>
     </Nav>
     <Nav pullRight>
