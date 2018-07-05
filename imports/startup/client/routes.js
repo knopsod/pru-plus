@@ -24,6 +24,9 @@ import EditTeam from '../../ui/pages/EditTeam.js';
 import ViewTeam from '../../ui/pages/ViewTeam.js';
 
 import Bets from '../../ui/pages/Bets.js';
+import NewBet from '../../ui/pages/NewBet.js';
+import EditBet from '../../ui/pages/EditBet.js';
+import ViewBet from '../../ui/pages/ViewBet.js';
 
 const authenticate = (nextState, replace) => {
   if (!Meteor.loggingIn() && !Meteor.userId()) {
@@ -56,6 +59,9 @@ Meteor.startup(() => {
         <Route name="viewTeam" path="/teams/:_id" component={ ViewTeam } onEnter={ authenticate } />
 
         <Route name="bets" path="/bets" component={ Bets } onEnter={ authenticate } />
+        <Route name="newBet" path="/bets/new" component={ NewBet } onEnter={ authenticate } />
+        <Route name="editBet" path="/bets/:_id/edit" component={ EditBet } onEnter={ authenticate } />
+        <Route name="viewBet" path="/bets/:_id" component={ ViewBet } onEnter={ authenticate } />
 
         <Route path="*" component={ NotFound } />
       </Route>

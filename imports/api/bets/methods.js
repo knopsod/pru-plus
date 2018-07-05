@@ -9,9 +9,6 @@ export const upsertBet = new ValidatedMethod({
     _id: { type: String, optional: true },
     up2: { type: String, optional: true },
     down2: { type: String, optional: true },
-    up3: { type: String, optional: true },
-    down3: { type: String, optional: true },
-    permute: { type: String, optional: true },
   }).validator(),
   run(bet) {
     return Bets.upsert({ _id: bet._id },

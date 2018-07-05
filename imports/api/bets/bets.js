@@ -26,18 +26,6 @@ Bets.schema = new SimpleSchema({
     type: String,
     label: 'The down2 of the bet.',
   },
-  up3: {
-    type: String,
-    label: 'The up3 of the bet.',
-  },
-  down3: {
-    type: String,
-    label: 'The down3 of the bet.',
-  },
-  permute: {
-    type: String,
-    label: 'The permute of the bet.',
-  },
 });
 
 Bets.attachSchema(Bets.schema);
@@ -45,7 +33,4 @@ Bets.attachSchema(Bets.schema);
 Factory.define('bet', Bets, {
   up2: () => 'Factory Up2',
   down2: () => 'Factory Down2',
-  up3: () => 'Factory Up3',
-  down3: () => 'Factory Down3',
-  permute: () => 'Factory Permute',
 });

@@ -10,10 +10,10 @@ const handleNav = _id => browserHistory.push(`/bets/${_id}`);
 
 const BetsList = ({ bets }) => (
   bets.length > 0 ? <ListGroup className="BetsList">
-    {bets.map(({ _id }) => (
+    {bets.map(({ _id, up2 }) => (
       <ListGroupItem key={ _id } 
       onClick={ () => handleNav(_id) }>
-        { _id }
+        { up2 }
       </ListGroupItem>
     ))}
   </ListGroup> :
