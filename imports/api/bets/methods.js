@@ -1,5 +1,6 @@
 import SimpleSchema from 'simpl-schema';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
+import { Meteor } from 'meteor/meteor';
 import Bets from './bets';
 import rateLimit from '../../modules/rate-limit.js';
 
@@ -16,6 +17,7 @@ export const upsertBet = new ValidatedMethod({
     createdAt: { type: Number, optional: true },
     broker: { type: String, optional: true },
     createdDate: { type: String, optional: true },
+    email: { type: String, optional: true },
   }).validator(),
   run(bet) {
     return Bets.upsert({ _id: bet._id },

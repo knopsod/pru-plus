@@ -169,13 +169,55 @@ export default class BetEditorFast extends React.Component {
           onChange={this.handleBrokerChange}/>
       </FormGroup>
       <FormGroup>
-        <ControlLabel>12 12+ 12- 123 123+ 123* 123-</ControlLabel>
+        <ControlLabel>บันทึก</ControlLabel>
         <FormControl
           componentClass="textarea"
           name="bet"
           onChange={this.handleChange}
         />
       </FormGroup>
+      <div className="row">
+        <div className="col-sm-2">45[ENTER]10[ENTER]</div>
+        <div className="col-sm-1">2ตัวบน</div>
+        <div className="col-sm-2">10 บาท</div>
+      </div>
+      
+      <div className="row">
+        <div className="col-sm-2">45+10[ENTER]</div>
+        <div className="col-sm-1">2ตัว</div>
+        <div className="col-sm-2">10x10 บาท</div>
+      </div>
+      
+      <div className="row">
+        <div className="col-sm-2">45-10[ENTER]</div>
+        <div className="col-sm-1">2ตัวล่าง</div>
+        <div className="col-sm-2">10 บาท</div>
+      </div>
+      
+      <div className="row">
+        <div className="col-sm-2">456[ENTER]10[ENTER]</div>
+        <div className="col-sm-1">3ตัวบน</div>
+        <div className="col-sm-2">10 บาท</div>
+      </div>
+      
+      <div className="row">
+        <div className="col-sm-2">456+10[ENTER]</div>
+        <div className="col-sm-1">3ตัว</div>
+        <div className="col-sm-2">10x10 บาท</div>
+      </div>
+      
+      <div className="row">
+        <div className="col-sm-2">456*10[ENTER]</div>
+        <div className="col-sm-1">3ตัวโต๊ด</div>
+        <div className="col-sm-2">10 บาท</div>
+      </div>
+      
+      <div className="row">
+        <div className="col-sm-2">456-10[ENTER]</div>
+        <div className="col-sm-1">3ตัวล่าง</div>
+        <div className="col-sm-2">10 บาท</div>
+      </div>
+      
     </form>);
   }
 }
