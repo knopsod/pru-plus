@@ -15,8 +15,8 @@ const Bets = () => (
         </div>
         <div>
           <div className="col-2 col-sm-2 text-center">ป-ด-ว</div>
-          <div className="col-3 col-sm-3 text-center">รหัสผู้ส่ง</div>
-          <div className="col-1 col-sm-1 text-center">เลข</div>
+          <div className="col-3 col-sm-2 text-center">รหัสผู้ส่ง</div>
+          <div className="col-1 col-sm-2 text-center">เลข</div>
           <div className="col-1 col-sm-1 text-center">2ตัวบน</div>
           <div className="col-1 col-sm-1 text-center">2ตัวล่าง</div>
           <div className="col-1 col-sm-1 text-center">3ตัวบน</div>
