@@ -39,17 +39,28 @@ export default class BetEditorFast extends React.Component {
 
     // up2+down2
     if ( arr.length > 1 &&
-      _.includes( arr[arr.length - 2], '+' )
+      _.includes( arr[arr.length - 2], '+' ) &&
+      arr[arr.length - 2].split('+')[0].length === 2 &&
+      !isNaN( arr[arr.length - 2].split('+')[0] ) &&
+      !isNaN( arr[arr.length - 2].split('+')[1] )
     ) {
       console.log('up2+down2');
+      no = arr[arr.length - 2].split('+')[0];
+      up2 = parseInt( arr[arr.length - 2].split('+')[1] );
+      down2 = parseInt( arr[arr.length - 2].split('+')[1] );
       e.target.value = '';
     }
 
     // down2
     if ( arr.length > 1 &&
-      _.includes( arr[arr.length - 2], '-' ) 
+      _.includes( arr[arr.length - 2], '-' ) &&
+      arr[arr.length - 2].split('-')[0].length === 2 &&
+      !isNaN( arr[arr.length - 2].split('-')[0] ) &&
+      !isNaN( arr[arr.length - 2].split('-')[1] )
     ) {
       console.log('down2');
+      no = arr[arr.length - 2].split('-')[0];
+      down2 = parseInt( arr[arr.length - 2].split('-')[1] );
       e.target.value = '';
     }
 
@@ -59,6 +70,7 @@ export default class BetEditorFast extends React.Component {
       !isNaN( parseInt(arr[arr.length - 2]) ) &&
       arr[arr.length - 1] === ''
     ) {
+      console.log('up3');
       no = arr[arr.length - 3];
       up3 = parseInt(arr[arr.length - 2]);
       e.target.value = '';
@@ -66,25 +78,41 @@ export default class BetEditorFast extends React.Component {
 
     // up3+down3
     if ( arr.length > 1 &&
-      _.includes( arr[arr.length - 2], '+' )
+      _.includes( arr[arr.length - 2], '+' ) &&
+      arr[arr.length - 2].split('+')[0].length === 3 &&
+      !isNaN( arr[arr.length - 2].split('+')[0] ) &&
+      !isNaN( arr[arr.length - 2].split('+')[1] )
     ) {
       console.log('up3+down3');
+      no = arr[arr.length - 2].split('+')[0];
+      up3 = parseInt( arr[arr.length - 2].split('+')[1] );
+      down3 = parseInt( arr[arr.length - 2].split('+')[1] );
       e.target.value = '';
     }
 
     // permute
     if ( arr.length > 1 &&
-      _.includes( arr[arr.length - 2], '*' )
+      _.includes( arr[arr.length - 2], '*' ) &&
+      arr[arr.length - 2].split('*')[0].length === 3&&
+      !isNaN( arr[arr.length - 2].split('*')[0] ) &&
+      !isNaN( arr[arr.length - 2].split('*')[1] )
     ) {
       console.log('permute');
+      no = arr[arr.length - 2].split('*')[0];
+      permute = parseInt( arr[arr.length - 2].split('*')[1] );
       e.target.value = '';
     }
 
     // down3
     if ( arr.length > 1 &&
-      _.includes( arr[arr.length - 2], '-' )
+      _.includes( arr[arr.length - 2], '-' ) &&
+      arr[arr.length - 2].split('-')[0].length === 3&&
+      !isNaN( arr[arr.length - 2].split('-')[0] ) &&
+      !isNaN( arr[arr.length - 2].split('-')[1] )
     ) {
       console.log('down3');
+      no = arr[arr.length - 2].split('-')[0];
+      down3 = parseInt( arr[arr.length - 2].split('-')[1] );
       e.target.value = '';
     }
 
