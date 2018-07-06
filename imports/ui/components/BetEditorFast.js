@@ -100,7 +100,7 @@ export default class BetEditorFast extends React.Component {
       e.target.value = '';
     }
 
-    // up3+down3
+    // up3+permute
     if ( arr.length > 1 &&
       _.includes( arr[arr.length - 2], '+' ) &&
       arr[arr.length - 2].split('+')[0].length === 3 &&
@@ -110,7 +110,7 @@ export default class BetEditorFast extends React.Component {
       console.log('up3+down3');
       no = arr[arr.length - 2].split('+')[0];
       up3 = parseInt( arr[arr.length - 2].split('+')[1] );
-      down3 = parseInt( arr[arr.length - 2].split('+')[1] );
+      permute = parseInt( arr[arr.length - 2].split('+')[1] );
       e.target.value = '';
     }
 
