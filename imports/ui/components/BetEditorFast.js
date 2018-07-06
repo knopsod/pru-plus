@@ -196,7 +196,7 @@ export default class BetEditorFast extends React.Component {
       
       <div className="row">
         <div className="col-sm-2">456[ENTER]10[ENTER]</div>
-        <div className="col-sm-1">456บน</div>
+        <div className="col-sm-1">456เต็ง</div>
         <div className="col-sm-2">10 บาท</div>
       </div>
       
