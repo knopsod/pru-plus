@@ -19,7 +19,7 @@ const Bets = () => (
           <div className="col-2 col-sm-2 text-center">เลข</div>
           <div className="col-1 col-sm-1 text-center">2ตัวบน</div>
           <div className="col-1 col-sm-1 text-center">2ตัวล่าง</div>
-          <div className="col-1 col-sm-1 text-center">3ตัวบน</div>
+          <div className="col-1 col-sm-1 text-center">3ตัวเต็ง</div>
           <div className="col-1 col-sm-1 text-center">3ตัวโต๊ด</div>
           <div className="col-1 col-sm-1 text-center">3ตัวล่าง</div>
         </div>
