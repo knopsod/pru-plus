@@ -56,9 +56,11 @@ export default class BetEditorFast extends React.Component {
       arr[arr.length - 1] === ''
     ) {
       console.log('up2+down2');
-      no = arr[arr.length - 2].split('+')[0];
-      up2 = parseInt( arr[arr.length - 2].split('+')[1] );
-      down2 = parseInt( arr[arr.length - 2].split('+')[1] );
+      // no = arr[arr.length - 2].split('+')[0];
+      // up2 = parseInt( arr[arr.length - 2].split('+')[1] );
+      // down2 = parseInt( arr[arr.length - 2].split('+')[1] );
+      no = arr[arr.length - 3];
+      up2 = down2 = parseInt(arr[arr.length - 2]);
       e.target.value = '';
     }
 
@@ -70,8 +72,10 @@ export default class BetEditorFast extends React.Component {
       !isNaN( arr[arr.length - 2].split('+')[1] )
     ) {
       console.log('up2');
-      no = arr[arr.length - 3];
-      up2 = parseInt(arr[arr.length - 2]);
+      // no = arr[arr.length - 3];
+      // up2 = parseInt(arr[arr.length - 2]);
+      no = arr[arr.length - 2].split('+')[0];
+      up2 = parseInt( arr[arr.length - 2].split('+')[1] );
       e.target.value = '';
     }
 
@@ -95,9 +99,11 @@ export default class BetEditorFast extends React.Component {
       arr[arr.length - 1] === ''
     ) {
       console.log('up3+down3');
-      no = arr[arr.length - 2].split('+')[0];
-      up3 = parseInt( arr[arr.length - 2].split('+')[1] );
-      permute = parseInt( arr[arr.length - 2].split('+')[1] );
+      // no = arr[arr.length - 2].split('+')[0];
+      // up3 = parseInt( arr[arr.length - 2].split('+')[1] );
+      // permute = parseInt( arr[arr.length - 2].split('+')[1] );
+      no = arr[arr.length - 3];
+      up3 = permute = parseInt(arr[arr.length - 2]);
       e.target.value = '';
     }
 
@@ -109,8 +115,10 @@ export default class BetEditorFast extends React.Component {
       !isNaN( arr[arr.length - 2].split('+')[1] )
     ) {
       console.log('up3');
-      no = arr[arr.length - 3];
-      up3 = parseInt(arr[arr.length - 2]);
+      // no = arr[arr.length - 3];
+      // up3 = parseInt(arr[arr.length - 2]);
+      no = arr[arr.length - 2].split('+')[0];
+      up3 = parseInt( arr[arr.length - 2].split('+')[1] );
       e.target.value = '';
     }
 
