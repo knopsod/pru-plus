@@ -49,29 +49,29 @@ export default class BetEditorFast extends React.Component {
       up2 = 0, down2 = 0, up3 = 0, down3 = 0, permute = 0, 
       createdAt = moment().valueOf(), broker = this.state.broker, createdDate = this.state.createdDate.substr(0, 10);
 
-    // up2
+    // up2+down2
     if ( arr.length > 2 &&
       !isNaN( parseInt(arr[arr.length - 3]) ) && arr[arr.length - 3].length === 2 &&
       !isNaN( parseInt(arr[arr.length - 2]) ) &&
       arr[arr.length - 1] === ''
     ) {
-      console.log('up2');
-      no = arr[arr.length - 3];
-      up2 = parseInt(arr[arr.length - 2]);
+      console.log('up2+down2');
+      no = arr[arr.length - 2].split('+')[0];
+      up2 = parseInt( arr[arr.length - 2].split('+')[1] );
+      down2 = parseInt( arr[arr.length - 2].split('+')[1] );
       e.target.value = '';
     }
 
-    // up2+down2
+    // up2
     if ( arr.length > 1 &&
       _.includes( arr[arr.length - 2], '+' ) &&
       arr[arr.length - 2].split('+')[0].length === 2 &&
       !isNaN( arr[arr.length - 2].split('+')[0] ) &&
       !isNaN( arr[arr.length - 2].split('+')[1] )
     ) {
-      console.log('up2+down2');
-      no = arr[arr.length - 2].split('+')[0];
-      up2 = parseInt( arr[arr.length - 2].split('+')[1] );
-      down2 = parseInt( arr[arr.length - 2].split('+')[1] );
+      console.log('up2');
+      no = arr[arr.length - 3];
+      up2 = parseInt(arr[arr.length - 2]);
       e.target.value = '';
     }
 
@@ -88,29 +88,29 @@ export default class BetEditorFast extends React.Component {
       e.target.value = '';
     }
 
-    // up3
+    // up3+permute
     if ( arr.length > 2 &&
       !isNaN( parseInt(arr[arr.length - 3]) ) && arr[arr.length - 3].length === 3 &&
       !isNaN( parseInt(arr[arr.length - 2]) ) &&
       arr[arr.length - 1] === ''
     ) {
-      console.log('up3');
-      no = arr[arr.length - 3];
-      up3 = parseInt(arr[arr.length - 2]);
+      console.log('up3+down3');
+      no = arr[arr.length - 2].split('+')[0];
+      up3 = parseInt( arr[arr.length - 2].split('+')[1] );
+      permute = parseInt( arr[arr.length - 2].split('+')[1] );
       e.target.value = '';
     }
 
-    // up3+permute
+    // up3
     if ( arr.length > 1 &&
       _.includes( arr[arr.length - 2], '+' ) &&
       arr[arr.length - 2].split('+')[0].length === 3 &&
       !isNaN( arr[arr.length - 2].split('+')[0] ) &&
       !isNaN( arr[arr.length - 2].split('+')[1] )
     ) {
-      console.log('up3+down3');
-      no = arr[arr.length - 2].split('+')[0];
-      up3 = parseInt( arr[arr.length - 2].split('+')[1] );
-      permute = parseInt( arr[arr.length - 2].split('+')[1] );
+      console.log('up3');
+      no = arr[arr.length - 3];
+      up3 = parseInt(arr[arr.length - 2]);
       e.target.value = '';
     }
 
@@ -178,14 +178,14 @@ export default class BetEditorFast extends React.Component {
       </FormGroup>
       <div className="row">
         <div className="col-sm-2">45[ENTER]10[ENTER]</div>
-        <div className="col-sm-1">45บน</div>
-        <div className="col-sm-2">10 บาท</div>
+        <div className="col-sm-1">45</div>
+        <div className="col-sm-2">10x10 บาท</div>
       </div>
       
       <div className="row">
         <div className="col-sm-2">45+10[ENTER]</div>
-        <div className="col-sm-1">45</div>
-        <div className="col-sm-2">10x10 บาท</div>
+        <div className="col-sm-1">45บน</div>
+        <div className="col-sm-2">10 บาท</div>
       </div>
       
       <div className="row">
@@ -196,14 +196,14 @@ export default class BetEditorFast extends React.Component {
       
       <div className="row">
         <div className="col-sm-2">456[ENTER]10[ENTER]</div>
-        <div className="col-sm-1">456เต็ง</div>
-        <div className="col-sm-2">10 บาท</div>
+        <div className="col-sm-1">456</div>
+        <div className="col-sm-2">10x10 บาท</div>
       </div>
       
       <div className="row">
         <div className="col-sm-2">456+10[ENTER]</div>
-        <div className="col-sm-1">456</div>
-        <div className="col-sm-2">10x10 บาท</div>
+        <div className="col-sm-1">456เต็ง</div>
+        <div className="col-sm-2">10 บาท</div>
       </div>
       
       <div className="row">
