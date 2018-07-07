@@ -176,14 +176,6 @@ export default class BetEditorFast extends React.Component {
           value={this.state.broker}
           onChange={this.handleBrokerChange}/>
       </FormGroup>
-      <FormGroup>
-        <ControlLabel>บันทึก</ControlLabel>
-        <FormControl
-          componentClass="textarea"
-          name="bet"
-          onChange={this.handleChange}
-        />
-      </FormGroup>
       <div className="row">
         <div className="col-sm-2">45[ENTER]10[ENTER]</div>
         <div className="col-sm-1">45</div>
@@ -225,7 +217,14 @@ export default class BetEditorFast extends React.Component {
         <div className="col-sm-1">456ล่าง</div>
         <div className="col-sm-2">10 บาท</div>
       </div>
-      
+      <FormGroup>
+        <ControlLabel>บันทึก</ControlLabel>
+        <FormControl
+          componentClass="textarea"
+          name="bet"
+          onChange={this.handleChange}
+        />
+      </FormGroup>
     </form>);
   }
 }
