@@ -177,45 +177,45 @@ export default class BetEditorFast extends React.Component {
           onChange={this.handleBrokerChange}/>
       </FormGroup>
       <div className="row">
-        <div className="col-sm-2">45[ENTER]10[ENTER]</div>
-        <div className="col-sm-1">45</div>
-        <div className="col-sm-2">10x10 บาท</div>
+        <div className="col-4 col-sm-2">45[ENTER]10[ENTER]</div>
+        <div className="col-4 col-sm-2">45</div>
+        <div className="col-4 col-sm-2">10x10 บาท</div>
       </div>
       
       <div className="row">
-        <div className="col-sm-2">45+10[ENTER]</div>
-        <div className="col-sm-1">45บน</div>
-        <div className="col-sm-2">10 บาท</div>
+        <div className="col-4 col-sm-2">45+10[ENTER]</div>
+        <div className="col-4 col-sm-2">45บน</div>
+        <div className="col-4 col-sm-2">10 บาท</div>
       </div>
       
       <div className="row">
-        <div className="col-sm-2">45-10[ENTER]</div>
-        <div className="col-sm-1">45ล่าง</div>
-        <div className="col-sm-2">10 บาท</div>
+        <div className="col-4 col-sm-2">45-10[ENTER]</div>
+        <div className="col-4 col-sm-2">45ล่าง</div>
+        <div className="col-4 col-sm-2">10 บาท</div>
       </div>
       
       <div className="row">
-        <div className="col-sm-2">456[ENTER]10[ENTER]</div>
-        <div className="col-sm-1">456</div>
-        <div className="col-sm-2">10x10 บาท</div>
+        <div className="col-4 col-sm-2">456[ENTER]10[ENTER]</div>
+        <div className="col-4 col-sm-2">456</div>
+        <div className="col-4 col-sm-2">10x10 บาท</div>
       </div>
       
       <div className="row">
-        <div className="col-sm-2">456+10[ENTER]</div>
-        <div className="col-sm-1">456เต็ง</div>
-        <div className="col-sm-2">10 บาท</div>
+        <div className="col-4 col-sm-2">456+10[ENTER]</div>
+        <div className="col-4 col-sm-2">456เต็ง</div>
+        <div className="col-4 col-sm-2">10 บาท</div>
       </div>
       
       <div className="row">
-        <div className="col-sm-2">456*10[ENTER]</div>
-        <div className="col-sm-1">456โต๊ด</div>
-        <div className="col-sm-2">10 บาท</div>
+        <div className="col-4 col-sm-2">456*10[ENTER]</div>
+        <div className="col-4 col-sm-2">456โต๊ด</div>
+        <div className="col-4 col-sm-2">10 บาท</div>
       </div>
       
       <div className="row">
-        <div className="col-sm-2">456-10[ENTER]</div>
-        <div className="col-sm-1">456ล่าง</div>
-        <div className="col-sm-2">10 บาท</div>
+        <div className="col-4 col-sm-2">456-10[ENTER]</div>
+        <div className="col-4 col-sm-2">456ล่าง</div>
+        <div className="col-4 col-sm-2">10 บาท</div>
       </div>
       <FormGroup>
         <ControlLabel>บันทึก</ControlLabel>
