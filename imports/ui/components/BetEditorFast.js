@@ -16,7 +16,8 @@ export default class BetEditorFast extends React.Component {
 
     this.state = {
       createdDate: moment().toISOString(),
-      broker: '007'
+      broker: '007',
+      betMessage: '',
     };
 
     this.handleCreatedDateChange = this.handleCreatedDateChange.bind(this);
@@ -28,7 +29,7 @@ export default class BetEditorFast extends React.Component {
     const createdDate = value;
     this.setState({ 
       ...this.state,
-      createdDate
+      createdDate,
     })
   }
 
@@ -36,18 +37,32 @@ export default class BetEditorFast extends React.Component {
     const broker = e.target.value;
     this.setState({
       ...this.state,
-      broker
+      broker,
     });
   }
 
   handleChange(e) {
-    var arr = e.target.value.split(/\r?\n/);
+    const betMessage = e.target.value;
+    this.setState({
+      ...this.state,
+      betMessage,
+    });
+
+    const arr = e.target.value.split(/\r?\n/);
     console.log(arr);
     
-    var upsert = {},
-      no = '', 
-      up2 = 0, down2 = 0, up3 = 0, down3 = 0, permute = 0, 
-      createdAt = moment().valueOf(), broker = this.state.broker, createdDate = this.state.createdDate.substr(0, 10);
+    var upsert = {};
+
+    var no = '', 
+      up2 = 0, 
+      down2 = 0, 
+      up3 = 0, 
+      down3 = 0, 
+      permute = 0;
+
+    const createdAt = moment().valueOf(), 
+      broker = this.state.broker, 
+      createdDate = this.state.createdDate.substr(0, 10);
 
     // up2+down2
     if ( arr.length > 2 &&
@@ -150,20 +165,35 @@ export default class BetEditorFast extends React.Component {
 
     if ( no !== '' ){
       upsert = { no, 
-        up2, down2, up3, down3, permute, 
-        createdAt, broker, createdDate };
+        up2, 
+        down2, 
+        up3, 
+        down3, 
+        permute, 
+        createdAt, 
+        broker, 
+        createdDate,
+      };
       console.log(upsert);
       upsertBet.call(upsert, (error, response) => {
         if (error) {
           Bert.alert(error.reason, 'danger');
         } else {
           Bert.alert('Bet added', 'success');
+          this.setState({
+            ...this.state,
+            betMessage: ''
+          });
         }
       });
     }
   }
 
   render() {
+
+    const yellowStyle = { minHeight: 120, fontSize: 32, borderColor: 'yellow', borderWidth: 2 };
+    const redStyle = { minHeight: 120, fontSize: 32, borderColor: 'red', borderWidth: 2 };
+
     return (<form>
       <FormGroup>
         <DatePicker dateFormat="YYYY-MM-DD" name="createdDate" ref="createdDate"
@@ -228,7 +258,7 @@ export default class BetEditorFast extends React.Component {
           componentClass="textarea"
           type="number"
           name="bet"
-          style={{ minHeight: 120, fontSize: 32, borderColor: 'red' }}
+          style={this.state.betMessage.length > 0 ? yellowStyle : redStyle}
           bsSize="large"
           onChange={this.handleChange}
         />
