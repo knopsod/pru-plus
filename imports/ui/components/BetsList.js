@@ -39,7 +39,6 @@ export default container((props, onData) => {
 
     if (bets.length > 0) {
       Session.set('latestBet', bets[0]);
-      console.log(Session.get('latestBet'));
     }
 
     onData(null, { bets });

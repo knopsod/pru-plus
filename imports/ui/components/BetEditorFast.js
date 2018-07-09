@@ -11,6 +11,7 @@ import DatePicker from 'react-bootstrap-date-picker';
 import container from '../../modules/container';
 
 import { upsertBet, removeBet } from '../../api/bets/methods.js';
+import { arch } from 'os';
 
 class BetEditorFast extends React.Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class BetEditorFast extends React.Component {
 
     this.state = {
       createdDate: moment().toISOString(),
-      broker: '007',
+      broker: 'ผู้ส่ง',
       betMessage: '',
     };
 
@@ -81,8 +82,8 @@ class BetEditorFast extends React.Component {
     if ( arr.length > 1 &&
       _.includes( arr[arr.length - 2], '+' ) &&
       arr[arr.length - 2].split('+')[0].length === 2 &&
-      !isNaN( arr[arr.length - 2].split('+')[0] ) &&
-      !isNaN( arr[arr.length - 2].split('+')[1] )
+      !isNaN( parseInt( arr[arr.length - 2].split('+')[0] ) ) &&
+      !isNaN( parseInt( arr[arr.length - 2].split('+')[1] ) )
     ) {
       console.log('up2');
       no = arr[arr.length - 2].split('+')[0];
@@ -93,8 +94,8 @@ class BetEditorFast extends React.Component {
     if ( arr.length > 1 &&
       _.includes( arr[arr.length - 2], '-' ) &&
       arr[arr.length - 2].split('-')[0].length === 2 &&
-      !isNaN( arr[arr.length - 2].split('-')[0] ) &&
-      !isNaN( arr[arr.length - 2].split('-')[1] )
+      !isNaN( parseInt( arr[arr.length - 2].split('-')[0] ) ) &&
+      !isNaN( parseInt( arr[arr.length - 2].split('-')[1] ) )
     ) {
       console.log('down2');
       no = arr[arr.length - 2].split('-')[0];
@@ -116,8 +117,8 @@ class BetEditorFast extends React.Component {
     if ( arr.length > 1 &&
       _.includes( arr[arr.length - 2], '+' ) &&
       arr[arr.length - 2].split('+')[0].length === 3 &&
-      !isNaN( arr[arr.length - 2].split('+')[0] ) &&
-      !isNaN( arr[arr.length - 2].split('+')[1] )
+      !isNaN( parseInt( arr[arr.length - 2].split('+')[0] ) ) &&
+      !isNaN( parseInt( arr[arr.length - 2].split('+')[1] ) )
     ) {
       console.log('up3');
       no = arr[arr.length - 2].split('+')[0];
@@ -128,8 +129,8 @@ class BetEditorFast extends React.Component {
     if ( arr.length > 1 &&
       _.includes( arr[arr.length - 2], '*' ) &&
       arr[arr.length - 2].split('*')[0].length === 3&&
-      !isNaN( arr[arr.length - 2].split('*')[0] ) &&
-      !isNaN( arr[arr.length - 2].split('*')[1] )
+      !isNaN( parseInt( arr[arr.length - 2].split('*')[0] ) ) &&
+      !isNaN( parseInt( arr[arr.length - 2].split('*')[1] ) )
     ) {
       console.log('permute');
       no = arr[arr.length - 2].split('*')[0];
@@ -140,8 +141,8 @@ class BetEditorFast extends React.Component {
     if ( arr.length > 1 &&
       _.includes( arr[arr.length - 2], '-' ) &&
       arr[arr.length - 2].split('-')[0].length === 3&&
-      !isNaN( arr[arr.length - 2].split('-')[0] ) &&
-      !isNaN( arr[arr.length - 2].split('-')[1] )
+      !isNaN( parseInt( arr[arr.length - 2].split('-')[0] ) ) &&
+      !isNaN( parseInt( arr[arr.length - 2].split('-')[1] ) )
     ) {
       console.log('down3');
       no = arr[arr.length - 2].split('-')[0];
@@ -189,6 +190,22 @@ class BetEditorFast extends React.Component {
       }
     }
 
+    // no+latestSpend
+    if ( arr.length > 2 &&
+      arr[arr.length - 3].length > 1 && arr[arr.length - 3].length < 4 &&
+      !isNaN( parseInt( arr[arr.length - 3] ) ) &&
+      arr[arr.length - 2] === "" &&
+      arr[arr.length - 1] === ""
+    ) {
+      console.log('no+latestSpend');
+      no = arr[arr.length - 3];
+      up2 = this.props.Session.get('latestBet').up2;
+      down2 = this.props.Session.get('latestBet').down2;
+      up3 = this.props.Session.get('latestBet').up3;
+      down3 = this.props.Session.get('latestBet').down3;
+      permute = this.props.Session.get('latestBet').permute;
+    }
+
     if ( no !== '' ){
       upsert = { no, 
         up2, 
@@ -201,6 +218,7 @@ class BetEditorFast extends React.Component {
         createdDate,
       };
       console.log(upsert);
+
       upsertBet.call(upsert, (error, response) => {
         if (error) {
           Bert.alert(error.reason, 'danger');
@@ -220,8 +238,8 @@ class BetEditorFast extends React.Component {
 
   render() {
 
-    const yellowStyle = { minHeight: 120, fontSize: 32, borderColor: 'yellow', borderWidth: 2 };
-    const redStyle = { minHeight: 120, fontSize: 32, borderColor: 'red', borderWidth: 2 };
+    const yellowStyle = { minHeight: 150, fontSize: 48, borderColor: 'yellow', borderWidth: 2 };
+    const redStyle = { minHeight: 150, fontSize: 48, borderColor: 'red', borderWidth: 2 };
 
     return (<form>
       <FormGroup>
@@ -230,7 +248,7 @@ class BetEditorFast extends React.Component {
           onChange={this.handleCreatedDateChange}/>
       </FormGroup>
       <FormGroup>
-        <ControlLabel>รหัสผู้ส่ง</ControlLabel>
+        <ControlLabel>ผู้ส่ง</ControlLabel>
         <FormControl type="text" name="broker" ref="broker"
           value={this.state.broker}
           onChange={this.handleBrokerChange}/>
@@ -239,55 +257,71 @@ class BetEditorFast extends React.Component {
       <FormGroup>
         <ControlLabel>ตัวอย่างการบันทึก</ControlLabel>
         <div className="row">
-          <div className="col-xs-4 col-sm-2 col-md-2">45[ENTER]10[ENTER]</div>
+          <div className="col-xs-4 col-sm-3 col-md-3">45[ENTER]10[ENTER]</div>
           <div className="col-xs-4 col-sm-1 col-md-1">45</div>
           <div className="col-xs-4 col-sm-2 col-md-2">10x10 บาท</div>
         </div>
         
         <div className="row">
-          <div className="col-xs-4 col-sm-2 col-md-2">45+10[ENTER]</div>
+          <div className="col-xs-4 col-sm-3 col-md-3">45+10[ENTER]</div>
           <div className="col-xs-4 col-sm-1 col-md-1">45บน</div>
           <div className="col-xs-4 col-sm-2 col-md-2">10 บาท</div>
         </div>
         
         <div className="row">
-          <div className="col-xs-4 col-sm-2 col-md-2">45-10[ENTER]</div>
+          <div className="col-xs-4 col-sm-3 col-md-3">45-10[ENTER]</div>
           <div className="col-xs-4 col-sm-1 col-md-1">45ล่าง</div>
           <div className="col-xs-4 col-sm-2 col-md-2">10 บาท</div>
         </div>
-        
+
         <div className="row">
-          <div className="col-xs-4 col-sm-2 col-md-2">456[ENTER]10[ENTER]</div>
+          <div className="col-xs-4 col-sm-3 col-md-3">78[ENTER][ENTER]</div>
+          <div className="col-xs-4 col-sm-1 col-md-1">78</div>
+          <div className="col-xs-4 col-sm-2 col-md-2">ทำซ้ำ</div>
+        </div>
+
+        <hr />
+
+        <div className="row">
+          <div className="col-xs-4 col-sm-3 col-md-3">456[ENTER]10[ENTER]</div>
           <div className="col-xs-4 col-sm-1 col-md-1">456</div>
           <div className="col-xs-4 col-sm-2 col-md-2">10x10 บาท</div>
         </div>
         
         <div className="row">
-          <div className="col-xs-4 col-sm-2 col-md-2">456+10[ENTER]</div>
+          <div className="col-xs-4 col-sm-3 col-md-3">456+10[ENTER]</div>
           <div className="col-xs-4 col-sm-1 col-md-1">456เต็ง</div>
           <div className="col-xs-4 col-sm-2 col-md-2">10 บาท</div>
         </div>
         
         <div className="row">
-          <div className="col-xs-4 col-sm-2 col-md-2">456*10[ENTER]</div>
+          <div className="col-xs-4 col-sm-3 col-md-3">456*10[ENTER]</div>
           <div className="col-xs-4 col-sm-1 col-md-1">456โต๊ด</div>
           <div className="col-xs-4 col-sm-2">10 บาท</div>
         </div>
         
         <div className="row">
-          <div className="col-xs-4 col-sm-2 col-md-2">456-10[ENTER]</div>
+          <div className="col-xs-4 col-sm-3 col-md-3">456-10[ENTER]</div>
           <div className="col-xs-4 col-sm-1 col-md-1">456ล่าง</div>
           <div className="col-xs-4 col-sm-2 col-md-2">10 บาท</div>
         </div>
 
         <div className="row">
-          <div className="col-xs-4 col-sm-2 col-md-2">-</div>
+          <div className="col-xs-4 col-sm-3 col-md-3">789[ENTER][ENTER]</div>
+          <div className="col-xs-4 col-sm-1 col-md-1">789</div>
+          <div className="col-xs-4 col-sm-2 col-md-2">ทำซ้ำ</div>
+        </div>
+
+        <hr />
+
+        <div className="row">
+          <div className="col-xs-4 col-sm-3 col-md-3">-</div>
           <div className="col-xs-4 col-sm-4 col-md-4">ลบข้อความ</div>
         </div>
 
         <div className="row">
-          <div className="col-xs-4 col-sm-2 col-md-2">--</div>
-          <div className="col-xs-4 col-sm-4 col-md-4">ลบข้อมูลล่าสุด</div>
+          <div className="col-xs-4 col-sm-3 col-md-3">--</div>
+          <div className="col-xs-4 col-sm-4 col-md-4">ลบตัวล่าสุด</div>
         </div>
       </FormGroup>
 
