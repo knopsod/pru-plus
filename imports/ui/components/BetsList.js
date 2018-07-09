@@ -6,6 +6,7 @@ import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session';
 import Bets from '../../api/bets/bets';
 import container from '../../modules/container';
+import moment from 'moment';
 
 const handleNav = _id => browserHistory.push(`/bets/${_id}`);
 
@@ -32,11 +33,16 @@ BetsList.propTypes = {
   bets: PropTypes.array,
 };
 
-export default container((props, onData) => {
-  const subscription = Meteor.subscribe('bets.list');
+export default container((props, onData) => { 
+  const createdDate = Session.get('createdDate') ? 
+    Session.get('createdDate').substring(0, 10) : 
+    moment().toISOString().substring(0, 10);
+    
+  const subscription = Meteor.subscribe('bets.list', createdDate);
+  
   if (subscription.ready()) {
     const bets = Bets.find({}, {sort: {createdAt: -1}}).fetch();
-
+    
     if (bets.length > 0) {
       Session.set('latestBet', bets[0]);
     }

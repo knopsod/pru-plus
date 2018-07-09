@@ -11,17 +11,18 @@ import DatePicker from 'react-bootstrap-date-picker';
 import container from '../../modules/container';
 
 import { upsertBet, removeBet } from '../../api/bets/methods.js';
-import { arch } from 'os';
 
 class BetEditorFast extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      createdDate: moment().toISOString(),
+      createdDate: moment().toISOString().substring(0, 10),
       broker: 'ผู้ส่ง',
       betMessage: '',
     };
+
+    this.props.Session.set('createdDate', moment().toISOString().substring(0, 10));
 
     this.handleCreatedDateChange = this.handleCreatedDateChange.bind(this);
     this.handleBrokerChange = this.handleBrokerChange.bind(this);
@@ -33,7 +34,9 @@ class BetEditorFast extends React.Component {
     this.setState({ 
       ...this.state,
       createdDate,
-    })
+    });
+
+    this.props.Session.set('createdDate', createdDate.substring(0, 10));
   }
 
   handleBrokerChange(e) {
