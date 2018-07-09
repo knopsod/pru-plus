@@ -1,16 +1,18 @@
 /* eslint-disable max-len, no-return-assign */
 
 import React from 'react';
+import { Session } from 'meteor/session';
 import { Bert } from 'meteor/themeteorchef:bert';
 import PropTypes from 'prop-types';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import moment from 'moment';
 import _ from 'lodash';
 import DatePicker from 'react-bootstrap-date-picker';
+import container from '../../modules/container';
 
-import { upsertBet } from '../../api/bets/methods.js';
+import { upsertBet, removeBet } from '../../api/bets/methods.js';
 
-export default class BetEditorFast extends React.Component {
+class BetEditorFast extends React.Component {
   constructor(props) {
     super(props);
 
@@ -48,7 +50,7 @@ export default class BetEditorFast extends React.Component {
       betMessage,
     });
 
-    const arr = e.target.value.split(/\r?\n/);
+    const arr = betMessage.split(/\r?\n/);
     console.log(arr);
     
     var upsert = {};
@@ -71,12 +73,8 @@ export default class BetEditorFast extends React.Component {
       arr[arr.length - 1] === ''
     ) {
       console.log('up2+down2');
-      // no = arr[arr.length - 2].split('+')[0];
-      // up2 = parseInt( arr[arr.length - 2].split('+')[1] );
-      // down2 = parseInt( arr[arr.length - 2].split('+')[1] );
       no = arr[arr.length - 3];
       up2 = down2 = parseInt(arr[arr.length - 2]);
-      e.target.value = '';
     }
 
     // up2
@@ -87,11 +85,8 @@ export default class BetEditorFast extends React.Component {
       !isNaN( arr[arr.length - 2].split('+')[1] )
     ) {
       console.log('up2');
-      // no = arr[arr.length - 3];
-      // up2 = parseInt(arr[arr.length - 2]);
       no = arr[arr.length - 2].split('+')[0];
       up2 = parseInt( arr[arr.length - 2].split('+')[1] );
-      e.target.value = '';
     }
 
     // down2
@@ -104,7 +99,6 @@ export default class BetEditorFast extends React.Component {
       console.log('down2');
       no = arr[arr.length - 2].split('-')[0];
       down2 = parseInt( arr[arr.length - 2].split('-')[1] );
-      e.target.value = '';
     }
 
     // up3+permute
@@ -114,12 +108,8 @@ export default class BetEditorFast extends React.Component {
       arr[arr.length - 1] === ''
     ) {
       console.log('up3+down3');
-      // no = arr[arr.length - 2].split('+')[0];
-      // up3 = parseInt( arr[arr.length - 2].split('+')[1] );
-      // permute = parseInt( arr[arr.length - 2].split('+')[1] );
       no = arr[arr.length - 3];
       up3 = permute = parseInt(arr[arr.length - 2]);
-      e.target.value = '';
     }
 
     // up3
@@ -130,11 +120,8 @@ export default class BetEditorFast extends React.Component {
       !isNaN( arr[arr.length - 2].split('+')[1] )
     ) {
       console.log('up3');
-      // no = arr[arr.length - 3];
-      // up3 = parseInt(arr[arr.length - 2]);
       no = arr[arr.length - 2].split('+')[0];
       up3 = parseInt( arr[arr.length - 2].split('+')[1] );
-      e.target.value = '';
     }
 
     // permute
@@ -147,7 +134,6 @@ export default class BetEditorFast extends React.Component {
       console.log('permute');
       no = arr[arr.length - 2].split('*')[0];
       permute = parseInt( arr[arr.length - 2].split('*')[1] );
-      e.target.value = '';
     }
 
     // down3
@@ -160,7 +146,47 @@ export default class BetEditorFast extends React.Component {
       console.log('down3');
       no = arr[arr.length - 2].split('-')[0];
       down3 = parseInt( arr[arr.length - 2].split('-')[1] );
-      e.target.value = '';
+    }
+
+    // clear screen
+    if ( arr.length > 1 &&
+      arr[arr.length - 2] === "-" &&
+      arr[arr.length - 1] === ""
+    ) {
+      this.setState({
+        ...this.state,
+        betMessage: ''
+      });
+    }
+
+    // remove latest bet
+    if ( arr.length > 1 &&
+      arr[arr.length - 2] === "--" &&
+      arr[arr.length - 1] === ""
+    ) {
+      
+      const _id= this.insertedId !== undefined ? 
+        this.insertedId :
+        this.props.Session.get('latestBet')._id;
+
+      console.log(_id);
+
+      if ( _id ) {
+        removeBet.call({ _id }, (error, response) => {
+          if (error) {
+            Bert.alert(error.reason, 'danger');
+          } else {
+            Bert.alert('Latest bet removed', 'success');
+  
+            this.setState({
+              ...this.state,
+              betMessage: '',
+            });
+
+            this.insertedId = undefined;
+          }
+        });
+      }
     }
 
     if ( no !== '' ){
@@ -180,10 +206,13 @@ export default class BetEditorFast extends React.Component {
           Bert.alert(error.reason, 'danger');
         } else {
           Bert.alert('Bet added', 'success');
+
           this.setState({
             ...this.state,
-            betMessage: ''
+            betMessage: '',
           });
+
+          this.insertedId = response.insertedId;
         }
       });
     }
@@ -250,6 +279,16 @@ export default class BetEditorFast extends React.Component {
           <div className="col-xs-4 col-sm-1 col-md-1">456ล่าง</div>
           <div className="col-xs-4 col-sm-2 col-md-2">10 บาท</div>
         </div>
+
+        <div className="row">
+          <div className="col-xs-4 col-sm-2 col-md-2">-</div>
+          <div className="col-xs-4 col-sm-4 col-md-4">ลบข้อความ</div>
+        </div>
+
+        <div className="row">
+          <div className="col-xs-4 col-sm-2 col-md-2">--</div>
+          <div className="col-xs-4 col-sm-4 col-md-4">ลบข้อมูลล่าสุด</div>
+        </div>
       </FormGroup>
 
       <FormGroup>
@@ -260,6 +299,7 @@ export default class BetEditorFast extends React.Component {
           name="bet"
           style={this.state.betMessage.length > 0 ? yellowStyle : redStyle}
           bsSize="large"
+          value={this.state.betMessage}
           onChange={this.handleChange}
         />
       </FormGroup>
@@ -268,5 +308,9 @@ export default class BetEditorFast extends React.Component {
 }
 
 BetEditorFast.propTypes = {
-  bet: PropTypes.object,
+  Session: PropTypes.object,
 };
+
+export default container((props, onData) => {
+  onData(null, { Session });
+}, BetEditorFast);
