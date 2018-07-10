@@ -17,12 +17,12 @@ class BetEditorFast extends React.Component {
     super(props);
 
     this.state = {
-      createdDate: moment().toISOString().substring(0, 10),
+      createdDate: moment().toISOString(true).substring(0, 10),
       broker: 'ผู้ส่ง',
       betMessage: '',
     };
 
-    this.props.Session.set('createdDate', moment().toISOString().substring(0, 10));
+    this.props.Session.set('createdDate', moment().toISOString(true).substring(0, 10));
 
     this.handleCreatedDateChange = this.handleCreatedDateChange.bind(this);
     this.handleBrokerChange = this.handleBrokerChange.bind(this);
@@ -169,9 +169,7 @@ class BetEditorFast extends React.Component {
       arr[arr.length - 1] === ""
     ) {
       
-      const _id= this.insertedId !== undefined ? 
-        this.insertedId :
-        this.props.Session.get('latestBet')._id;
+      const _id = this.insertedId;
 
       console.log(_id);
 
@@ -188,25 +186,52 @@ class BetEditorFast extends React.Component {
             });
 
             this.insertedId = undefined;
+            this.props.Session.set('insertedId', undefined);
           }
         });
       }
     }
 
-    // no+latestSpend
+    // no2+latestSpend
     if ( arr.length > 2 &&
-      arr[arr.length - 3].length > 1 && arr[arr.length - 3].length < 4 &&
+      arr[arr.length - 3].length === 2 &&
       !isNaN( parseInt( arr[arr.length - 3] ) ) &&
       arr[arr.length - 2] === "" &&
       arr[arr.length - 1] === ""
     ) {
-      console.log('no+latestSpend');
-      no = arr[arr.length - 3];
-      up2 = this.props.Session.get('latestBet').up2;
-      down2 = this.props.Session.get('latestBet').down2;
-      up3 = this.props.Session.get('latestBet').up3;
-      down3 = this.props.Session.get('latestBet').down3;
-      permute = this.props.Session.get('latestBet').permute;
+      console.log('no2+latestSpend');
+
+      if ( this.props.Session.get('latestSessionBet').up3 > 0 || 
+        this.props.Session.get('latestSessionBet').down3 > 0 ||
+        this.props.Session.get('latestSessionBet').permute > 0
+      ) {
+        return;
+      } else {
+        no = arr[arr.length - 3];
+        up2 = this.props.Session.get('latestSessionBet').up2;
+        down2 = this.props.Session.get('latestSessionBet').down2;
+      }
+    }
+
+    // no3+latestSpend
+    if ( arr.length > 2 &&
+      arr[arr.length - 3].length === 3 &&
+      !isNaN( parseInt( arr[arr.length - 3] ) ) &&
+      arr[arr.length - 2] === "" &&
+      arr[arr.length - 1] === ""
+    ) {
+      console.log('no3+latestSpend');
+
+      if ( this.props.Session.get('latestSessionBet').up2 > 0 ||
+        this.props.Session.get('latestSessionBet').down2 > 0 
+      ) {
+        return;
+      } else {
+        no = arr[arr.length - 3];
+        up3 = this.props.Session.get('latestSessionBet').up3;
+        down3 = this.props.Session.get('latestSessionBet').down3;
+        permute = this.props.Session.get('latestSessionBet').permute;
+      }
     }
 
     if ( no !== '' ){
@@ -234,6 +259,7 @@ class BetEditorFast extends React.Component {
           });
 
           this.insertedId = response.insertedId;
+          this.props.Session.set('insertedId', response.insertedId);
         }
       });
     }
@@ -241,8 +267,8 @@ class BetEditorFast extends React.Component {
 
   render() {
 
-    const yellowStyle = { minHeight: 150, fontSize: 48, borderColor: 'yellow', borderWidth: 2 };
-    const redStyle = { minHeight: 150, fontSize: 48, borderColor: 'red', borderWidth: 2 };
+    const yellowStyle = { height: 225, minHeight: 150, fontSize: 48, borderColor: 'yellow', borderWidth: 2 };
+    const redStyle = { height: 225, minHeight: 150, fontSize: 48, borderColor: 'red', borderWidth: 2 };
 
     return (<form>
       <FormGroup>

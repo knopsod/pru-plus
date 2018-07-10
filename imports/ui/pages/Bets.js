@@ -13,26 +13,13 @@ const Bets = () => (
         <div className="page-header clearfix">
           <BetEditorFast />
         </div>
+      </Col>
+    </Row>
+    <Row>
+      <Col xs={ 12 }>
         <div>
-          <div className="col-xs-2 col-sm-2 text-center">ป-ด-ว</div>
-          <div className="col-xs-2 col-sm-2 text-center">รหัสผู้ส่ง</div>
-          <div className="col-xs-2 col-sm-2 text-center">เลข</div>
-          <div className="col-xs-1 col-sm-1 text-center">2ตัวบน</div>
-          <div className="col-xs-1 col-sm-1 text-center">2ตัวล่าง</div>
-          <div className="col-xs-1 col-sm-1 text-center">3ตัวเต็ง</div>
-          <div className="col-xs-1 col-sm-1 text-center">3ตัวโต๊ด</div>
-          <div className="col-xs-1 col-sm-1 text-center">3ตัวล่าง</div>
+          <BetsList />
         </div>
-        {/* <div className="page-header clearfix">
-          <h4 className="pull-left">Bets</h4>
-          <Link to="/bets/new">
-            <Button
-              bsStyle="success"
-              className="pull-right"
-              >New Bet</Button>
-          </Link>
-        </div> */}
-        <BetsList />
       </Col>
     </Row>
   </div>

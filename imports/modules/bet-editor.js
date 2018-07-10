@@ -11,8 +11,8 @@ const handleUpsert = () => {
   const { bet } = component.props;
   const confirmation = bet && bet._id ? 'Bet updated!' : 'Bet added!';
   const upsert = {
-    up2: document.querySelector('[name="up2"]').value.trim(),
-    down2: document.querySelector('[name="down2"]').value.trim(),
+    no: document.querySelector('[name="no"]').value.trim(),
+    spend: document.querySelector('[name="spend"]').value.trim(),
   };
 
   if (bet && bet._id) upsert._id = bet._id;
@@ -31,19 +31,19 @@ const handleUpsert = () => {
 const validate = () => {
   $(component.betEditorForm).validate({
     rules: {
-      up2: {
+      no: {
         required: true,
       },
-      down2: {
+      spend: {
         required: true,
       },
     },
     messages: {
-      up2: {
-        required: 'Need a up2 of bet here.',
+      no: {
+        required: 'Need a no of bet here.',
       },
-      down2: {
-        required: 'This is down2.',
+      spend: {
+        required: 'This is spend.',
       },
     },
     submitHandler() { handleUpsert(); },

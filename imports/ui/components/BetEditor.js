@@ -18,21 +18,21 @@ export default class BetEditor extends React.Component {
       onSubmit={ event => event.preventDefault() }
     >
       <FormGroup>
-        <ControlLabel>Up2</ControlLabel>
+        <ControlLabel>No</ControlLabel>
         <FormControl
           type="text"
-          name="up2"
-          defaultValue={ bet && bet.up2 }
-          placeholder="Up2"
+          name="no"
+          defaultValue={ bet && bet.no }
+          placeholder="No"
         />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Down2</ControlLabel>
+        <ControlLabel>Spend</ControlLabel>
         <FormControl
           componentClass="textarea"
-          name="down2"
-          defaultValue={ bet && bet.down2 }
-          placeholder="Down2"
+          name="spend"
+          defaultValue={ bet && ('' + bet.up2 + bet.down2 + bet.up3 + bet.down3 + bet.permute ) }
+          placeholder="Spend"
         />
       </FormGroup>
       <Button type="submit" bsStyle="success">

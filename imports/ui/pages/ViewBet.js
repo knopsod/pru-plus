@@ -30,7 +30,7 @@ const ViewBet = ({ bet }) => {
   return bet ? (
     <div className="ViewBet">
       <div className="page-header clearfix">
-        <h4 className="pull-left">{ bet && bet.up2 }</h4>
+        <h4 className="pull-left">{ bet && bet.no }</h4>
         <ButtonToolbar className="pull-right">
           <ButtonGroup bsSize="small">
             <Button onClick={ () => handleEdit(bet._id) }>Edit</Button>
@@ -38,7 +38,7 @@ const ViewBet = ({ bet }) => {
           </ButtonGroup>
         </ButtonToolbar>
       </div>
-      { bet && bet.down2 }
+      { bet && bet.no }
     </div>
   ) : <NotFound />;
 };
