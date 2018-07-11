@@ -15,7 +15,7 @@ const BetsList = ({ bets }) => (
       <tr>
         <th className="col-xs-1 col-sm-1 text-center" />
         <th className="col-xs-2 col-sm-2 text-center">ป-ด-ว</th>
-        <th className="col-xs-2 col-sm-2 text-center">ผู้ส่ง</th>
+        <th className="col-xs-2 col-sm-2 text-center">หมายเลขบิล</th>
         <th className="col-xs-1 col-sm-1 text-center">เลข</th>
         <th className="col-xs-1 col-sm-1 text-center" />
 
