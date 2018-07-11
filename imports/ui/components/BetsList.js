@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { browserHistory } from 'react-router';
-import { ListGroup, ListGroupItem, Alert, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session';
 import Bets from '../../api/bets/bets';

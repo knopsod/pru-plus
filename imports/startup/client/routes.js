@@ -28,6 +28,8 @@ import NewBet from '../../ui/pages/NewBet.js';
 import EditBet from '../../ui/pages/EditBet.js';
 import ViewBet from '../../ui/pages/ViewBet.js';
 
+import Nos from '../../ui/pages/Nos';
+
 const authenticate = (nextState, replace) => {
   if (!Meteor.loggingIn() && !Meteor.userId()) {
     replace({
@@ -62,6 +64,8 @@ Meteor.startup(() => {
         <Route name="newBet" path="/bets/new" component={ NewBet } />
         <Route name="editBet" path="/bets/:_id/edit" component={ EditBet } />
         <Route name="viewBet" path="/bets/:_id" component={ ViewBet } />
+
+        <Route name="nos" path="/nos" component={ Nos } />
 
         <Route path="*" component={ NotFound } />
       </Route>

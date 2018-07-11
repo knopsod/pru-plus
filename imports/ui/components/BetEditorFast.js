@@ -18,7 +18,7 @@ class BetEditorFast extends React.Component {
 
     this.state = {
       createdDate: moment().toISOString(true).substring(0, 10),
-      broker: 'ผู้ส่ง',
+      broker: 'หมายเลขบิล',
       betMessage: '',
     };
 
@@ -272,13 +272,15 @@ class BetEditorFast extends React.Component {
 
     return (<form>
       <FormGroup>
-        <DatePicker dateFormat="YYYY-MM-DD" name="createdDate" ref="createdDate"
+        <DatePicker dateFormat="YYYY-MM-DD" 
+          name="createdDate" ref="createdDate"
           value={this.state.createdDate}
           onChange={this.handleCreatedDateChange}/>
       </FormGroup>
       <FormGroup>
-        <ControlLabel>ผู้ส่ง</ControlLabel>
-        <FormControl type="text" name="broker" ref="broker"
+        <ControlLabel>หมายเลขบิล</ControlLabel>
+        <FormControl type="text" name="broker" 
+          ref="broker"
           value={this.state.broker}
           onChange={this.handleBrokerChange}/>
       </FormGroup>
@@ -286,25 +288,25 @@ class BetEditorFast extends React.Component {
       <FormGroup>
         <ControlLabel>ตัวอย่างการบันทึก</ControlLabel>
         <div className="row">
-          <div className="col-xs-4 col-sm-3 col-md-3">45<strong style={{ color: 'red', fontSize: '12' }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: '12' }}>[Enter]</strong></div>
+          <div className="col-xs-4 col-sm-3 col-md-3">45<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></div>
           <div className="col-xs-4 col-sm-1 col-md-1">45</div>
           <div className="col-xs-4 col-sm-2 col-md-2">10x10 บาท</div>
         </div>
         
         <div className="row">
-          <div className="col-xs-4 col-sm-3 col-md-3">45+10<strong style={{ color: 'red', fontSize: '12' }}>[Enter]</strong></div>
+          <div className="col-xs-4 col-sm-3 col-md-3">45+10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></div>
           <div className="col-xs-4 col-sm-1 col-md-1">45บน</div>
           <div className="col-xs-4 col-sm-2 col-md-2">10 บาท</div>
         </div>
         
         <div className="row">
-          <div className="col-xs-4 col-sm-3 col-md-3">45-10<strong style={{ color: 'red', fontSize: '12' }}>[Enter]</strong></div>
+          <div className="col-xs-4 col-sm-3 col-md-3">45-10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></div>
           <div className="col-xs-4 col-sm-1 col-md-1">45ล่าง</div>
           <div className="col-xs-4 col-sm-2 col-md-2">10 บาท</div>
         </div>
 
         <div className="row">
-          <div className="col-xs-4 col-sm-3 col-md-3">78<strong style={{ color: 'red', fontSize: '12' }}>[Enter]</strong><strong style={{ color: 'red', fontSize: '12' }}>[Enter]</strong></div>
+          <div className="col-xs-4 col-sm-3 col-md-3">78<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong><strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></div>
           <div className="col-xs-4 col-sm-1 col-md-1">78</div>
           <div className="col-xs-4 col-sm-2 col-md-2">ทำซ้ำ</div>
         </div>
@@ -312,31 +314,31 @@ class BetEditorFast extends React.Component {
         <hr />
 
         <div className="row">
-          <div className="col-xs-4 col-sm-3 col-md-3">456<strong style={{ color: 'red', fontSize: '12' }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: '12' }}>[Enter]</strong></div>
+          <div className="col-xs-4 col-sm-3 col-md-3">456<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></div>
           <div className="col-xs-4 col-sm-1 col-md-1">456</div>
           <div className="col-xs-4 col-sm-2 col-md-2">10x10 บาท</div>
         </div>
         
         <div className="row">
-          <div className="col-xs-4 col-sm-3 col-md-3">456+10<strong style={{ color: 'red', fontSize: '12' }}>[Enter]</strong></div>
+          <div className="col-xs-4 col-sm-3 col-md-3">456+10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></div>
           <div className="col-xs-4 col-sm-1 col-md-1">456เต็ง</div>
           <div className="col-xs-4 col-sm-2 col-md-2">10 บาท</div>
         </div>
         
         <div className="row">
-          <div className="col-xs-4 col-sm-3 col-md-3">456*10<strong style={{ color: 'red', fontSize: '12' }}>[Enter]</strong></div>
+          <div className="col-xs-4 col-sm-3 col-md-3">456*10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></div>
           <div className="col-xs-4 col-sm-1 col-md-1">456โต๊ด</div>
           <div className="col-xs-4 col-sm-2">10 บาท</div>
         </div>
         
         <div className="row">
-          <div className="col-xs-4 col-sm-3 col-md-3">456-10<strong style={{ color: 'red', fontSize: '12' }}>[Enter]</strong></div>
+          <div className="col-xs-4 col-sm-3 col-md-3">456-10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></div>
           <div className="col-xs-4 col-sm-1 col-md-1">456ล่าง</div>
           <div className="col-xs-4 col-sm-2 col-md-2">10 บาท</div>
         </div>
 
         <div className="row">
-          <div className="col-xs-4 col-sm-3 col-md-3">789<strong style={{ color: 'red', fontSize: '12' }}>[Enter]</strong><strong style={{ color: 'red', fontSize: '12' }}>[Enter]</strong></div>
+          <div className="col-xs-4 col-sm-3 col-md-3">789<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong><strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></div>
           <div className="col-xs-4 col-sm-1 col-md-1">789</div>
           <div className="col-xs-4 col-sm-2 col-md-2">ทำซ้ำ</div>
         </div>

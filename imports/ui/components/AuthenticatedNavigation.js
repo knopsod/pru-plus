@@ -22,7 +22,10 @@ const AuthenticatedNavigation = () => (
         <NavItem eventKey={ 2 } href="/teams">Teams</NavItem>
       </LinkContainer> */}
       <LinkContainer to="/bets">
-        <NavItem eventKey={ 2 } href="/bets">Bets</NavItem>
+        <NavItem eventKey={ 2 } href="/bets">บันทึก</NavItem>
+      </LinkContainer>
+      <LinkContainer to="/nos">
+        <NavItem eventKey={ 2 } href="/nos">รวมยอด</NavItem>
       </LinkContainer>
     </Nav>
     <Nav pullRight>
