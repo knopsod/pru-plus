@@ -10,7 +10,8 @@ import container from '../../modules/container';
 const handleNav = _id => browserHistory.push(`/bets/${_id}`);
 
 const BetsList = ({ bets }) => (
-  bets.length > 0 ? <Table className="BetsList" striped bordered condensed hover>
+  bets.length > 0 ? <Table className="BetsList" 
+    striped bordered condensed hover>
     <thead>
       <tr>
         <th className="col-xs-1 col-sm-1 text-center" />

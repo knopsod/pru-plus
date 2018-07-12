@@ -39,11 +39,6 @@ class NosCreated extends React.Component {
             value={this.state.createdDate}
             onChange={this.handleCreatedDateChange}/>
         </FormGroup>
-        <FormGroup>
-          <ControlLabel>งบ</ControlLabel>
-          <FormControl type="number" name="budget"
-            ref="budget" />
-        </FormGroup>
       </form>
     );
   }

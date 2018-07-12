@@ -1,12 +1,15 @@
 import React from 'react';
 import NosRedTHead from './NosRedTHead';
 import NosRedTBody from './NosRedTBody';
+import { Table } from 'react-bootstrap';
 
 const NosRed = (props) => (
   <div>
-    NosRed!!
-    <NosRedTHead />
-    <NosRedTBody />
+    <Table className="NosRed"
+      striped bordered condensed hover>
+      <NosRedTHead />
+      <NosRedTBody />
+    </Table>
   </div>
 );
 
