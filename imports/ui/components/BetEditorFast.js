@@ -272,21 +272,7 @@ class BetEditorFast extends React.Component {
     const yellowStyle = { height: 225, minHeight: 150, fontSize: 48, borderColor: 'yellow', borderWidth: 2 };
     const redStyle = { height: 225, minHeight: 150, fontSize: 48, borderColor: 'red', borderWidth: 2 };
 
-    return (<form>
-      <FormGroup>
-        <DatePicker dateFormat="YYYY-MM-DD" 
-          name="createdDate" ref="createdDate"
-          value={this.state.createdDate}
-          onChange={this.handleCreatedDateChange}/>
-      </FormGroup>
-      <FormGroup>
-        <ControlLabel>หมายเลขบิล</ControlLabel>
-        <FormControl type="text" name="broker" 
-          ref="broker"
-          value={this.state.broker}
-          onChange={this.handleBrokerChange}/>
-      </FormGroup>
-
+    return (<form>      
       <FormGroup>
         <ControlLabel>ตัวอย่างการบันทึก</ControlLabel>
         
@@ -357,6 +343,21 @@ class BetEditorFast extends React.Component {
           <div className="col-xs-4 col-sm-1 col-md-1">--</div>
           <div className="col-xs-4 col-sm-4 col-md-4">ลบตัวล่าสุด</div>
         </div>
+      </FormGroup>
+
+      <FormGroup>
+      <ControlLabel>ป-ด-ว</ControlLabel>
+        <DatePicker dateFormat="YYYY-MM-DD" 
+          name="createdDate" ref="createdDate"
+          value={this.state.createdDate}
+          onChange={this.handleCreatedDateChange}/>
+      </FormGroup>
+      <FormGroup>
+        <ControlLabel>หมายเลขบิล</ControlLabel>
+        <FormControl type="text" name="broker" 
+          ref="broker"
+          value={this.state.broker}
+          onChange={this.handleBrokerChange}/>
       </FormGroup>
 
       <FormGroup>
