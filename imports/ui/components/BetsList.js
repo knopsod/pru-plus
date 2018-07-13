@@ -71,7 +71,7 @@ export default container((props, onData) => {
   const subscription = Meteor.subscribe('bets.list', createdDate);
   
   if (subscription.ready()) {
-    const bets = Bets.find({}, {sort: {createdAt: -1}}).fetch();
+    const bets = Bets.find({}, {sort: {createdAt: 1}}).fetch();
     
     if ( bets.length > 0 && insertedId !== '' ) {
       const bet = bets.find( obj => obj._id === insertedId );
