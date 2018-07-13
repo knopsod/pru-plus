@@ -253,14 +253,16 @@ class BetEditorFast extends React.Component {
         } else {
           Bert.alert('Bet added', 'success');
 
-          this.setState({
-            ...this.state,
-            betMessage: '',
-          });
+          
 
           this.insertedId = response.insertedId;
           this.props.Session.set('insertedId', response.insertedId);
         }
+      });
+
+      this.setState({
+        ...this.state,
+        betMessage: '',
       });
     }
   }
