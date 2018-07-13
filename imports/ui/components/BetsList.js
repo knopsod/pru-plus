@@ -28,7 +28,7 @@ const BetsList = ({ bets }) => (
       </tr>
     </thead>
     <tbody>
-      { bets.map(({ _id, no, up2, down2, up3, down3, permute, createdDate, broker }) => 
+      { bets.map(({ _id, no, up2, down2, up3, down3, permute, createdDate, broker, createdAt }) => 
         { 
           var typeOfNo = '';
 
@@ -42,7 +42,7 @@ const BetsList = ({ bets }) => (
 
           return ( <tr key={ _id } 
           onClick={ () => handleNav(_id) }>
-          <td className="col-xs-1 col-sm-1 text-center" style={{ fontSize: 10 }}>{ _id }</td>
+          <td className="col-xs-1 col-sm-1 text-center" style={{ fontSize: 10 }}>{ createdAt }</td>
           <td className="col-xs-2 col-sm-2 text-center">{ createdDate }</td>
           <td className="col-xs-2 col-sm-2 text-center">{ broker }</td>
           <td className="col-xs-1 col-sm-1 text-center"><b>{ no }</b></td>
