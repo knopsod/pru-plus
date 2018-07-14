@@ -139,6 +139,7 @@ export default container((props, onData) => {
         nos[i].down3 * down3ROI > allTotal
       ) {
         nosReds.push({
+          createdDate: nos[i].createdDate,
           no: nos[i].no,
           up2: nos[i].up2,
           down2: nos[i].down2,
