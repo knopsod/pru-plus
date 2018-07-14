@@ -1,5 +1,8 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
+import { Session } from 'meteor/session';
 import { FormControl } from 'react-bootstrap';
+import container from '../../modules/container';
 
 class NosRedTHead extends React.Component {
   constructor(props) {
@@ -9,9 +12,15 @@ class NosRedTHead extends React.Component {
       up2ROI: 70,
       down2ROI: 70,
       up3ROI: 400,
-      down3ROI: 100,
       permuteROI: 100,
+      down3ROI: 100,
     };
+
+    this.props.Session.set('up2ROI', 70);
+    this.props.Session.set('down2ROI', 70);
+    this.props.Session.set('up3ROI', 400);
+    this.props.Session.set('permuteROI', 100);
+    this.props.Session.set('down3ROI', 100);
 
     this.handleChange = this.handleChange.bind(this);
   }
@@ -19,11 +28,14 @@ class NosRedTHead extends React.Component {
   handleChange(event) {
     this.setState({
       ...this.state,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
+
+    this.props.Session.set(event.target.name, event.target.value);
   }
 
   render() {
+    console.log(this.state);
     return (
       <thead>
         <tr>
@@ -87,4 +99,13 @@ class NosRedTHead extends React.Component {
   }
 }
 
-export default NosRedTHead;
+export default container((props, onData) => {
+  const createdDate = Session.get('nosCreatedDate') ? 
+    Session.get('nosCreatedDate').substring(0, 10) : '';
+
+  const subscription = Meteor.subscribe('bets.list', createdDate);
+  
+  if (subscription.ready()) {
+    onData(null, { Session });
+  }
+}, NosRedTHead);
