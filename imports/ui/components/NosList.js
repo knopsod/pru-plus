@@ -18,7 +18,7 @@ const NosList = (props) => (
               rowSpan="3">เลข</th>
 
             <th className="col-xs-1 col-xs-offset-3 col-sm-1 col-sm-offset-2 text-center" colSpan="5" style={{ color: 'red' }}>
-              $ { (props.up2Total + props.down2Total + props.up3Total + props.down3Total + props.permuteTotal).toLocaleString() }
+              $ { props.allTotal.toLocaleString() }
             </th>
           </tr>
 
@@ -45,11 +45,11 @@ const NosList = (props) => (
               <td className="col-xs-2 col-sm-1 text-center">{ no.createdDate }</td>
               <td className="col-xs-1 col-sm-1 text-center"><b>{ no.no }</b></td>
 
-              <td className="col-xs-1 col-sm-1 text-center">{ no.up2 > 0 ? no.up2 : '' }</td>
-              <td className="col-xs-1 col-sm-1 text-center">{ no.down2 > 0 ? no.down2 : '' }</td>
-              <td className="col-xs-1 col-sm-1 text-center">{ no.up3 > 0 ? no.up3 : '' }</td>
-              <td className="col-xs-1 col-sm-1 text-center">{ no.permute > 0 ? no.permute : '' }</td>
-              <td className="col-xs-1 col-sm-1 text-center">{ no.down3 > 0 ? no.down3 : '' }</td>
+              <td className="col-xs-1 col-sm-1 text-center">{ no.up2 > 0 ? no.up2.toLocaleString() : '' }</td>
+              <td className="col-xs-1 col-sm-1 text-center">{ no.down2 > 0 ? no.down2.toLocaleString() : '' }</td>
+              <td className="col-xs-1 col-sm-1 text-center">{ no.up3 > 0 ? no.up3.toLocaleString() : '' }</td>
+              <td className="col-xs-1 col-sm-1 text-center">{ no.permute > 0 ? no.permute.toLocaleString() : '' }</td>
+              <td className="col-xs-1 col-sm-1 text-center">{ no.down3 > 0 ? no.down3.toLocaleString() : '' }</td>
             </tr>
           )) }
         </tbody>
@@ -58,6 +58,12 @@ const NosList = (props) => (
 );
 
 NosList.propTypes = {
+  up2Total: PropTypes.number,
+  down2Total: PropTypes.number,
+  up3Total: PropTypes.number,
+  permuteTotal: PropTypes.number,
+  down3Total: PropTypes.number,
+  allTotal: PropTypes.number,
   bets: PropTypes.array,
   nos: PropTypes.array,
 };
@@ -152,6 +158,6 @@ export default container((props, onData) => {
 
     Session.set('nosReds', nosReds);
 
-    onData(null, { nos, up2Total, down2Total, up3Total, permuteTotal, down3Total });
+    onData(null, { nos, up2Total, down2Total, up3Total, permuteTotal, down3Total, allTotal });
   }
 }, NosList);
