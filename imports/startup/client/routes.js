@@ -60,10 +60,10 @@ Meteor.startup(() => {
         <Route name="editTeam" path="/teams/:_id/edit" component={ EditTeam } onEnter={ authenticate } />
         <Route name="viewTeam" path="/teams/:_id" component={ ViewTeam } onEnter={ authenticate } />
 
-        <Route name="bets" path="/bets" component={ Bets } />
-        <Route name="newBet" path="/bets/new" component={ NewBet } />
-        <Route name="editBet" path="/bets/:_id/edit" component={ EditBet } />
-        <Route name="viewBet" path="/bets/:_id" component={ ViewBet } />
+        <Route name="bets" path="/bets" component={ Bets } onEnter={ authenticate } />
+        <Route name="newBet" path="/bets/new" component={ NewBet } onEnter={ authenticate } />
+        <Route name="editBet" path="/bets/:_id/edit" component={ EditBet } onEnter={ authenticate } />
+        <Route name="viewBet" path="/bets/:_id" component={ ViewBet } onEnter={ authenticate } />
 
         <Route name="nos" path="/nos" component={ Nos } />
 
