@@ -42,7 +42,7 @@ const BetsList = ({ bets }) => (
 
           return ( <tr key={ _id } 
           onClick={ () => handleNav(_id) }>
-          <td className="col-xs-1 col-sm-1 text-center">{ index }</td>
+          <td className="col-xs-1 col-sm-1 text-center">{ (index + 1) }</td>
           <td className="col-xs-2 col-sm-2 text-center">{ createdDate }</td>
           <td className="col-xs-2 col-sm-2 text-center">{ broker }</td>
           <td className="col-xs-1 col-sm-1 text-center"><b>{ no }</b></td>
