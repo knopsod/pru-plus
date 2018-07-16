@@ -87,16 +87,20 @@ export default container((props, onData) => {
       nosReds = [];
     var i = 0,
       j = 0;
-    var up2Total = 0, 
-      down2Total = 0, 
-      up3Total = 0, 
-      down3Total = 0, 
+    var up2Total = 0,
+      down2Total = 0,
+      up3Total = 0,
+      down3Total = 0,
       permuteTotal = 0;
     
+    var no = '';
+    var up2 = 0;
+    var down2 = 0;
+
     for (i = 0; i < 100; i++) {
-      let no = String(i);
-      let up2 = 0,
-        down2 = 0;
+      no = String(i);
+      up2 = 0;
+      down2 = 0;
       no = no.length < 2 ? '0' + no : no;
 
       for (j = 0; j < bets.length; j++) {
@@ -112,11 +116,15 @@ export default container((props, onData) => {
       nos.push({ createdDate, no, up2, down2, up3: 0, down3: 0, permute: 0 });
     }
 
+    var up3 = 0;
+    var permute = 0;
+    var down3 = 0;
+
     for (i = 0; i < 1000; i++) {
-      let no = String(i);
-      let up3 = 0,
-        down3 = 0,
-        permute = 0;
+      no = String(i);
+      up3 = 0;
+      down3 = 0;
+      permute = 0;
       no = no.length < 2 ? '00' + no : no;
       no = no.length < 3 ? '0' + no : no;
 
@@ -136,6 +144,11 @@ export default container((props, onData) => {
     }
 
     const allTotal = up2Total + down2Total + up3Total + permuteTotal + down3Total;
+    var up2Cutloss = 0;
+    var down2Cutloss = 0;
+    var up3Cutloss = 0;
+    var permuteCutloss = 0;
+    var down3Cutloss = 0;
 
     for (i = 0; i < nos.length; i++) {
       if ( nos[i].up2 * up2ROI > allTotal ||
@@ -144,6 +157,17 @@ export default container((props, onData) => {
         nos[i].permute * permuteROI > allTotal ||
         nos[i].down3 * down3ROI > allTotal
       ) {
+        up2Cutloss = nos[i].up2 * up2ROI > allTotal ?
+          nos[i].up2 - Math.floor(allTotal / up2ROI) : 0;
+        down2Cutloss = nos[i].down2 * down2ROI > allTotal ?
+          nos[i].down2 - Math.floor(allTotal / down2ROI) : 0;
+        up3Cutloss = nos[i].up3 * up3ROI > allTotal ?
+          nos[i].up3 - Math.floor(allTotal / up3ROI) : 0;
+        permuteCutloss = nos[i].permute * permuteROI > allTotal ?
+          nos[i].permute - Math.floor(allTotal / permuteROI) : 0;
+        down3Cutloss = nos[i].down3 * down3ROI > allTotal ?
+          nos[i].down3 - Math.floor(allTotal / down3ROI) : 0;
+
         nosReds.push({
           createdDate: nos[i].createdDate,
           no: nos[i].no,
@@ -152,9 +176,16 @@ export default container((props, onData) => {
           up3: nos[i].up3,
           permute: nos[i].permute,
           down3: nos[i].down3,
+          up2Cutloss,
+          down2Cutloss,
+          up3Cutloss,
+          permuteCutloss,
+          down3Cutloss,
         });
       }
     }
+
+    console.log(nosReds);
 
     Session.set('nosReds', nosReds);
 

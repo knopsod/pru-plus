@@ -6,6 +6,7 @@ import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session';
 import Bets from '../../api/bets/bets';
 import container from '../../modules/container';
+import moment from 'moment';
 
 const handleNav = _id => browserHistory.push(`/bets/${_id}`);
 
@@ -14,7 +15,7 @@ const BetsList = ({ bets }) => (
     striped bordered condensed hover>
     <thead>
       <tr>
-        <th className="col-xs-1 col-sm-1 text-center" />
+        <th className="text-center" />
         <th className="col-xs-2 col-sm-2 text-center">ป-ด-ว</th>
         <th className="col-xs-2 col-sm-2 text-center">หมายเลขบิล</th>
         <th className="col-xs-1 col-sm-1 text-center">เลข</th>
@@ -42,8 +43,8 @@ const BetsList = ({ bets }) => (
 
           return ( <tr key={ _id } 
           onClick={ () => handleNav(_id) }>
-          <td className="col-xs-1 col-sm-1 text-center">{ (index + 1) }</td>
-          <td className="col-xs-2 col-sm-2 text-center">{ createdDate }</td>
+          <td className="text-center">{ (index + 1) }</td>
+          <td className="col-xs-2 col-sm-2 text-center">{ moment(createdAt).format('YYYY-MM-DD HH:mm:ss') }</td>
           <td className="col-xs-2 col-sm-2 text-center">{ broker }</td>
           <td className="col-xs-1 col-sm-1 text-center"><b>{ no }</b></td>
           <td className="col-xs-1 col-sm-1 text-center">{ typeOfNo }</td>
