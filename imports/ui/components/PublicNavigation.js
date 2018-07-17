@@ -1,7 +1,7 @@
 import React from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Nav, NavItem } from 'react-bootstrap';
-/*
+
 const PublicNavigation = () => (
   <Nav pullRight>
     <LinkContainer to="signup">
@@ -12,13 +12,14 @@ const PublicNavigation = () => (
     </LinkContainer>
   </Nav>
 );
-*/
+
+/*
 const PublicNavigation = () => (
   <div>
     <Nav>
-      {/* <LinkContainer to="/bets">
+      <LinkContainer to="/bets">
         <NavItem eventKey={ 2 } href="/bets">บันทึก</NavItem>
-      </LinkContainer> */}
+      </LinkContainer>
       <LinkContainer to="/nos">
         <NavItem eventKey={ 2 } href="/nos">รวมยอด</NavItem>
       </LinkContainer>
@@ -33,5 +34,5 @@ const PublicNavigation = () => (
     </Nav>
   </div>
 );
-
+*/
 export default PublicNavigation;

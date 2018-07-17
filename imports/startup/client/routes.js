@@ -65,7 +65,7 @@ Meteor.startup(() => {
         <Route name="editBet" path="/bets/:_id/edit" component={ EditBet } onEnter={ authenticate } />
         <Route name="viewBet" path="/bets/:_id" component={ ViewBet } onEnter={ authenticate } />
 
-        <Route name="nos" path="/nos" component={ Nos } />
+        <Route name="nos" path="/nos" component={ Nos } onEnter={ authenticate } />
 
         <Route path="*" component={ NotFound } />
       </Route>
