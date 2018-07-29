@@ -277,12 +277,6 @@ class BetEditorFast extends React.Component {
         <ControlLabel>ตัวอย่างการบันทึก</ControlLabel>
         
         <div className="row">
-          <div className="col-xs-4 col-sm-1 col-md-1">45</div>
-          <div className="col-xs-4 col-sm-1 col-md-1">= 10x10</div>
-          <div className="col-xs-4 col-sm-3 col-md-3">45<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></div>
-        </div>
-        
-        <div className="row">
           <div className="col-xs-4 col-sm-1 col-md-1">45บน</div>
           <div className="col-xs-4 col-sm-1 col-md-1">= 10</div>
           <div className="col-xs-4 col-sm-3 col-md-3">45+10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></div>
@@ -293,6 +287,12 @@ class BetEditorFast extends React.Component {
           <div className="col-xs-4 col-sm-1 col-md-1">= 10</div>
           <div className="col-xs-4 col-sm-3 col-md-3">45-10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></div>
         </div>
+        
+        <div className="row">
+          <div className="col-xs-4 col-sm-1 col-md-1">45</div>
+          <div className="col-xs-4 col-sm-1 col-md-1">= 10x10</div>
+          <div className="col-xs-4 col-sm-3 col-md-3">45<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></div>
+        </div>
 
         <div className="row">
           <div className="col-xs-4 col-sm-1 col-md-1">78</div>
@@ -301,12 +301,6 @@ class BetEditorFast extends React.Component {
         </div>
 
         <hr />
-
-        <div className="row">
-          <div className="col-xs-4 col-sm-1 col-md-1">456</div>
-          <div className="col-xs-4 col-sm-1 col-md-1">= 10x10</div>
-          <div className="col-xs-4 col-sm-3 col-md-3">456<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></div>
-        </div>
         
         <div className="row">
           <div className="col-xs-4 col-sm-1 col-md-1">456เต็ง</div>
@@ -318,6 +312,12 @@ class BetEditorFast extends React.Component {
           <div className="col-xs-4 col-sm-1 col-md-1">456โต๊ด</div>
           <div className="col-xs-4 col-sm-1 col-md-1">= 10</div>
           <div className="col-xs-4 col-sm-3 col-md-3">456*10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></div>
+        </div>
+
+        <div className="row">
+          <div className="col-xs-4 col-sm-1 col-md-1">456</div>
+          <div className="col-xs-4 col-sm-1 col-md-1">= 10x10</div>
+          <div className="col-xs-4 col-sm-3 col-md-3">456<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></div>
         </div>
         
         <div className="row">
