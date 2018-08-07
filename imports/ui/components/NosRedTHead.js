@@ -9,18 +9,18 @@ class NosRedTHead extends React.Component {
     super(props);
 
     this.state = {
-      up2ROI: 70,
-      down2ROI: 70,
-      up3ROI: 400,
-      permuteROI: 100,
-      down3ROI: 100,
+      up2ROI: 94,
+      down2ROI: 94,
+      up3ROI: 534,
+      permuteROI: 134,
+      down3ROI: 134,
     };
 
-    this.props.Session.set('up2ROI', 70);
-    this.props.Session.set('down2ROI', 70);
-    this.props.Session.set('up3ROI', 400);
-    this.props.Session.set('permuteROI', 100);
-    this.props.Session.set('down3ROI', 100);
+    this.props.Session.set('up2ROI', 94);
+    this.props.Session.set('down2ROI', 94);
+    this.props.Session.set('up3ROI', 534);
+    this.props.Session.set('permuteROI', 134);
+    this.props.Session.set('down3ROI', 134);
 
     this.handleChange = this.handleChange.bind(this);
   }
