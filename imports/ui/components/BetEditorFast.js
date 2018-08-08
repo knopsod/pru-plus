@@ -279,7 +279,8 @@ class BetEditorFast extends React.Component {
         <Grid>
           <Row>
             <Col xs={6} sm={6} md={6}>
-              <Table bordered condensed hover>
+              <Table bordered condensed hover
+                >
                 <thead>
                   <tr>
                     <th>เบอร์</th>
@@ -300,7 +301,7 @@ class BetEditorFast extends React.Component {
                   </tr>
                   <tr>
                     <td>45</td>
-                    <td>= 10x10</td>
+                    <td>= 10x10 (บนxล่าง)</td>
                     <td>45<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                   <tr>
@@ -347,7 +348,7 @@ class BetEditorFast extends React.Component {
                   </tr>
                   <tr>
                     <td>456</td>
-                    <td>= 10x10</td>
+                    <td>= 10x10 (เต็งxโต๊ด)</td>
                     <td>456<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                   <tr>
