@@ -4,7 +4,7 @@ import React from 'react';
 import { Session } from 'meteor/session';
 import { Bert } from 'meteor/themeteorchef:bert';
 import PropTypes from 'prop-types';
-import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, Grid, Row, Col, Table } from 'react-bootstrap';
 import moment from 'moment';
 import _ from 'lodash';
 import DatePicker from 'react-bootstrap-date-picker';
@@ -275,74 +275,91 @@ class BetEditorFast extends React.Component {
     return (<form>      
       <FormGroup>
         <ControlLabel>ตัวอย่างการบันทึก</ControlLabel>
-        
-        <div className="row">
-          <div className="col-xs-4 col-sm-1 col-md-1">45บน</div>
-          <div className="col-xs-4 col-sm-1 col-md-1">= 10</div>
-          <div className="col-xs-4 col-sm-3 col-md-3">45+10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></div>
-        </div>
-        
-        <div className="row">
-          <div className="col-xs-4 col-sm-1 col-md-1">45ล่าง</div>
-          <div className="col-xs-4 col-sm-1 col-md-1">= 10</div>
-          <div className="col-xs-4 col-sm-3 col-md-3">45-10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></div>
-        </div>
-        
-        <div className="row">
-          <div className="col-xs-4 col-sm-1 col-md-1">45</div>
-          <div className="col-xs-4 col-sm-1 col-md-1">= 10x10</div>
-          <div className="col-xs-4 col-sm-3 col-md-3">45<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></div>
-        </div>
 
-        <div className="row">
-          <div className="col-xs-4 col-sm-1 col-md-1">78</div>
-          <div className="col-xs-4 col-sm-1 col-md-1">ทำซ้ำ</div>
-          <div className="col-xs-4 col-sm-3 col-md-3">78<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong><strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></div>
-        </div>
-
-        <hr />
-        
-        <div className="row">
-          <div className="col-xs-4 col-sm-1 col-md-1">456เต็ง</div>
-          <div className="col-xs-4 col-sm-1 col-md-1">= 10</div>
-          <div className="col-xs-4 col-sm-3 col-md-3">456+10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></div>
-        </div>
-        
-        <div className="row">
-          <div className="col-xs-4 col-sm-1 col-md-1">456โต๊ด</div>
-          <div className="col-xs-4 col-sm-1 col-md-1">= 10</div>
-          <div className="col-xs-4 col-sm-3 col-md-3">456*10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></div>
-        </div>
-
-        <div className="row">
-          <div className="col-xs-4 col-sm-1 col-md-1">456</div>
-          <div className="col-xs-4 col-sm-1 col-md-1">= 10x10</div>
-          <div className="col-xs-4 col-sm-3 col-md-3">456<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></div>
-        </div>
-        
-        <div className="row">
-          <div className="col-xs-4 col-sm-1 col-md-1">456ล่าง</div>
-          <div className="col-xs-4 col-sm-1 col-md-1">= 10</div>
-          <div className="col-xs-4 col-sm-3 col-md-3">456-10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></div>
-        </div>
-
-        <div className="row">
-          <div className="col-xs-4 col-sm-1 col-md-1">789</div>
-          <div className="col-xs-4 col-sm-1 col-md-1">ทำซ้ำ</div>
-          <div className="col-xs-4 col-sm-3 col-md-3">789<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong><strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></div>
-        </div>
-
-        <hr />
-
-        <div className="row">
-          <div className="col-xs-4 col-sm-1 col-md-1">-</div>
-          <div className="col-xs-4 col-sm-4 col-md-4">ลบข้อความ</div>
-        </div>
-
-        <div className="row">
-          <div className="col-xs-4 col-sm-1 col-md-1">--</div>
-          <div className="col-xs-4 col-sm-4 col-md-4">ลบตัวล่าสุด</div>
-        </div>
+        <Grid>
+          <Row>
+            <Col xs={6} sm={6} md={6}>
+              <Table bordered condensed hover>
+                <thead>
+                  <tr>
+                    <th>เบอร์</th>
+                    <th>ซื้อ</th>
+                    <th>พิมพ์</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>45บน</td>
+                    <td>= 10</td>
+                    <td>45+10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+                  </tr>
+                  <tr>
+                    <td>45ล่าง</td>
+                    <td>= 10</td>
+                    <td>45-10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+                  </tr>
+                  <tr>
+                    <td>45</td>
+                    <td>= 10x10</td>
+                    <td>45<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+                  </tr>
+                  <tr>
+                    <td>78</td>
+                    <td>ทำซ้ำ</td>
+                    <td>78<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong><strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+                  </tr>
+                  <tr>
+                    <td>-</td>
+                    <td colSpan={2}>ลบข้อความ</td>
+                  </tr>
+                  <tr>
+                    <td>--</td>
+                    <td colSpan={2}>ลบเบอร์ล่าสุด</td>
+                  </tr>
+                </tbody>
+              </Table>
+            </Col>
+            
+            <Col xs={6} sm={6} md={6}>
+              <Table bordered condensed hover>
+                <thead>
+                  <tr>
+                    <th>เบอร์</th>
+                    <th>ซื้อ</th>
+                    <th>พิมพ์</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>456เต็ง</td>
+                    <td>= 10</td>
+                    <td>456+10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+                  </tr>
+                  <tr>
+                    <td>456โต๊ด</td>
+                    <td>= 10</td>
+                    <td>456*10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+                  </tr>
+                  <tr>
+                    <td>456</td>
+                    <td>= 10x10</td>
+                    <td>456<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+                  </tr>
+                  <tr>
+                    <td>456ล่าง</td>
+                    <td>= 10</td>
+                    <td>456-10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+                  </tr>
+                  <tr>
+                    <td>789</td>
+                    <td>ทำซ้ำ</td>
+                    <td>789<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong><strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+                  </tr>
+                </tbody>
+              </Table>
+            </Col>
+          </Row>
+        </Grid>
       </FormGroup>
 
       <FormGroup>
