@@ -305,7 +305,7 @@ class BetEditorFast extends React.Component {
                   </tr>
                   <tr>
                     <td>78</td>
-                    <td>ทำซ้ำ</td>
+                    <td>ซ้ำ</td>
                     <td>78<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong><strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                   <tr>
@@ -336,6 +336,11 @@ class BetEditorFast extends React.Component {
                     <td>456+10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                   <tr>
+                    <td>456ล่าง</td>
+                    <td>= 10</td>
+                    <td>456-10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+                  </tr>
+                  <tr>
                     <td>456โต๊ด</td>
                     <td>= 10</td>
                     <td>456*10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
@@ -346,13 +351,8 @@ class BetEditorFast extends React.Component {
                     <td>456<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                   <tr>
-                    <td>456ล่าง</td>
-                    <td>= 10</td>
-                    <td>456-10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
-                  </tr>
-                  <tr>
                     <td>789</td>
-                    <td>ทำซ้ำ</td>
+                    <td>ซ้ำ</td>
                     <td>789<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong><strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                 </tbody>
