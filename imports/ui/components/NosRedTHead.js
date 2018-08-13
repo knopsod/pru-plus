@@ -45,7 +45,7 @@ class NosRedTHead extends React.Component {
 
           <th className="col-xs-1 col-sm-1 text-center" 
             style={{ verticalAlign: 'middle' }}
-            rowSpan="3">เลขคัดออก</th>
+            rowSpan="3">เบอร์คัดออก</th>
 
           <th className="col-xs-5 col-sm-5 text-center" 
             style={{ verticalAlign: 'middle' }}
@@ -88,11 +88,11 @@ class NosRedTHead extends React.Component {
 
         <tr>
           
-          <th className="col-xs-1 col-xs-offset-3 col-sm-1 col-sm-offset-2 text-center">2ตัวบน</th>
-          <th className="col-xs-1 col-sm-1 text-center">2ตัวล่าง</th>
-          <th className="col-xs-1 col-sm-1 text-center">3ตัวเต็ง</th>
-          <th className="col-xs-1 col-sm-1 text-center">3ตัวโต๊ด</th>
-          <th className="col-xs-1 col-sm-1 text-center">3ตัวล่าง</th>
+          <th className="col-xs-1 col-xs-offset-3 col-sm-1 col-sm-offset-2 text-center">2บ</th>
+          <th className="col-xs-1 col-sm-1 text-center">2ล</th>
+          <th className="col-xs-1 col-sm-1 text-center">3บ</th>
+          <th className="col-xs-1 col-sm-1 text-center">3ต</th>
+          <th className="col-xs-1 col-sm-1 text-center">3ล</th>
         </tr>
       </thead>
     );

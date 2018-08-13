@@ -15,7 +15,7 @@ const NosList = (props) => (
             <th className="col-xs-2 col-sm-1 text-center" style={{ verticalAlign: 'middle' }}
               rowSpan="3">ป-ด-ว</th>
             <th className="col-xs-1 col-sm-1 text-center" style={{ verticalAlign: 'middle' }}
-              rowSpan="3">เลข</th>
+              rowSpan="3">เบอร์</th>
 
             <th className="col-xs-1 col-xs-offset-3 col-sm-1 col-sm-offset-2 text-center" colSpan="5" style={{ color: 'red' }}>
               $ { props.allTotal.toLocaleString() }
@@ -31,11 +31,11 @@ const NosList = (props) => (
           </tr>
 
           <tr>
-            <th className="col-xs-1 col-xs-offset-3 col-sm-1 col-sm-offset-2 text-center">2ตัวบน</th>
-            <th className="col-xs-1 col-sm-1 text-center">2ตัวล่าง</th>
-            <th className="col-xs-1 col-sm-1 text-center">3ตัวเต็ง</th>
-            <th className="col-xs-1 col-sm-1 text-center">3ตัวโต๊ด</th>
-            <th className="col-xs-1 col-sm-1 text-center">3ตัวล่าง</th>
+            <th className="col-xs-1 col-xs-offset-3 col-sm-1 col-sm-offset-2 text-center">2บ</th>
+            <th className="col-xs-1 col-sm-1 text-center">2ล</th>
+            <th className="col-xs-1 col-sm-1 text-center">3บ</th>
+            <th className="col-xs-1 col-sm-1 text-center">3ต</th>
+            <th className="col-xs-1 col-sm-1 text-center">3ล</th>
           </tr>
 
         </thead>

@@ -290,18 +290,18 @@ class BetEditorFast extends React.Component {
                 </thead>
                 <tbody>
                   <tr>
-                    <td>45บน</td>
+                    <td>45บ</td>
                     <td>= 10</td>
                     <td>45+10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                   <tr>
-                    <td>45ล่าง</td>
+                    <td>45ล</td>
                     <td>= 10</td>
                     <td>45-10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                   <tr>
                     <td>45</td>
-                    <td>= 10x10 (บนxล่าง)</td>
+                    <td>= 10x10 (บxล่าง)</td>
                     <td>45<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                   <tr>
@@ -315,7 +315,7 @@ class BetEditorFast extends React.Component {
                   </tr>
                   <tr>
                     <td>--</td>
-                    <td colSpan={2}>ลบเบอร์ล่าสุด</td>
+                    <td colSpan={2}>ลบเบอร์</td>
                   </tr>
                 </tbody>
               </Table>
@@ -332,23 +332,23 @@ class BetEditorFast extends React.Component {
                 </thead>
                 <tbody>
                   <tr>
-                    <td>456เต็ง</td>
+                    <td>456บ</td>
                     <td>= 10</td>
                     <td>456+10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                   <tr>
-                    <td>456ล่าง</td>
+                    <td>456ล</td>
                     <td>= 10</td>
                     <td>456-10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                   <tr>
-                    <td>456โต๊ด</td>
+                    <td>456ต</td>
                     <td>= 10</td>
                     <td>456*10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                   <tr>
                     <td>456</td>
-                    <td>= 10x10 (เต็งxโต๊ด)</td>
+                    <td>= 10x10 (บxต)</td>
                     <td>456<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                   <tr>
