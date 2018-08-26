@@ -131,7 +131,7 @@ class BetEditorFast extends React.Component {
     // permute
     if ( arr.length > 1 &&
       _.includes( arr[arr.length - 2], '*' ) &&
-      arr[arr.length - 2].split('*')[0].length === 3&&
+      arr[arr.length - 2].split('*')[0].length === 3 &&
       !isNaN( parseInt( arr[arr.length - 2].split('*')[0] ) ) &&
       !isNaN( parseInt( arr[arr.length - 2].split('*')[1] ) )
     ) {
@@ -143,13 +143,57 @@ class BetEditorFast extends React.Component {
     // down3
     if ( arr.length > 1 &&
       _.includes( arr[arr.length - 2], '-' ) &&
-      arr[arr.length - 2].split('-')[0].length === 3&&
+      arr[arr.length - 2].split('-')[0].length === 3 &&
       !isNaN( parseInt( arr[arr.length - 2].split('-')[0] ) ) &&
       !isNaN( parseInt( arr[arr.length - 2].split('-')[1] ) )
     ) {
       console.log('down3');
       no = arr[arr.length - 2].split('-')[0];
       down3 = parseInt( arr[arr.length - 2].split('-')[1] );
+    }
+
+    // if arr.len > 1 && arr[arr.len - 1] == '' &&
+      // arr[arr.len - 2].include('+') && arr[arr.len - 2].include('-') &&
+      // arr[arr.len - 2](0...before(+)).len == 2 && !isNaN(arr[arr.len - 2](0...before(+))) &&
+      // !isNaN(arr[arr.len - 2](after(+)...before(-))) &&
+      // !isNaN(arr[arr.len - 2](after(-)...end))
+    if ( arr.length > 1 && arr[arr.length - 1] === '' &&
+      _.includes( arr[arr.length - 2], '+' ) && _.includes( arr[arr.length - 2], '-' ) 
+    ) {
+      const nPlus2 = arr[arr.length - 2].indexOf('+');
+      const nMinus2 = arr[arr.length - 2].indexOf('-');
+
+      if ( arr[arr.length - 2].substring(0, nPlus2).length === 2 && 
+        !isNaN(arr[arr.length - 2].substring(0, nPlus2)) &&
+        !isNaN(arr[arr.length - 2].substring(nPlus2 + 1, nMinus2)) &&
+        !isNaN(arr[arr.length - 2].substring(nMinus2 + 1))
+      ) {
+        no = arr[arr.length - 2].substring(0, nPlus2);
+        up2 = parseInt( arr[arr.length - 2].substring(nPlus2 + 1, nMinus2) );
+        down2 = parseInt( arr[arr.length - 2].substring(nMinus2 + 1) );
+      }
+    }
+
+    // if arr.len > 1 && arr[arr.len - 1] == '' &&
+      // arr[arr.len - 2].include('+') && arr[arr.len - 2].include('*') &&
+      // arr[arr.len - 2](0...before(+)).len == 3 && !isNaN(arr[arr.len - 2](0...before(+))) &&
+      // !isNaN(arr[arr.len - 2](after(+)...before(*))) &&
+      // !isNaN(arr[arr.len - 2](after(*)...end))
+    if ( arr.length > 1 && arr[arr.length - 1] === '' &&
+      _.includes( arr[arr.length - 2], '+' ) && _.includes( arr[arr.length - 2], '*' ) 
+    ) {
+      const nPlus3 = arr[arr.length - 2].indexOf('+');
+      const nPermute = arr[arr.length - 2].indexOf('*');
+
+      if ( arr[arr.length - 2].substring(0, nPlus3).length === 3 && 
+        !isNaN(arr[arr.length - 2].substring(0, nPlus3)) &&
+        !isNaN(arr[arr.length - 2].substring(nPlus3 + 1, nPermute)) &&
+        !isNaN(arr[arr.length - 2].substring(nPermute + 1))
+      ) {
+        no = arr[arr.length - 2].substring(0, nPlus3);
+        up3 = parseInt( arr[arr.length - 2].substring(nPlus3 + 1, nPermute) );
+        permute = parseInt( arr[arr.length - 2].substring(nPermute + 1) );
+      }
     }
 
     // clear screen
@@ -234,19 +278,7 @@ class BetEditorFast extends React.Component {
       }
     }
 
-    // if arr.len > 1 && 
-      // arr[arr.len - 2].include('+') && arr[arr.len - 2].include('-') &&
-      // arr[arr.len - 2](0...before(+)).len == 2 && !isNaN(arr[arr.len - 2](0...before(+))) &&
-      // !isNaN(arr[arr.len - 2](after(+)...before(-))) &&
-      // !isNaN(arr[arr.len - 2](after(-)...end))
-
-    // if arr.len > 1 &&
-      // arr[arr.len - 2].include('+') && arr[arr.len - 2].include('*') &&
-      // arr[arr.len - 2](0...before(+)).len == 3 && !isNaN(arr[arr.len - 2](0...before(+))) &&
-      // !isNaN(arr[arr.len - 2](after(+)...before(*))) &&
-      // !isNaN(arr[arr.len - 2](after(*)...end))
-
-    if ( no !== '' ){
+    if ( no !== '' ) {
       upsert = { no, 
         up2, 
         down2, 
