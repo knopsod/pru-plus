@@ -234,6 +234,18 @@ class BetEditorFast extends React.Component {
       }
     }
 
+    // if arr.len > 1 && 
+      // arr[arr.len - 2].include('+') && arr[arr.len - 2].include('-') &&
+      // arr[arr.len - 2](0...before(+)).len == 2 && !isNaN(arr[arr.len - 2](0...before(+))) &&
+      // !isNaN(arr[arr.len - 2](after(+)...before(-))) &&
+      // !isNaN(arr[arr.len - 2](after(-)...end))
+
+    // if arr.len > 1 &&
+      // arr[arr.len - 2].include('+') && arr[arr.len - 2].include('*') &&
+      // arr[arr.len - 2](0...before(+)).len == 3 && !isNaN(arr[arr.len - 2](0...before(+))) &&
+      // !isNaN(arr[arr.len - 2](after(+)...before(*))) &&
+      // !isNaN(arr[arr.len - 2](after(*)...end))
+
     if ( no !== '' ){
       upsert = { no, 
         up2, 
