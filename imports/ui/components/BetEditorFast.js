@@ -370,7 +370,7 @@ class BetEditorFast extends React.Component {
                 </thead>
                 <tbody>
                   <tr>
-                    <td>456 = 10 (บน)</td>
+                    <td>456 = 10 (บน) หรือ 456 = 10x0</td>
                     <td>456+10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                   <tr>
@@ -378,7 +378,7 @@ class BetEditorFast extends React.Component {
                     <td>456-10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                   <tr>
-                    <td>456 = 10 (โต๊ด)</td>
+                    <td>456 = 10 (โต๊ด) หรือ 456 = 0x10</td>
                     <td>456*10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                   <tr>
