@@ -327,39 +327,34 @@ class BetEditorFast extends React.Component {
                 >
                 <thead>
                   <tr>
-                    <th>เบอร์</th>
                     <th>ซื้อ</th>
                     <th>พิมพ์</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>45บ</td>
-                    <td>= 10</td>
+                    <td>45 = 10 (บน) หรือ 45 = 10x0</td>
                     <td>45+10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                   <tr>
-                    <td>45ล</td>
-                    <td>= 10</td>
+                    <td>45 = 10 (ล่าง) หรือ 45 = 0x10</td>
                     <td>45-10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                   <tr>
-                    <td>45</td>
-                    <td>= 10x10 (บxล)</td>
+                    <td>45 = 10x10 (บนxล่าง)</td>
                     <td>45<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                   <tr>
-                    <td>78</td>
-                    <td>ซ้ำ</td>
+                    <td>78 = ซื้อด้วยราคาล่าสุด</td>
                     <td>78<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong><strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                   <tr>
                     <td>-</td>
-                    <td colSpan={2}>ลบข้อความ</td>
+                    <td>ลบข้อความ</td>
                   </tr>
                   <tr>
                     <td>--</td>
-                    <td colSpan={2}>ลบเบอร์</td>
+                    <td>ลบเบอร์</td>
                   </tr>
                 </tbody>
               </Table>
@@ -371,33 +366,27 @@ class BetEditorFast extends React.Component {
                   <tr>
                     <th>เบอร์</th>
                     <th>ซื้อ</th>
-                    <th>พิมพ์</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>456บ</td>
-                    <td>= 10</td>
+                    <td>456 = 10 (บน)</td>
                     <td>456+10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                   <tr>
-                    <td>456ล</td>
-                    <td>= 10</td>
+                    <td>456 = 10 (ล่าง)</td>
                     <td>456-10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                   <tr>
-                    <td>456ต</td>
-                    <td>= 10</td>
+                    <td>456 = 10 (โต๊ด)</td>
                     <td>456*10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                   <tr>
-                    <td>456</td>
-                    <td>= 10x10 (บxต)</td>
+                    <td>456 = 10x10 (บนxโต๊ด)</td>
                     <td>456<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                   <tr>
-                    <td>789</td>
-                    <td>ซ้ำ</td>
+                    <td>789 ซื้อด้วยราคาล่าสุด</td>
                     <td>789<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong><strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                 </tbody>
