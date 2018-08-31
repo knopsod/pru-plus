@@ -386,7 +386,7 @@ class BetEditorFast extends React.Component {
                     <td>456<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                   <tr>
-                    <td>789 ซื้อด้วยราคาล่าสุด</td>
+                    <td>789 = ซื้อด้วยราคาล่าสุด</td>
                     <td>789<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong><strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
                   </tr>
                 </tbody>
