@@ -364,8 +364,8 @@ class BetEditorFast extends React.Component {
               <Table bordered condensed hover>
                 <thead>
                   <tr>
-                    <th>เบอร์</th>
                     <th>ซื้อ</th>
+                    <th>พิมพ์</th>
                   </tr>
                 </thead>
                 <tbody>
