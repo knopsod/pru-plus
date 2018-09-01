@@ -318,7 +318,7 @@ class BetEditorFast extends React.Component {
 
     return (<form>      
       <FormGroup>
-        <ControlLabel>ตัวอย่างการบันทึก</ControlLabel>
+        <ControlLabel>ตัวอย่างการพิมพ์</ControlLabel>
 
         <Grid>
           <Row>
