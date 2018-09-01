@@ -313,8 +313,8 @@ class BetEditorFast extends React.Component {
 
   render() {
 
-    const yellowStyle = { height: 225, minHeight: 150, fontSize: 48, borderColor: 'yellow', borderWidth: 2 };
-    const redStyle = { height: 225, minHeight: 150, fontSize: 48, borderColor: 'red', borderWidth: 2 };
+    const yellowStyle = { height: 225, minHeight: 100, fontSize: 48, borderColor: 'yellow', borderWidth: 2 };
+    const redStyle = { height: 225, minHeight: 100, fontSize: 48, borderColor: 'red', borderWidth: 2 };
 
     return (<form>      
       <FormGroup>
@@ -412,7 +412,7 @@ class BetEditorFast extends React.Component {
       </FormGroup>
 
       <FormGroup>
-        <ControlLabel>บันทึก</ControlLabel>
+        <ControlLabel>พิมพ์</ControlLabel>
         <FormControl
           componentClass="textarea"
           type="number"
