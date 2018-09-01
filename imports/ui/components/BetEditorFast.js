@@ -313,8 +313,8 @@ class BetEditorFast extends React.Component {
 
   render() {
 
-    const yellowStyle = { height: 225, minHeight: 100, fontSize: 48, borderColor: 'yellow', borderWidth: 2 };
-    const redStyle = { height: 225, minHeight: 100, fontSize: 48, borderColor: 'red', borderWidth: 2 };
+    const yellowStyle = { minHeight: 150, maxHeight: 225, fontSize: 48, borderColor: 'yellow', borderWidth: 2 };
+    const redStyle = { minHeight: 150, maxHeight: 225, fontSize: 48, borderColor: 'red', borderWidth: 2 };
 
     return (<form>      
       <FormGroup>
