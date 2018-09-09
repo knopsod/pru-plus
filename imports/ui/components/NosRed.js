@@ -1,6 +1,7 @@
 import React from 'react';
 import NosRedTHead from './NosRedTHead';
 import NosRedTBody from './NosRedTBody';
+import NosRedTFoot from './NosRedTFoot';
 import { Table } from 'react-bootstrap';
 
 const NosRed = (props) => (
@@ -9,6 +10,7 @@ const NosRed = (props) => (
       striped bordered condensed hover>
       <NosRedTHead />
       <NosRedTBody />
+      <NosRedTFoot />
     </Table>
   </div>
 );
