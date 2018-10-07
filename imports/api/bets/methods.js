@@ -18,6 +18,7 @@ export const upsertBet = new ValidatedMethod({
     broker: { type: String, optional: true },
     createdDate: { type: String, optional: true },
     email: { type: String, optional: true },
+    userId: { type: String, optional: true },
   }).validator(),
   run(bet) {
     return Bets.upsert({ _id: bet._id },

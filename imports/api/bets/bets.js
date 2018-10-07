@@ -49,10 +49,15 @@ Bets.schema = new SimpleSchema({
   broker: {
     type: String,
     label: 'The broker of the bet.',
+    optional: true,
   },
   createdDate: {
     type: String,
     label: 'The created date of the bet.',
+  },
+  userId: {
+    type: String,
+    label: 'The user ID of the bet.',
   },
 });
 
@@ -68,4 +73,5 @@ Factory.define('bet', Bets, {
   createdAt: () => 'Factory Created at',
   broker: () => 'Factory Broker',
   createdDate: () => 'Factory Created date',
+  userId: () => 'Factory User ID',
 });

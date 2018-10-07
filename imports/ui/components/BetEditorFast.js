@@ -1,6 +1,7 @@
 /* eslint-disable max-len, no-return-assign */
 
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session';
 import { Bert } from 'meteor/themeteorchef:bert';
 import PropTypes from 'prop-types';
@@ -18,7 +19,7 @@ class BetEditorFast extends React.Component {
 
     this.state = {
       createdDate: moment().toISOString(true).substring(0, 10),
-      broker: 'หมายเลขบิล',
+      broker: '',
       betMessage: '',
     };
 
@@ -68,7 +69,8 @@ class BetEditorFast extends React.Component {
 
     const createdAt = moment().valueOf(), 
       broker = this.state.broker, 
-      createdDate = this.state.createdDate.substr(0, 10);
+      createdDate = this.state.createdDate.substr(0, 10),
+      userId = Meteor.userId();
 
     // up2+down2
     if ( arr.length > 2 &&
@@ -248,6 +250,7 @@ class BetEditorFast extends React.Component {
         createdAt, 
         broker, 
         createdDate,
+        userId,
       };
       console.log(upsert);
 

@@ -15,8 +15,8 @@ const BetsList = ({ bets }) => (
     striped bordered condensed hover>
     <thead>
       <tr>
-        <th className="text-center" />
-        <th className="col-xs-2 col-sm-2 text-center">ป-ด-ว</th>
+        <th className="col-xs-1 col-sm-1 text-center" />
+        <th className="col-xs-1 col-sm-1 text-center">ป-ด-ว</th>
         <th className="col-xs-2 col-sm-2 text-center">หมายเลขบิล</th>
         <th className="col-xs-1 col-sm-1 text-center">เบอร์</th>
         <th className="col-xs-1 col-sm-1 text-center" />
@@ -26,10 +26,12 @@ const BetsList = ({ bets }) => (
         <th className="col-xs-1 col-sm-1 text-center">3ตรง</th>
         <th className="col-xs-1 col-sm-1 text-center">3โต๊ด</th>
         <th className="col-xs-1 col-sm-1 text-center">3ล่าง</th>
+
+        <th className="col-xs-1 col-sm-1 text-center"></th>
       </tr>
     </thead>
     <tbody>
-      { bets.map(({ _id, no, up2, down2, up3, down3, permute, createdDate, broker, createdAt }, index) => 
+      { bets.map(({ _id, no, up2, down2, up3, down3, permute, createdDate, broker, createdAt, userId }, index) => 
         { 
           var typeOfNo = '';
 
@@ -41,20 +43,24 @@ const BetsList = ({ bets }) => (
           if ( up2 === 0 && down2 === 0 && up3 === 0 && down3 > 0 && permute === 0 ) typeOfNo = 'ล่าง';
           if ( up2 === 0 && down2 === 0 && up3 > 0 && down3 === 0 && permute > 0 ) typeOfNo = '' + up3 + 'x' + permute;
 
-          return ( <tr key={ _id } 
-          onClick={ () => handleNav(_id) }>
-          <td className="text-center">{ (index + 1) }</td>
-          <td className="col-xs-2 col-sm-2 text-center">{ moment(createdAt).format('YYYY-MM-DD HH:mm:ss') }</td>
-          <td className="col-xs-2 col-sm-2 text-center">{ broker }</td>
-          <td className="col-xs-1 col-sm-1 text-center"><b>{ no }</b></td>
-          <td className="col-xs-1 col-sm-1 text-center">{ typeOfNo }</td>
+          return ( <tr key={ _id }>
+            <td className="col-xs-1 col-sm-1 text-center">{ (index + 1) }</td>
+            <td className="col-xs-1 col-sm-1 text-center" style={{fontSize: 8}}>{ moment(createdAt).format('YYYY-MM-DD HH:mm:ss') }</td>
+            <td className="col-xs-2 col-sm-2 text-center">{ broker }</td>
+            <td className="col-xs-1 col-sm-1 text-center"><b>{ no }</b></td>
+            <td className="col-xs-1 col-sm-1 text-center">{ typeOfNo }</td>
 
-          <td className="col-xs-1 col-sm-1 text-center">{ up2 === 0 ? '' : up2 }</td>
-          <td className="col-xs-1 col-sm-1 text-center">{ down2 === 0 ? '' : down2 }</td>
-          <td className="col-xs-1 col-sm-1 text-center">{ up3 === 0 ? '' : up3 }</td>
-          <td className="col-xs-1 col-sm-1 text-center">{ permute === 0 ? '' : permute }</td>
-          <td className="col-xs-1 col-sm-1 text-center">{ down3 === 0 ? '' : down3 }</td>
-        </tr> )}
+            <td className="col-xs-1 col-sm-1 text-center">{ up2 === 0 ? '' : up2 }</td>
+            <td className="col-xs-1 col-sm-1 text-center">{ down2 === 0 ? '' : down2 }</td>
+            <td className="col-xs-1 col-sm-1 text-center">{ up3 === 0 ? '' : up3 }</td>
+            <td className="col-xs-1 col-sm-1 text-center">{ permute === 0 ? '' : permute }</td>
+            <td className="col-xs-1 col-sm-1 text-center">{ down3 === 0 ? '' : down3 }</td>
+            
+            <td className="col-xs-1 col-sm-1 text-center">
+              { Meteor.userId() === userId ? <button className="btn btn-xs btn-danger">Remove</button> : undefined }
+            </td>
+          </tr> )
+        }
       )}
     </tbody>
   </Table> : <div />
