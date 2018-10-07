@@ -31,11 +31,11 @@ const NosList = (props) => (
           </tr>
 
           <tr>
-            <th className="col-xs-1 col-xs-offset-3 col-sm-1 col-sm-offset-2 text-center">2บ</th>
-            <th className="col-xs-1 col-sm-1 text-center">2ล</th>
-            <th className="col-xs-1 col-sm-1 text-center">3บ</th>
-            <th className="col-xs-1 col-sm-1 text-center">3ต</th>
-            <th className="col-xs-1 col-sm-1 text-center">3ล</th>
+            <th className="col-xs-1 col-xs-offset-3 col-sm-1 col-sm-offset-2 text-center">2บน</th>
+            <th className="col-xs-1 col-sm-1 text-center">2ล่าง</th>
+            <th className="col-xs-1 col-sm-1 text-center">3ตรง</th>
+            <th className="col-xs-1 col-sm-1 text-center">3โต๊ด</th>
+            <th className="col-xs-1 col-sm-1 text-center">3ล่าง</th>
           </tr>
 
         </thead>

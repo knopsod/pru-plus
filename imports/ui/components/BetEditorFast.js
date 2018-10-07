@@ -196,46 +196,6 @@ class BetEditorFast extends React.Component {
       }
     }
 
-    // clear screen
-    if ( arr.length > 1 &&
-      arr[arr.length - 2] === "-" &&
-      arr[arr.length - 1] === ""
-    ) {
-      this.setState({
-        ...this.state,
-        betMessage: ''
-      });
-    }
-
-    // remove latest bet
-    if ( arr.length > 1 &&
-      arr[arr.length - 2] === "--" &&
-      arr[arr.length - 1] === ""
-    ) {
-      
-      const _id = this.insertedId;
-
-      console.log(_id);
-
-      if ( _id ) {
-        removeBet.call({ _id }, (error, response) => {
-          if (error) {
-            Bert.alert(error.reason, 'danger');
-          } else {
-            Bert.alert('Latest bet removed', 'success');
-  
-            this.setState({
-              ...this.state,
-              betMessage: '',
-            });
-
-            this.insertedId = undefined;
-            this.props.Session.set('insertedId', undefined);
-          }
-        });
-      }
-    }
-
     // no2+latestSpend
     if ( arr.length > 2 &&
       arr[arr.length - 3].length === 2 &&
@@ -297,8 +257,6 @@ class BetEditorFast extends React.Component {
         } else {
           Bert.alert('Bet added', 'success');
 
-          
-
           this.insertedId = response.insertedId;
           this.props.Session.set('insertedId', response.insertedId);
         }
@@ -318,94 +276,7 @@ class BetEditorFast extends React.Component {
 
     return (<form>      
       <FormGroup>
-        <ControlLabel>ตัวอย่างการพิมพ์</ControlLabel>
-
-        <Grid>
-          <Row>
-            <Col xs={6} sm={6} md={6}>
-              <Table bordered condensed hover
-                >
-                <thead>
-                  <tr>
-                    <th>ซื้อ</th>
-                    <th>พิมพ์</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>45 = 10 (บน) หรือ 45 = 10x0</td>
-                    <td>45+10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
-                  </tr>
-                  <tr>
-                    <td>45 = 10 (ล่าง) หรือ 45 = 0x10</td>
-                    <td>45-10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
-                  </tr>
-                  <tr>
-                    <td>45 = 10x5 (บนxล่าง)</td>
-                    <td>45+10-5<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
-                  </tr>
-                  <tr>
-                    <td>45 = 10x10 (บนxล่าง)</td>
-                    <td>45<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
-                  </tr>
-                  <tr>
-                    <td>78 = ซื้อด้วยราคาล่าสุด</td>
-                    <td>78<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong><strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
-                  </tr>
-                  <tr>
-                    <td>-</td>
-                    <td>ลบข้อความ</td>
-                  </tr>
-                  <tr>
-                    <td>--</td>
-                    <td>ลบเบอร์</td>
-                  </tr>
-                </tbody>
-              </Table>
-            </Col>
-            
-            <Col xs={6} sm={6} md={6}>
-              <Table bordered condensed hover>
-                <thead>
-                  <tr>
-                    <th>ซื้อ</th>
-                    <th>พิมพ์</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>456 = 10 (บน) หรือ 456 = 10x0</td>
-                    <td>456+10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
-                  </tr>
-                  <tr>
-                    <td>456 = 10 (ล่าง)</td>
-                    <td>456-10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
-                  </tr>
-                  <tr>
-                    <td>456 = 10 (โต๊ด) หรือ 456 = 0x10</td>
-                    <td>456*10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
-                  </tr>
-                  <tr>
-                    <td>456 = 10x5 (บนxโต๊ด)</td>
-                    <td>456+10*5<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
-                  </tr>
-                  <tr>
-                    <td>456 = 10x10 (บนxโต๊ด)</td>
-                    <td>456<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
-                  </tr>
-                  <tr>
-                    <td>789 = ซื้อด้วยราคาล่าสุด</td>
-                    <td>789<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong><strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
-                  </tr>
-                </tbody>
-              </Table>
-            </Col>
-          </Row>
-        </Grid>
-      </FormGroup>
-
-      <FormGroup>
-      <ControlLabel>ป-ด-ว</ControlLabel>
+        <ControlLabel>ป-ด-ว</ControlLabel>
         <DatePicker dateFormat="YYYY-MM-DD" 
           name="createdDate" ref="createdDate"
           value={this.state.createdDate}
@@ -431,6 +302,65 @@ class BetEditorFast extends React.Component {
           onChange={this.handleChange}
         />
       </FormGroup>
+
+      <Table bordered condensed hover
+        >
+        <thead>
+          <tr>
+            <th>ตัวอย่าง</th>
+            <th>พิมพ์</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>45 = 10x10 (บนxล่าง)</td>
+            <td>45<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+          </tr>
+          <tr>
+            <td>45 = 10 (บน) หรือ 45 = 10x0</td>
+            <td>45+10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+          </tr>
+          <tr>
+            <td>45 = 10 (ล่าง) หรือ 45 = 0x10</td>
+            <td>45-10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+          </tr>
+          <tr>
+            <td>45 = 10x5 (บนxล่าง)</td>
+            <td>45+10-5<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+          </tr>
+          <tr>
+            <td>78 = ซื้อด้วยราคาล่าสุด</td>
+            <td>78<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong><strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+          </tr>
+          <tr>
+            <td colSpan={2}></td>
+          </tr>
+          <tr>
+            <td>456 = 10x10 (บนxโต๊ด)</td>
+            <td>456<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+          </tr>
+          <tr>
+            <td>456 = 10 (บน) หรือ 456 = 10x0</td>
+            <td>456+10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+          </tr>
+          <tr>
+            <td>456 = 10 (โต๊ด) หรือ 456 = 0x10</td>
+            <td>456*10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+          </tr>
+          <tr>
+            <td>456 = 10x5 (บนxโต๊ด)</td>
+            <td>456+10*5<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+          </tr>
+          <tr>
+            <td>456 = 10 (ล่าง)</td>
+            <td>456-10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+          </tr>
+          <tr>
+            <td>789 = ซื้อด้วยราคาล่าสุด</td>
+            <td>789<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong><strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+          </tr>
+        </tbody>
+      </Table>
     </form>);
   }
 }

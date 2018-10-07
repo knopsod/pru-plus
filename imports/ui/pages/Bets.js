@@ -9,14 +9,12 @@ import BetEditorFast from '../components/BetEditorFast';
 const Bets = () => (
   <div className="Bets">
     <Row>
-      <Col xs={ 12 }>
+      <Col xs={3} sm={3} md={3}>
         <div className="page-header clearfix">
           <BetEditorFast />
         </div>
       </Col>
-    </Row>
-    <Row>
-      <Col xs={ 12 }>
+      <Col xs={9} sm={9} md={9}>
         <div>
           <BetsList />
         </div>

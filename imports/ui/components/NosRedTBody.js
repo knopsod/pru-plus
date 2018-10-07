@@ -11,7 +11,7 @@ const NosRedTBody = (props) => (
         <b>{ nosRed.no }</b>
         { nosRed.no.length == 2 ? (<a style={{ color: 'red', textDecoration: 'none' }}> = {nosRed.up2Cutloss}x{nosRed.down2Cutloss}</a>) : '' }
         { nosRed.no.length == 3 ? (<a style={{ color: 'red', textDecoration: 'none' }}> = {nosRed.up3Cutloss}x{nosRed.permuteCutloss}</a>) : '' }
-    { nosRed.no.length == 3 && nosRed.down3Cutloss ? (<a style={{ color: 'red', textDecoration: 'none' }}> ( {nosRed.down3Cutloss} ล )</a>) : '' }
+        { nosRed.no.length == 3 && nosRed.down3Cutloss ? (<a style={{ color: 'red', textDecoration: 'none' }}> + ({nosRed.down3Cutloss} ล่าง)</a>) : '' }
       </td>
 
       <td className="col-xs-1 col-sm-1 text-center">

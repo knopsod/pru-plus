@@ -21,11 +21,11 @@ const BetsList = ({ bets }) => (
         <th className="col-xs-1 col-sm-1 text-center">เบอร์</th>
         <th className="col-xs-1 col-sm-1 text-center" />
 
-        <th className="col-xs-1 col-sm-1 text-center">2บ</th>
-        <th className="col-xs-1 col-sm-1 text-center">2ล</th>
-        <th className="col-xs-1 col-sm-1 text-center">3บ</th>
-        <th className="col-xs-1 col-sm-1 text-center">3ต</th>
-        <th className="col-xs-1 col-sm-1 text-center">3ล</th>
+        <th className="col-xs-1 col-sm-1 text-center">2บน</th>
+        <th className="col-xs-1 col-sm-1 text-center">2ล่าง</th>
+        <th className="col-xs-1 col-sm-1 text-center">3ตรง</th>
+        <th className="col-xs-1 col-sm-1 text-center">3โต๊ด</th>
+        <th className="col-xs-1 col-sm-1 text-center">3ล่าง</th>
       </tr>
     </thead>
     <tbody>
@@ -33,12 +33,12 @@ const BetsList = ({ bets }) => (
         { 
           var typeOfNo = '';
 
-          if ( up2 > 0 && down2 === 0 && up3 === 0 && down3 === 0 && permute === 0 ) typeOfNo = 'บ';
-          if ( up2 === 0 && down2 > 0 && up3 === 0 && down3 === 0 && permute === 0 ) typeOfNo = 'ล';
+          if ( up2 > 0 && down2 === 0 && up3 === 0 && down3 === 0 && permute === 0 ) typeOfNo = 'บน';
+          if ( up2 === 0 && down2 > 0 && up3 === 0 && down3 === 0 && permute === 0 ) typeOfNo = 'ล่าง';
           if ( up2 > 0 && down2 > 0 && up3 === 0 && down3 === 0 && permute === 0 ) typeOfNo = '' + up2 + 'x' + down2;
-          if ( up2 === 0 && down2 === 0 && up3 > 0 && down3 === 0 && permute === 0 ) typeOfNo = 'บ';
-          if ( up2 === 0 && down2 === 0 && up3 === 0 && down3 === 0 && permute > 0 ) typeOfNo = 'ต';
-          if ( up2 === 0 && down2 === 0 && up3 === 0 && down3 > 0 && permute === 0 ) typeOfNo = 'ล';
+          if ( up2 === 0 && down2 === 0 && up3 > 0 && down3 === 0 && permute === 0 ) typeOfNo = 'ตรง';
+          if ( up2 === 0 && down2 === 0 && up3 === 0 && down3 === 0 && permute > 0 ) typeOfNo = 'โต๊ด';
+          if ( up2 === 0 && down2 === 0 && up3 === 0 && down3 > 0 && permute === 0 ) typeOfNo = 'ล่าง';
           if ( up2 === 0 && down2 === 0 && up3 > 0 && down3 === 0 && permute > 0 ) typeOfNo = '' + up3 + 'x' + permute;
 
           return ( <tr key={ _id } 
