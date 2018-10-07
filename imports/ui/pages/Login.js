@@ -30,6 +30,7 @@ export default class Login extends React.Component {
                   ref="emailAddress"
                   name="emailAddress"
                   placeholder="Email Address"
+                  value="test@test.com"
                 />
               </FormGroup>
               <FormGroup>
@@ -42,6 +43,7 @@ export default class Login extends React.Component {
                   ref="password"
                   name="password"
                   placeholder="Password"
+                  value="test1234"
                 />
               </FormGroup>
               <Button type="submit" bsStyle="success">Login</Button>
