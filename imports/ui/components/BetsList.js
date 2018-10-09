@@ -4,11 +4,26 @@ import { browserHistory } from 'react-router';
 import { Table } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session';
+import { Bert } from 'meteor/themeteorchef:bert';
 import Bets from '../../api/bets/bets';
+import { removeBet } from '../../api/bets/methods';
 import container from '../../modules/container';
 import moment from 'moment';
 
 const handleNav = _id => browserHistory.push(`/bets/${_id}`);
+
+const handleRemove = (_id) => {
+  if (confirm('Are you sure? This is permanent!')) {
+    removeBet.call({ _id }, (error) => {
+      if (error) {
+        Bert.alert(error.reason, 'danger');
+      } else {
+        Bert.alert('Bet deleted!', 'success');
+        browserHistory.push('/bets');
+      }
+    });
+  }
+};
 
 const BetsList = ({ bets }) => (
   bets.length > 0 ? <Table className="BetsList" 
@@ -57,7 +72,9 @@ const BetsList = ({ bets }) => (
             <td className="col-xs-1 col-sm-1 text-center">{ down3 === 0 ? '' : down3 }</td>
             
             <td className="col-xs-1 col-sm-1 text-center">
-              { Meteor.userId() === userId ? <button className="btn btn-xs btn-danger">Remove</button> : undefined }
+              { Meteor.userId() === userId ? 
+                <button className="btn btn-xs btn-danger"
+                  onClick={() => handleRemove(_id)}>Remove</button> : undefined }
             </td>
           </tr> )
         }
