@@ -1,9 +1,9 @@
 /* eslint-disable max-len, no-return-assign */
 
 import React from 'react';
-import { Link } from 'react-router';
-import { Row, Col, Button } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import BetsList from '../components/BetsList';
+import BetsUsersList from '../components/BetsUsersList';
 import BetEditorFast from '../components/BetEditorFast';
 
 const Bets = () => (
@@ -15,7 +15,8 @@ const Bets = () => (
         </div>
       </Col>
       <Col xs={9} sm={9} md={9}>
-        <div>
+        <div className="page-header clearfix">
+          <BetsUsersList />
           <BetsList />
         </div>
       </Col>
