@@ -1,16 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { browserHistory } from 'react-router';
 import { Table } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session';
-import { Bert } from 'meteor/themeteorchef:bert';
 import Bets from '../../api/bets/bets';
-import { removeBet } from '../../api/bets/methods';
 import container from '../../modules/container';
-import moment from 'moment';
 
-const BetsUsersList = ({ users }) => (
+const BetsUsersList = ({ users, totalRecord }) => (
   users.length > 0 ? <Table className="BetsList" 
     striped bordered condensed hover>
     <thead>
@@ -27,12 +23,21 @@ const BetsUsersList = ({ users }) => (
           return ( <tr key={ _id }>
             <td className="col-xs-1 col-sm-1 text-center">{ (index + 1) }</td>
             <td className="col-xs-4 col-sm-4 text-center">{ _id }</td>
-            <td className="col-xs-4 col-sm-4 text-center">{ emails[0].address.replace(/.{1,4}(?=\@.*?)/, '****') }</td>
+            <td className="col-xs-4 col-sm-4 text-center">{
+              Meteor.userId() === _id ? emails[0].address
+                : emails[0].address.replace(/.{1,4}(?=\@.*?)/, '****')
+            }</td>
             <td className="col-xs-3 col-sm-3 text-center">{ record }</td>
           </tr> )
         }
       )}
     </tbody>
+    <tfoot>
+      <tr>
+        <td colSpan={3} style={{ textAlign: 'center'}}>รวม</td>
+        <td style={{ textAlign: 'center', color: 'red' }}>{ totalRecord }</td>
+      </tr>
+    </tfoot>
   </Table> : <div />
   // <Alert bsStyle="warning">No bets yet.</Alert>
 );
@@ -51,9 +56,11 @@ export default container((props, onData) => {
   if (subscription.ready() && usersSubscription.ready() ) {
     const bets = Bets.find({}, {sort: {createdAt: 1}}).fetch();
     const users = Meteor.users.find({}, {fields: {emails: 1, profile: 1}}).fetch();
+    var totalRecord = 0;
 
     users.forEach( obj => {
       obj.record = bets.length ? bets.filter(bet => bet.userId == obj._id).length : 0;
+      totalRecord += obj.record;
     });
 
     console.log(users);
@@ -64,6 +71,6 @@ export default container((props, onData) => {
       Session.set('latestSessionBet', bet);
     }
 
-    onData(null, { users });
+    onData(null, { users, totalRecord });
   }
 }, BetsUsersList);

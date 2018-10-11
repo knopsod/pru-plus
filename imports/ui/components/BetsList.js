@@ -72,8 +72,7 @@ const BetsList = ({ bets }) => (
             <td className="col-xs-1 col-sm-1 text-center">{ down3 === 0 ? '' : down3 }</td>
             
             <td className="col-xs-1 col-sm-1 text-center">
-              { Meteor.userId() === userId ? 
-                <button className="btn btn-xs btn-danger"
+              { Meteor.userId() === userId ? <button className="btn btn-xs btn-danger"
                   onClick={() => handleRemove(_id)}>Remove</button> : undefined }
             </td>
           </tr> )
