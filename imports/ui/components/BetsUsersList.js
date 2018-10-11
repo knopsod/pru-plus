@@ -6,7 +6,7 @@ import { Session } from 'meteor/session';
 import Bets from '../../api/bets/bets';
 import container from '../../modules/container';
 
-const BetsUsersList = ({ users, totalRecord }) => (
+const BetsUsersList = ({ users, recordTotal }) => (
   users.length > 0 ? <Table className="BetsList" 
     striped bordered condensed hover>
     <thead>
@@ -35,7 +35,7 @@ const BetsUsersList = ({ users, totalRecord }) => (
     <tfoot>
       <tr>
         <td colSpan={3} style={{ textAlign: 'center'}}>รวม</td>
-        <td style={{ textAlign: 'center', color: 'red' }}>{ totalRecord }</td>
+        <td style={{ textAlign: 'center', color: 'red' }}>{ recordTotal }</td>
       </tr>
     </tfoot>
   </Table> : <div />
@@ -56,11 +56,11 @@ export default container((props, onData) => {
   if (subscription.ready() && usersSubscription.ready() ) {
     const bets = Bets.find({}, {sort: {createdAt: 1}}).fetch();
     const users = Meteor.users.find({}, {fields: {emails: 1, profile: 1}}).fetch();
-    var totalRecord = 0;
+    var recordTotal = 0;
 
     users.forEach( obj => {
       obj.record = bets.length ? bets.filter(bet => bet.userId == obj._id).length : 0;
-      totalRecord += obj.record;
+      recordTotal += obj.record;
     });
 
     console.log(users);
@@ -71,6 +71,6 @@ export default container((props, onData) => {
       Session.set('latestSessionBet', bet);
     }
 
-    onData(null, { users, totalRecord });
+    onData(null, { users, recordTotal });
   }
 }, BetsUsersList);
