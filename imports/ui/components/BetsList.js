@@ -32,7 +32,7 @@ const BetsList = ({ bets }) => (
       <tr>
         <th className="col-xs-1 col-sm-1 text-center" />
         <th className="col-xs-1 col-sm-1 text-center">ป-ด-ว</th>
-        <th className="col-xs-2 col-sm-2 text-center">หมายเลขบิล</th>
+        <th className="col-xs-2 col-sm-2 text-center">ฉบับที่</th>
         <th className="col-xs-1 col-sm-1 text-center">เบอร์</th>
         <th className="col-xs-1 col-sm-1 text-center" />
 

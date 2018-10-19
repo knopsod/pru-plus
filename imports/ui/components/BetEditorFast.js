@@ -224,7 +224,7 @@ class BetEditorFast extends React.Component {
           onChange={this.handleCreatedDateChange}/>
       </FormGroup>
       <FormGroup>
-        <ControlLabel>โพยลำดับที่</ControlLabel>
+        <ControlLabel>ฉบับที่</ControlLabel>
         <FormControl type="text" name="broker" 
           ref="broker"
           value={this.state.broker}
