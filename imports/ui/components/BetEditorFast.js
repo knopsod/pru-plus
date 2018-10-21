@@ -254,9 +254,6 @@ class BetEditorFast extends React.Component {
         </thead>
         <tbody>
           <tr>
-            <td colSpan={2} style={{textAlign: 'center'}}>+ บน, - ล่าง, * โต๊ด</td>
-          </tr>
-          <tr>
             <td>45 = 10 บน</td>
             <td>45+10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
@@ -275,9 +272,6 @@ class BetEditorFast extends React.Component {
           <tr>
             <td>78 = ราคาเดิม</td>
             <td>78<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong><strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
-          </tr>
-          <tr>
-            <td colSpan={2}></td>
           </tr>
           <tr>
             <td>456 = 10 บน</td>
@@ -304,6 +298,11 @@ class BetEditorFast extends React.Component {
             <td>789<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong><strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
         </tbody>
+        <tfoot>
+          <tr>
+            <td colSpan={2} style={{textAlign: 'center'}}>+ บน, - ล่าง, * โต๊ด</td>
+          </tr>
+        </tfoot>
       </Table>
     </form>);
   }
