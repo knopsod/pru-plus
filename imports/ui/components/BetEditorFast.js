@@ -270,8 +270,8 @@ class BetEditorFast extends React.Component {
             <td>45<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
           <tr>
-            <td>78 = ราคาเดิม</td>
-            <td>78<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong><strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+            <td>67 = ราคาเดิม</td>
+            <td>67<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong><strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
           <tr>
             <td>456 = 10 บน</td>
