@@ -31,8 +31,8 @@ const BetsList = ({ bets }) => (
     <thead>
       <tr>
         <th className="col-xs-1 col-sm-1 text-center" />
-        <th className="col-xs-1 col-sm-1 text-center">ป-ด-ว</th>
-        <th className="col-xs-2 col-sm-2 text-center">ฉบับที่</th>
+        <th className="col-xs-2 col-sm-2 text-center">ป-ด-ว</th>
+        <th className="col-xs-1 col-sm-1 text-center">ฉบับที่</th>
         <th className="col-xs-1 col-sm-1 text-center">เบอร์</th>
         <th className="col-xs-1 col-sm-1 text-center" />
 
@@ -60,8 +60,8 @@ const BetsList = ({ bets }) => (
 
           return ( <tr key={ _id }>
             <td className="col-xs-1 col-sm-1 text-center">{ (index + 1) }</td>
-            <td className="col-xs-1 col-sm-1 text-center" style={{fontSize: 8}}>{ moment(createdAt).format('YYYY-MM-DD HH:mm:ss') }</td>
-            <td className="col-xs-2 col-sm-2 text-center">{ broker }</td>
+            <td className="col-xs-2 col-sm-2 text-center">{ moment(createdAt).format('YYYY-MM-DD HH:mm:ss') }</td>
+            <td className="col-xs-1 col-sm-1 text-center">{ broker }</td>
             <td className="col-xs-1 col-sm-1 text-center"><b>{ no }</b></td>
             <td className="col-xs-1 col-sm-1 text-center">{ typeOfNo }</td>
 
