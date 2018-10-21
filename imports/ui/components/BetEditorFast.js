@@ -248,70 +248,58 @@ class BetEditorFast extends React.Component {
         >
         <thead>
           <tr>
-            <th></th>
             <th>ตัวอย่าง</th>
             <th>พิมพ์</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td colSpan={3} style={{textAlign: 'center'}}>+ บน, - ล่าง, * โต๊ด</td>
+            <td colSpan={2} style={{textAlign: 'center'}}>+ บน, - ล่าง, * โต๊ด</td>
           </tr>
           <tr>
-            <td>1.</td>
             <td>45 = 10 บน</td>
             <td>45+10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
           <tr>
-            <td>2.</td>
             <td>45 = 10 ล่าง</td>
             <td>45-10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
           <tr>
-            <td>3.</td>
-            <td>45 = 10x5 (บนxล่าง)</td>
+            <td>45 = 10x5 บนxล่าง</td>
             <td>45+10-5<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
           <tr>
-            <td>4.</td>
-            <td>45 = 10x10 (บนxล่าง เท่ากัน)</td>
+            <td>45 = 10x10 บนxล่าง เท่ากัน</td>
             <td>45<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
           <tr>
-            <td>5.</td>
             <td>78 = ราคาเดิม</td>
             <td>78<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong><strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
           <tr>
-            <td colSpan={3}></td>
+            <td colSpan={2}></td>
           </tr>
           <tr>
-            <td>7.</td>
             <td>456 = 10 บน</td>
             <td>456+10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
           <tr>
-            <td>8.</td>
             <td>456 = 10 ล่าง</td>
             <td>456-10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
           <tr>
-            <td>9.</td>
             <td>456 = 10 โต๊ด</td>
             <td>456*10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
           <tr>
-            <td>10.</td>
-            <td>456 = 10x5 (บนxโต๊ด)</td>
+            <td>456 = 10x5 บนxโต๊ด</td>
             <td>456+10*5<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
           <tr>
-            <td>11.</td>
-            <td>456 = 10x10 (บนxโต๊ด เท่ากัน)</td>
+            <td>456 = 10x10 บนxโต๊ด เท่ากัน</td>
             <td>456<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
           <tr>
-            <td>11.</td>
             <td>789 = ราคาเดิม</td>
             <td>789<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong><strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
