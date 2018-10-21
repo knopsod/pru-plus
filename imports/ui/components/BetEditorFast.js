@@ -259,12 +259,12 @@ class BetEditorFast extends React.Component {
           </tr>
           <tr>
             <td>1.</td>
-            <td>45 บน = 10</td>
+            <td>45 = 10 บน</td>
             <td>45+10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
           <tr>
             <td>2.</td>
-            <td>45 ล่าง = 10</td>
+            <td>45 = 10 ล่าง</td>
             <td>45-10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
           <tr>
@@ -287,17 +287,17 @@ class BetEditorFast extends React.Component {
           </tr>
           <tr>
             <td>7.</td>
-            <td>456 บน = 10</td>
+            <td>456 = 10 บน</td>
             <td>456+10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
           <tr>
             <td>8.</td>
-            <td>456 ล่าง = 10</td>
+            <td>456 = 10 ล่าง</td>
             <td>456-10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
           <tr>
             <td>9.</td>
-            <td>456 โต๊ด = 10</td>
+            <td>456 = 10 โต๊ด</td>
             <td>456*10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
           <tr>
