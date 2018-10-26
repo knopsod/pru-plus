@@ -232,7 +232,7 @@ class BetEditorFast extends React.Component {
       </FormGroup>
 
       <FormGroup>
-        <ControlLabel>พิมพ์</ControlLabel>
+        <ControlLabel>เบอร์</ControlLabel>
         <FormControl
           componentClass="textarea"
           type="number"
@@ -249,7 +249,7 @@ class BetEditorFast extends React.Component {
         <thead>
           <tr>
             <th>ตัวอย่าง</th>
-            <th>พิมพ์</th>
+            <th>คีย์</th>
           </tr>
         </thead>
         <tbody>
