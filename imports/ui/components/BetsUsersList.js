@@ -12,10 +12,10 @@ const BetsUsersList = ({ users, recordTotal, allIncome }) => (
     <thead>
       <tr>
         <th className="col-xs-1 col-sm-1 text-center"></th>
-        <th className="col-xs-3 col-sm-3 text-center">ID</th>
-        <th className="col-xs-2 col-sm-2 text-center">Email</th>
-        <th className="col-xs-3 col-sm-3 text-center">Record</th>
-        <th className="col-xs-3 col-sm-3 text-center">Recieved</th>
+        <th className="col-xs-4 col-sm-4 text-center">ID</th>
+        <th className="col-xs-3 col-sm-3 text-center">Email</th>
+        <th className="col-xs-2 col-sm-2 text-center">Record</th>
+        <th className="col-xs-2 col-sm-2 text-center">Recieved</th>
       </tr>
     </thead>
     <tbody>
@@ -23,13 +23,13 @@ const BetsUsersList = ({ users, recordTotal, allIncome }) => (
         { 
           return ( <tr key={ _id }>
             <td className="col-xs-1 col-sm-1 text-center">{ (index + 1) }</td>
-            <td className="col-xs-3 col-sm-3 text-center">{ _id }</td>
-            <td className="col-xs-2 col-sm-2 text-center">{
+            <td className="col-xs-4 col-sm-4 text-center">{ _id }</td>
+            <td className="col-xs-3 col-sm-3 text-center">{
               Meteor.userId() === _id ? emails[0].address
                 : emails[0].address.replace(/.{1,4}(?=\@.*?)/, '****')
             }</td>
-            <td className="col-xs-3 col-sm-3 text-center">{ record }</td>
-            <td className="col-xs-3 col-sm-3 text-center">{ userIncome }</td>
+            <td className="col-xs-2 col-sm-2 text-center">{ record }</td>
+            <td className="col-xs-2 col-sm-2 text-center">{ userIncome }</td>
           </tr> )
         }
       )}
@@ -68,10 +68,11 @@ export default container((props, onData) => {
 
     users.forEach( obj => {
       // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
-      obj.record = bets.length ? bets.filter(bet => bet.userId == obj._id).length : 0;
+      let userBets = bets.length ? bets.filter(bet => bet.userId == obj._id) : [];
+
+      obj.record = userBets.length;
       recordTotal += obj.record;
 
-      let userBets = bets.length ? bets.filter(bet => bet.userId == obj._id) : [];
       obj.userIncome = userBets.length ? userBets.reduce(reducer, 0) : 0;
       allIncome += obj.userIncome;
     });
