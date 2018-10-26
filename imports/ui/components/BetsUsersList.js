@@ -14,7 +14,7 @@ const BetsUsersList = ({ users, recordTotal, allIncome }) => (
         <th className="col-xs-1 col-sm-1 text-center"></th>
         <th className="col-xs-4 col-sm-4 text-center">ID</th>
         <th className="col-xs-3 col-sm-3 text-center">Email</th>
-        <th className="col-xs-2 col-sm-2 text-center">Record</th>
+        <th className="col-xs-2 col-sm-2 text-center">Recorded</th>
         <th className="col-xs-2 col-sm-2 text-center">Recieved</th>
       </tr>
     </thead>
