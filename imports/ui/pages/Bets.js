@@ -5,6 +5,7 @@ import { Row, Col } from 'react-bootstrap';
 import BetsList from '../components/BetsList';
 import BetsUsersList from '../components/BetsUsersList';
 import BetEditorFast from '../components/BetEditorFast';
+import BetsReactTable from '../components/BetsReactTable';
 
 const Bets = () => (
   <div className="Bets">
@@ -17,7 +18,8 @@ const Bets = () => (
       <Col xs={9} sm={9} md={9}>
         <div className="page-header clearfix">
           <BetsUsersList />
-          <BetsList />
+          <BetsReactTable />
+          {/* <BetsList /> */}
         </div>
       </Col>
     </Row>
