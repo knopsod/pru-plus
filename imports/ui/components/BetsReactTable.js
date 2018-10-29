@@ -42,7 +42,7 @@ const BetsReactTable = ({ bets }) => (
         Header: "ป-ด-ว",
         accessor: "createdAt",
         minWidth: 145,
-        Cell: ({ createdAt }) => (moment(createdAt).format('YYYY-MM-DD HH:mm:ss')),
+        Cell: ({ original: { createdAt } }) => (moment(createdAt).format('YYYY-MM-DD HH:mm:ss')),
         style: {
           textAlign: 'center',
         },
