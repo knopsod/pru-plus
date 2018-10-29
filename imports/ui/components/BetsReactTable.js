@@ -126,8 +126,12 @@ const BetsReactTable = ({ bets }) => (
         },
       },
       {
-        Cell: row => (<button className="btn btn-xs btn-danger"
-          onClick={() => handleRemove(row.original._id)}>Remove</button>),
+        Cell: ({ original: { _id, userId } }) => (
+          Meteor.userId() === userId ?
+            <button className="btn btn-xs btn-danger"
+              onClick={() => handleRemove(_id)}>Remove</button>
+            : undefined
+        ),
         style: {
           textAlign: 'center',
         },
