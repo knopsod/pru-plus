@@ -17,9 +17,10 @@ const Bets = () => (
       </Col>
       <Col xs={9} sm={9} md={9}>
         <div className="page-header clearfix">
-          <BetsUsersList />
-          <BetsReactTable />
           {/* <BetsList /> */}
+          <BetsReactTable />
+          <br />
+          <BetsUsersList />
         </div>
       </Col>
     </Row>

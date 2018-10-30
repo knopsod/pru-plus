@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { browserHistory } from 'react-router';
-import { Table } from 'react-bootstrap';
+import { Table, Alert } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session';
 import { Bert } from 'meteor/themeteorchef:bert';
@@ -79,8 +79,7 @@ const BetsList = ({ bets }) => (
         }
       )}
     </tbody>
-  </Table> : <div />
-  // <Alert bsStyle="warning">No bets yet.</Alert>
+  </Table> : <Alert bsStyle="warning">No bets yet.</Alert>
 );
 
 BetsList.propTypes = {
