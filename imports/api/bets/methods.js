@@ -36,6 +36,38 @@ export const removeBet = new ValidatedMethod({
   },
 });
 
+var content = [];
+for(var i = 0; i < 30; i++) {
+    content.push('Content line ' + i);
+}
+
+export const generatePDF = new ValidatedMethod({
+  name: 'bets.generatePDF',
+  validate: new SimpleSchema({
+    createdDate: { type: String, optional: true },
+  }).validator(),
+  run({ createdDate }) {
+    const bets = Bets.find({ createdDate: createdDate }).fetch();
+    console.log(bets);
+
+    const fs = require('fs')
+
+    const content = 'Some content!'
+
+    try {
+      if (!fs.existsSync(process.env.PWD + '/public/xlsx')){
+        fs.mkdirSync(process.env.PWD + '/public/xlsx');
+      }
+      const data = fs.writeFile(
+        process.env.PWD + `/public/xlsx/${Meteor.userId()}.txt`, 
+        content);
+      //file written successfully
+    } catch (err) {
+      console.error(err);
+    }
+  },
+});
+
 rateLimit({
   methods: [
     upsertBet,

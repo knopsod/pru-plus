@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { browserHistory } from 'react-router';
-import { Alert } from 'react-bootstrap';
+import { Alert, Button } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session';
 import { Bert } from 'meteor/themeteorchef:bert';
@@ -39,8 +39,8 @@ const BetsReactTable = ({ bets }) => (
         },
       },
       {
-        Header: "ป-ด-ว",
-        accessor: "createdAt",
+        Header: 'ป-ด-ว',
+        accessor: 'createdAt',
         minWidth: 145,
         Cell: ({ original: { createdAt } }) => (moment(createdAt).format('YYYY-MM-DD HH:mm:ss')),
         style: {
@@ -48,16 +48,16 @@ const BetsReactTable = ({ bets }) => (
         },
       },
       {
-        Header: "ฉบับที่",
-        accessor: "broker",
+        Header: 'ฉบับที่',
+        accessor: 'broker',
         maxWidth: 72,
         style: {
           textAlign: 'center',
         },
       },
       {
-        Header: "เบอร์",
-        accessor: "no",
+        Header: 'เบอร์',
+        accessor: 'no',
         maxWidth: 48,
         style: {
           textAlign: 'center',
@@ -81,8 +81,8 @@ const BetsReactTable = ({ bets }) => (
         },
       },
       {
-        Header: "2บน",
-        accessor: "up2",
+        Header: '2บน',
+        accessor: 'up2',
         maxWidth: 72,
         Cell: ({ original: { up2 } }) => (up2 || undefined),
         style: {
@@ -90,8 +90,8 @@ const BetsReactTable = ({ bets }) => (
         },
       },
       {
-        Header: "2ล่าง",
-        accessor: "down2",
+        Header: '2ล่าง',
+        accessor: 'down2',
         maxWidth: 72,
         Cell: ({ original: { down2 } }) => (down2 || undefined),
         style: {
@@ -99,8 +99,8 @@ const BetsReactTable = ({ bets }) => (
         },
       },
       {
-        Header: "3ตรง",
-        accessor: "up3",
+        Header: '3ตรง',
+        accessor: 'up3',
         maxWidth: 72,
         Cell: ({ original: { up3 } }) => (up3 || undefined),
         style: {
@@ -108,8 +108,8 @@ const BetsReactTable = ({ bets }) => (
         },
       },
       {
-        Header: "3โต๊ด",
-        accessor: "permute",
+        Header: '3โต๊ด',
+        accessor: 'permute',
         maxWidth: 72,
         Cell: ({ original: { permute } }) => (permute || undefined),
         style: {
@@ -117,8 +117,8 @@ const BetsReactTable = ({ bets }) => (
         },
       },
       {
-        Header: "3ล่าง",
-        accessor: "down3",
+        Header: '3ล่าง',
+        accessor: 'down3',
         maxWidth: 72,
         Cell: ({ original: { down3 } }) => (down3 || undefined),
         style: {

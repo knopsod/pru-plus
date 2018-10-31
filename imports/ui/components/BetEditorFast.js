@@ -11,7 +11,7 @@ import _ from 'lodash';
 import DatePicker from 'react-bootstrap-date-picker';
 import container from '../../modules/container';
 
-import { upsertBet, removeBet } from '../../api/bets/methods.js';
+import { upsertBet } from '../../api/bets/methods.js';
 
 class BetEditorFast extends React.Component {
   constructor(props) {

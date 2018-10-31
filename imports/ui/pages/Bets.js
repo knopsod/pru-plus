@@ -2,10 +2,10 @@
 
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-import BetsList from '../components/BetsList';
 import BetsUsersList from '../components/BetsUsersList';
 import BetEditorFast from '../components/BetEditorFast';
 import BetsReactTable from '../components/BetsReactTable';
+import BetsPDFButton from '../components/BetsPDFButton';
 
 const Bets = () => (
   <div className="Bets">
@@ -17,7 +17,8 @@ const Bets = () => (
       </Col>
       <Col xs={9} sm={9} md={9}>
         <div className="page-header clearfix">
-          {/* <BetsList /> */}
+          <BetsPDFButton />
+          <br />
           <BetsReactTable />
           <br />
           <BetsUsersList />
