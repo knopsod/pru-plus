@@ -21,12 +21,20 @@ const AuthenticatedNavigation = () => (
       <LinkContainer to="/teams">
         <NavItem eventKey={ 2 } href="/teams">Teams</NavItem>
       </LinkContainer> */}
-      <LinkContainer to="/bets">
-        <NavItem eventKey={ 2 } href="/bets">บันทึก</NavItem>
+      <LinkContainer to="/employ">
+        <NavItem eventKey={ 4 } href="/employ">จ้างงาน</NavItem>
       </LinkContainer>
-      <LinkContainer to="/nos">
-        <NavItem eventKey={ 2 } href="/nos">รวมยอด</NavItem>
+      <LinkContainer to="/job">
+        <NavItem eventKey={ 5 } href="/nos">หางาน</NavItem>
       </LinkContainer>
+      <NavDropdown eventKey={ 6 } title="เริ่มต้น" id="begin-nav-dropdown">
+        <LinkContainer to="/bets">
+          <MenuItem eventKey={ 6.1 } href="/bets">คีย์</MenuItem>
+        </LinkContainer>
+        <LinkContainer to="/nos">
+          <MenuItem eventKey={ 6.2 } href="/nos">ตัด</MenuItem>
+        </LinkContainer>
+      </NavDropdown>
     </Nav>
     <Nav pullRight>
       <NavDropdown eventKey={ 3 } title={ userName() } id="basic-nav-dropdown">

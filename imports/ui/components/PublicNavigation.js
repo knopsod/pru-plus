@@ -2,7 +2,21 @@ import React from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Nav, NavItem } from 'react-bootstrap';
 
-const PublicNavigation = () => (
+const PublicNavigation = () => (<div>
+  <Nav>
+    {/* <LinkContainer to="/documents">
+      <NavItem eventKey={ 2 } href="/documents">Documents</NavItem>
+    </LinkContainer>
+    <LinkContainer to="/teams">
+      <NavItem eventKey={ 2 } href="/teams">Teams</NavItem>
+    </LinkContainer> */}
+    <LinkContainer to="/employ">
+      <NavItem eventKey={ 4 } href="/employ">จ้างงาน</NavItem>
+    </LinkContainer>
+    <LinkContainer to="/job">
+      <NavItem eventKey={ 5 } href="/nos">หางาน</NavItem>
+    </LinkContainer>
+  </Nav>
   <Nav pullRight>
     <LinkContainer to="signup">
       <NavItem eventKey={ 1 } href="/signup">Sign Up</NavItem>
@@ -11,7 +25,7 @@ const PublicNavigation = () => (
       <NavItem eventKey={ 2 } href="/login">Log In</NavItem>
     </LinkContainer>
   </Nav>
-);
+</div>);
 
 /*
 const PublicNavigation = () => (

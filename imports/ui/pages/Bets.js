@@ -5,24 +5,24 @@ import { Row, Col } from 'react-bootstrap';
 import BetsUsersList from '../components/BetsUsersList';
 import BetEditorFast from '../components/BetEditorFast';
 import BetsReactTable from '../components/BetsReactTable';
-import BetsPDFButton from '../components/BetsPDFButton';
 
 const Bets = () => (
   <div className="Bets">
     <Row>
-      <Col xs={3} sm={3} md={3}>
+      <Col xs={ 12 }>
         <div className="page-header clearfix">
-          <BetEditorFast />
+          <h4 className="pull-left">คีย์</h4>
         </div>
       </Col>
+    </Row>
+    <Row>
+      <Col xs={3} sm={3} md={3}>
+        <BetEditorFast />
+      </Col>
       <Col xs={9} sm={9} md={9}>
-        <div className="page-header clearfix">
-          <BetsReactTable />
-          <br />
-          <BetsPDFButton />
-          <br />
-          <BetsUsersList />
-        </div>
+        <BetsReactTable />
+        <br />
+        <BetsUsersList />
       </Col>
     </Row>
   </div>
