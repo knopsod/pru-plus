@@ -32,7 +32,7 @@ const AuthenticatedNavigation = () => (
           <MenuItem eventKey={ 6.1 } href="/bets">คีย์</MenuItem>
         </LinkContainer>
         <LinkContainer to="/nos">
-          <MenuItem eventKey={ 6.2 } href="/nos">ตัด</MenuItem>
+          <MenuItem eventKey={ 6.2 } href="/nos">ตัดออก</MenuItem>
         </LinkContainer>
       </NavDropdown>
     </Nav>

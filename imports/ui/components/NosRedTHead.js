@@ -45,7 +45,7 @@ class NosRedTHead extends React.Component {
 
           <th className="col-xs-1 col-sm-1 text-center" 
             style={{ verticalAlign: 'middle' }}
-            rowSpan="3">เบอร์คัดออก</th>
+            rowSpan="3">เบอร์ตัดออก</th>
 
           <th className="col-xs-5 col-sm-5 text-center" 
             style={{ verticalAlign: 'middle' }}
