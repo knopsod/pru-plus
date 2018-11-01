@@ -5,7 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session';
 import { Bert } from 'meteor/themeteorchef:bert';
 import PropTypes from 'prop-types';
-import { FormGroup, ControlLabel, FormControl, Grid, Row, Col, Table } from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, Table } from 'react-bootstrap';
 import moment from 'moment';
 import _ from 'lodash';
 import DatePicker from 'react-bootstrap-date-picker';
@@ -20,6 +20,7 @@ class BetEditorFast extends React.Component {
     this.state = {
       createdDate: moment().toISOString(true).substring(0, 10),
       broker: '',
+      percent: 25,
       betMessage: '',
     };
 
@@ -27,6 +28,7 @@ class BetEditorFast extends React.Component {
 
     this.handleCreatedDateChange = this.handleCreatedDateChange.bind(this);
     this.handleBrokerChange = this.handleBrokerChange.bind(this);
+    this.handlePercentChange = this.handlePercentChange.bind(this);
     this.handleChangeV2 = this.handleChangeV2.bind(this);
   }
 
@@ -45,6 +47,14 @@ class BetEditorFast extends React.Component {
     this.setState({
       ...this.state,
       broker,
+    });
+  }
+
+  handlePercentChange(e) {
+    const percent = Number(e.target.value);
+    this.setState({
+      ...this.state,
+      percent,
     });
   }
 
@@ -69,6 +79,7 @@ class BetEditorFast extends React.Component {
 
     const createdAt = moment().valueOf(), 
       broker = this.state.broker, 
+      percent = this.state.percent,
       createdDate = this.state.createdDate.substr(0, 10),
       userId = Meteor.userId();
 
@@ -186,6 +197,9 @@ class BetEditorFast extends React.Component {
         permute, 
         createdAt, 
         broker, 
+        percent,
+        fee: 0.5,
+        income: ((100 - (percent + 0.5)) / 100) * (up2 + down2 + up3 + down3 + permute),
         createdDate,
         userId,
       };
@@ -223,12 +237,21 @@ class BetEditorFast extends React.Component {
           value={this.state.createdDate}
           onChange={this.handleCreatedDateChange}/>
       </FormGroup>
+
       <FormGroup>
         <ControlLabel>ฉบับที่</ControlLabel>
         <FormControl type="text" name="broker" 
           ref="broker"
           value={this.state.broker}
           onChange={this.handleBrokerChange}/>
+      </FormGroup>
+
+      <FormGroup>
+        <ControlLabel>เปอร์เซ็นต์</ControlLabel>
+        <FormControl type="number" name="percent" 
+          ref="percent" min={ 0 } max={ 100 }
+          value={this.state.percent}
+          onChange={this.handlePercentChange}/>
       </FormGroup>
 
       <FormGroup>

@@ -59,9 +59,9 @@ export default container((props, onData) => {
   var recordTotal = 0;
   var allIncome = 0;
 
-  if (subscription.ready() && usersSubscription.ready() ) {
-    const bets = Bets.find({}, {sort: {createdAt: 1}}).fetch();
-    const users = Meteor.users.find({}, {fields: {emails: 1, profile: 1}}).fetch();
+  if (subscription.ready() && usersSubscription.ready()) {
+    const bets = Bets.find({}, { sort: { createdAt: 1 } }).fetch();
+    const users = Meteor.users.find({ _id: Meteor.userId() }, { fields: { emails: 1, profile: 1 } }).fetch();
 
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
     const reducer = (acc, val) => acc + val.up2 + val.down2 + val.up3 + val.permute + val.down3;
@@ -80,7 +80,7 @@ export default container((props, onData) => {
     console.log(users);
     
     if ( bets.length > 0 && insertedId !== '' ) {
-      const bet = bets.find( obj => obj._id === insertedId );
+      const bet = bets.find( obj => obj._id === insertedId);
       console.log(bet);
       Session.set('latestSessionBet', bet);
     }

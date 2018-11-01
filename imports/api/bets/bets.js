@@ -51,6 +51,21 @@ Bets.schema = new SimpleSchema({
     label: 'The broker of the bet.',
     optional: true,
   },
+  percent: {
+    type: Number,
+    label: 'The percent of the bet.',
+    optional: true,
+  },
+  fee: {
+    type: Number,
+    label: 'The fee of the bet.',
+    optional: true,
+  },
+  income: {
+    type: Number,
+    label: 'The income of the bet.',
+    optional: true,
+  },
   createdDate: {
     type: String,
     label: 'The created date of the bet.',
@@ -72,6 +87,9 @@ Factory.define('bet', Bets, {
   permute: () => 'Factory Permute',
   createdAt: () => 'Factory Created at',
   broker: () => 'Factory Broker',
+  percent: () => 'Factory Percent',
+  fee: () => 'Factory Fee',
+  income: () => 'Factory Income',
   createdDate: () => 'Factory Created date',
   userId: () => 'Factory User ID',
 });
