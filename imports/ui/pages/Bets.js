@@ -11,7 +11,7 @@ const Bets = () => (
     <Row>
       <Col xs={ 12 }>
         <div className="page-header clearfix">
-          <h4 className="pull-left">คีย์</h4>
+          <h4 className="pull-left">ฝึกคีย์</h4>
         </div>
       </Col>
     </Row>

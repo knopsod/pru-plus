@@ -10,7 +10,7 @@ const Nos = () => (
     <Row>
       <Col xs={ 12 }>
         <div className="page-header clearfix">
-          <h4 className="pull-left">ตัดออก</h4>
+          <h4 className="pull-left">ตัวอย่างตัดออก</h4>
         </div>
         <NosCreated />
         <NosRed />

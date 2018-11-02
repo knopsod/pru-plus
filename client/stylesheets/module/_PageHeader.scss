@@ -2,12 +2,12 @@
   margin-top: 0px;
 
   h4 {
-    margin-top: 7px;
+    margin-top: 7px; // 7px
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) { // 768px default
   .page-header {
-    margin-top: 20px;
+    margin-top: 20px; // 20px default
   }
 }

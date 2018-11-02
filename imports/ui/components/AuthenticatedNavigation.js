@@ -29,10 +29,10 @@ const AuthenticatedNavigation = () => (
       </LinkContainer>
       <NavDropdown eventKey={ 6 } title="เริ่มต้น" id="begin-nav-dropdown">
         <LinkContainer to="/bets">
-          <MenuItem eventKey={ 6.1 } href="/bets">คีย์</MenuItem>
+          <MenuItem eventKey={ 6.1 } href="/bets">ฝึกคีย์</MenuItem>
         </LinkContainer>
         <LinkContainer to="/nos">
-          <MenuItem eventKey={ 6.2 } href="/nos">ตัดออก</MenuItem>
+          <MenuItem eventKey={ 6.2 } href="/nos">ตัวอย่างตัดออก</MenuItem>
         </LinkContainer>
       </NavDropdown>
     </Nav>
