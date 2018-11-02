@@ -21,6 +21,7 @@ class BetEditorFast extends React.Component {
       createdDate: moment().toISOString(true).substring(0, 10),
       broker: '',
       percent: 25,
+      fee: 0.5,
       betMessage: '',
     };
 
@@ -80,6 +81,7 @@ class BetEditorFast extends React.Component {
     const createdAt = moment().valueOf(), 
       broker = this.state.broker, 
       percent = this.state.percent,
+      fee = this.state.fee,
       createdDate = this.state.createdDate.substr(0, 10),
       userId = Meteor.userId();
 
@@ -198,7 +200,7 @@ class BetEditorFast extends React.Component {
         createdAt, 
         broker, 
         percent,
-        fee: 0.5,
+        fee,
         income: ((100 - (percent + 0.5)) / 100) * (up2 + down2 + up3 + down3 + permute),
         createdDate,
         userId,
@@ -247,9 +249,9 @@ class BetEditorFast extends React.Component {
       </FormGroup>
 
       <FormGroup>
-        <ControlLabel>เปอร์เซ็นต์</ControlLabel>
+        <ControlLabel>เปอร์เซ็นต์ (+{ this.state.fee })</ControlLabel>
         <FormControl type="number" name="percent" 
-          ref="percent" min={ 0 } max={ 100 }
+          ref="percent" min={ 0 } max={ 99 }
           value={this.state.percent}
           onChange={this.handlePercentChange}/>
       </FormGroup>
@@ -278,19 +280,19 @@ class BetEditorFast extends React.Component {
         <tbody>
           <tr>
             <td>45 = 100 บน</td>
-            <td>45+10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+            <td>45+100<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
           <tr>
             <td>45 = 100 ล่าง</td>
-            <td>45-10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+            <td>45-100<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
           <tr>
             <td>45 = 100x50 บนxล่าง</td>
-            <td>45+10-5<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+            <td>45+100-50<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
           <tr>
             <td>45 = 100x100 บนxล่าง เท่ากัน</td>
-            <td>45<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+            <td>45<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>100<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
           <tr>
             <td>67 = ราคาเดิม</td>
@@ -298,23 +300,23 @@ class BetEditorFast extends React.Component {
           </tr>
           <tr>
             <td>456 = 100 บน</td>
-            <td>456+10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+            <td>456+100<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
           <tr>
             <td>456 = 100 ล่าง</td>
-            <td>456-10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+            <td>456-100<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
           <tr>
             <td>456 = 100 โต๊ด</td>
-            <td>456*10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+            <td>456*100<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
           <tr>
             <td>456 = 100x50 บนxโต๊ด</td>
-            <td>456+10*5<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+            <td>456+100*50<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
           <tr>
             <td>456 = 100x100 บนxโต๊ด เท่ากัน</td>
-            <td>456<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>10<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+            <td>456<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>100<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
           </tr>
           <tr>
             <td>789 = ราคาเดิม</td>
