@@ -10,20 +10,12 @@ const PublicNavigation = () => (<div>
     <LinkContainer to="/teams">
       <NavItem eventKey={ 2 } href="/teams">Teams</NavItem>
     </LinkContainer> */}
-    <LinkContainer>
-      <NavItem eventKey={ 4 }>จ้าง</NavItem>
+    <LinkContainer to="/login">
+      <NavItem eventKey={ 4 } href="login">จ้าง</NavItem>
     </LinkContainer>
-    <LinkContainer>
-      <NavItem eventKey={ 5 }>หางาน</NavItem>
+    <LinkContainer to="/login">
+      <NavItem eventKey={ 5 } href="login">หางาน</NavItem>
     </LinkContainer>
-    <NavDropdown eventKey={ 6 } title="เริ่มต้น" id="begin-nav-dropdown">
-      <LinkContainer>
-        <MenuItem eventKey={ 6.1 }>ฝึกคีย์</MenuItem>
-      </LinkContainer>
-      <LinkContainer>
-        <MenuItem eventKey={ 6.2 }>ตัวอย่างตัดออก</MenuItem>
-      </LinkContainer>
-    </NavDropdown>
   </Nav>
   <Nav pullRight>
     <LinkContainer to="signup">
