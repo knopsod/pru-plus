@@ -17,15 +17,11 @@ const Index = ({ hasUser }) => (
       </p>
       <br />
       <hr />
-      {hasUser ? 
-        <p><Link to="/employ" className="btn btn-success">จ้างงาน</Link></p> :
-        <p><Link to="/login" className="btn btn-success">จ้างงาน</Link></p>
-      }      
+      {hasUser ? <p><Link to="/employ" className="btn btn-success">จ้าง</Link></p> :
+        <p><Link to="/login" className="btn btn-success">จ้าง</Link></p>}
       <hr />
-      {hasUser ?
-        <p><Link to="/job" className="btn btn-success">หางาน</Link></p> :
-        <p><Link to="/login" className="btn btn-success">หางาน</Link></p>
-      }
+      {hasUser ? <p><Link to="/job" className="btn btn-success">หางาน</Link></p> :
+        <p><Link to="/login" className="btn btn-success">หางาน</Link></p>}
       <hr />
     </Jumbotron>
   </div>
