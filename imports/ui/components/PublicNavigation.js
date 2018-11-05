@@ -16,6 +16,14 @@ const PublicNavigation = () => (<div>
     <LinkContainer to="/login">
       <NavItem eventKey={ 5 } href="/login">หางาน</NavItem>
     </LinkContainer>
+    <NavDropdown eventKey={ 6 } title="เริ่มต้น" id="begin-nav-dropdown">
+      <LinkContainer to="/login">
+        <MenuItem eventKey={ 6.1 } href="/login">ฝึกคีย์</MenuItem>
+      </LinkContainer>
+      <LinkContainer to="/login">
+        <MenuItem eventKey={ 6.2 } href="/login">ตัวอย่างตัดออก</MenuItem>
+      </LinkContainer>
+    </NavDropdown>
   </Nav>
   <Nav pullRight>
     <LinkContainer to="signup">
