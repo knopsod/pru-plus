@@ -1,6 +1,6 @@
 import React from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Nav, NavItem } from 'react-bootstrap';
+import { Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
 const PublicNavigation = () => (<div>
   <Nav>
