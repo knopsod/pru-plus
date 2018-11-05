@@ -25,9 +25,7 @@ const Index = ({ hasUser }) => (
       {hasUser ?
         <p><Link to="/job" className="btn btn-success">หางาน</Link></p> :
         <p><Link to="/login" className="btn btn-success">หางาน</Link></p>
-      }      
-      {!hasUser ? <hr /> : undefined}
-      {!hasUser ? <p><Link to="/bets" className="btn btn-success">Sign Up/Log In</Link></p> : undefined}
+      }
       <hr />
     </Jumbotron>
   </div>

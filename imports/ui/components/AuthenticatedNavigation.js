@@ -25,7 +25,7 @@ const AuthenticatedNavigation = () => (
         <NavItem eventKey={ 4 } href="/employ">จ้าง</NavItem>
       </LinkContainer>
       <LinkContainer to="/job">
-        <NavItem eventKey={ 5 } href="/nos">หางาน</NavItem>
+        <NavItem eventKey={ 5 } href="/job">หางาน</NavItem>
       </LinkContainer>
       <NavDropdown eventKey={ 6 } title="เริ่มต้น" id="begin-nav-dropdown">
         <LinkContainer to="/bets">
