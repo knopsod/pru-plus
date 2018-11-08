@@ -10,7 +10,7 @@ import container from '../../modules/container';
 const renderNavigation = hasUser => (hasUser ? <AuthenticatedNavigation /> : <PublicNavigation />);
 
 const AppNavigation = ({ hasUser }) => (
-  <Navbar inverse collapseOnSelect>
+  <Navbar inverse collapseOnSelect style={{ borderRadius: 0 }}>
     <Navbar.Header>
       <Navbar.Brand>
         <Link to="/">Home</Link>

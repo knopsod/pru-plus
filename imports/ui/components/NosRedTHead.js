@@ -8,18 +8,18 @@ class NosRedTHead extends React.Component {
     super(props);
 
     this.state = {
-      up2ROI: 94,
-      down2ROI: 94,
-      up3ROI: 534,
-      permuteROI: 134,
-      down3ROI: 134,
+      up2ROI: 70,
+      down2ROI: 70,
+      up3ROI: 400,
+      permuteROI: 100,
+      down3ROI: 100,
     };
 
-    this.props.Session.set('up2ROI', 94);
-    this.props.Session.set('down2ROI', 94);
-    this.props.Session.set('up3ROI', 534);
-    this.props.Session.set('permuteROI', 134);
-    this.props.Session.set('down3ROI', 134);
+    this.props.Session.set('up2ROI', 70);
+    this.props.Session.set('down2ROI', 70);
+    this.props.Session.set('up3ROI', 400);
+    this.props.Session.set('permuteROI', 100);
+    this.props.Session.set('down3ROI', 100);
 
     this.handleChange = this.handleChange.bind(this);
   }
@@ -53,7 +53,7 @@ class NosRedTHead extends React.Component {
         </tr>
 
         <tr>
-          <th className="col-xs-1 col-xs-offset-3 col-sm-1 col-sm-offset-2">
+          <th className="col-xs-1 col-xs-offset-3 col-sm-1 col-sm-offset-3">
             <FormControl type="number" style={{ textAlign: 'right', color: 'red' }}
               name="up2ROI"
               value={this.state.up2ROI}
@@ -87,7 +87,7 @@ class NosRedTHead extends React.Component {
 
         <tr>
           
-          <th className="col-xs-1 col-xs-offset-3 col-sm-1 col-sm-offset-2 text-center">2บน</th>
+          <th className="col-xs-1 col-xs-offset-3 col-sm-1 col-sm-offset-3 text-center">2บน</th>
           <th className="col-xs-1 col-sm-1 text-center">2ล่าง</th>
           <th className="col-xs-1 col-sm-1 text-center">3ตรง</th>
           <th className="col-xs-1 col-sm-1 text-center">3โต๊ด</th>

@@ -20,7 +20,7 @@ class BetEditorFast extends React.Component {
     this.state = {
       createdDate: moment().toISOString(true).substring(0, 10),
       broker: '',
-      percent: 25,
+      percent: 20,
       fee: 0.5,
       betMessage: '',
     };
