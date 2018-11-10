@@ -4,56 +4,55 @@ import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session';
 import Bets from '../../api/bets/bets';
 import container from '../../modules/container';
-import { Table } from 'react-bootstrap';
+import { Table, Alert } from 'react-bootstrap';
 
 const NosList = (props) => (
-  <div>
-      { props.nos.length > 0 ? <Table className="NosList"
-        striped bordered condensed hover>
-        <thead>
-          <tr>
-            <th className="col-xs-2 col-sm-1 text-center" style={{ verticalAlign: 'middle' }}
-              rowSpan={2}>ป-ด-ว</th>
-            <th className="col-xs-1 col-sm-1 text-center" style={{ verticalAlign: 'middle' }}
-              rowSpan={2}>เบอร์</th>
+  props.nos.filter(obj => obj.up2 || obj.down2 || obj.up3 || obj.permute || obj.down3).length > 0 ? <Table className="NosList"
+    striped bordered condensed hover>
+    <thead>
+      <tr>
+        <th className="col-xs-1 col-sm-1 text-center" style={{ verticalAlign: 'middle' }}
+          rowSpan={2}>ป-ด-ว</th>
+        <th className="col-xs-1 col-sm-1 text-center" style={{ verticalAlign: 'middle' }}
+          rowSpan={2}>เบอร์</th>
 
-            <th className="col-xs-1 col-xs-offset-3 col-sm-1 col-sm-offset-3 text-center" colSpan={5} style={{ color: 'red' }}>
-              { props.allTotal.toLocaleString() } .-
-            </th>
-            <th className="col-xs-1 col-sm-1 text-center" rowSpan={2} style={{ verticalAlign: 'middle' }}>
-              <strong style={{ color: 'red' }}>{ props.allIncome.toLocaleString() } .- </strong> 
-              <br />
-              (หัก % แล้ว)
-            </th>
-          </tr>
+        <th className="col-xs-1 col-xs-offset-3 col-sm-1 col-sm-offset-3 text-center" colSpan={5} style={{ color: 'red' }}>
+          { props.allTotal.toLocaleString() } .-
+        </th>
 
-          <tr>
-            <th className="col-xs-1 col-xs-offset-3 col-sm-1 col-sm-offset-3 text-center">2บน <strong style={{ color: 'red' }}>{ props.up2Total.toLocaleString() } .-</strong></th>
-            <th className="col-xs-1 col-sm-1 text-center">2ล่าง <strong style={{ color: 'red' }}>{ props.down2Total.toLocaleString() } .-</strong></th>
-            <th className="col-xs-1 col-sm-1 text-center">3ตรง <strong style={{ color: 'red' }}>{ props.up3Total.toLocaleString() } .-</strong></th>
-            <th className="col-xs-1 col-sm-1 text-center">3โต๊ด <strong style={{ color: 'red' }}>{ props.permuteTotal.toLocaleString() } .-</strong></th>
-            <th className="col-xs-1 col-sm-1 text-center">3ล่าง <strong style={{ color: 'red' }}>{ props.down3Total.toLocaleString() } .-</strong></th>
-          </tr>
+        <th className="col-xs-1 col-sm-1 text-center" rowSpan={2} style={{ verticalAlign: 'middle' }}>
+          <strong style={{ color: 'red' }}>{ props.allIncome.toLocaleString() } .- </strong> 
+          <br />
+          (หัก % แล้ว)
+        </th>
+      </tr>
 
-        </thead>
-        <tbody>
-          { props.nos.filter(obj => obj.up2 || obj.down2 || obj.up3 || obj.permute || obj.down3).map((no, index) => (
-            <tr key={index}>
-              <td className="col-xs-2 col-sm-1 text-center">{ no.createdDate }</td>
-              <td className="col-xs-1 col-sm-1 text-center"><b>{ no.no }</b></td>
+      <tr>
+        <th className="col-xs-1 col-xs-offset-3 col-sm-1 col-sm-offset-3 text-center">2บน <strong style={{ color: 'red' }}>{ props.up2Total.toLocaleString() } .-</strong></th>
+        <th className="col-xs-1 col-sm-1 text-center">2ล่าง <strong style={{ color: 'red' }}>{ props.down2Total.toLocaleString() } .-</strong></th>
+        <th className="col-xs-1 col-sm-1 text-center">3ตรง <strong style={{ color: 'red' }}>{ props.up3Total.toLocaleString() } .-</strong></th>
+        <th className="col-xs-1 col-sm-1 text-center">3โต๊ด <strong style={{ color: 'red' }}>{ props.permuteTotal.toLocaleString() } .-</strong></th>
+        <th className="col-xs-1 col-sm-1 text-center">3ล่าง <strong style={{ color: 'red' }}>{ props.down3Total.toLocaleString() } .-</strong></th>
+      </tr>
 
-              <td className="col-xs-1 col-sm-1 text-center">{ no.up2 > 0 ? no.up2.toLocaleString() : '' }</td>
-              <td className="col-xs-1 col-sm-1 text-center">{ no.down2 > 0 ? no.down2.toLocaleString() : '' }</td>
-              <td className="col-xs-1 col-sm-1 text-center">{ no.up3 > 0 ? no.up3.toLocaleString() : '' }</td>
-              <td className="col-xs-1 col-sm-1 text-center">{ no.permute > 0 ? no.permute.toLocaleString() : '' }</td>
-              <td className="col-xs-1 col-sm-1 text-center">{ no.down3 > 0 ? no.down3.toLocaleString() : '' }</td>
+    </thead>
+    <tbody>
+      { props.nos.filter(obj => obj.up2 || obj.down2 || obj.up3 || obj.permute || obj.down3).map((no, index) => (
+        <tr key={index}>
+          <td className="col-xs-1 col-sm-1 text-center">{ no.createdDate }</td>
+          <td className="col-xs-1 col-sm-1 text-center"><b>{ no.no }</b></td>
 
-              <td className="col-xs-1 col-sm-1 text-center">{ no.income > 0 ? no.income.toLocaleString() : '' }</td>
-            </tr>
-          )) }
-        </tbody>
-      </Table> : undefined }
-  </div>
+          <td className="col-xs-1 col-sm-1 text-center">{ no.up2 > 0 ? no.up2.toLocaleString() : '' }</td>
+          <td className="col-xs-1 col-sm-1 text-center">{ no.down2 > 0 ? no.down2.toLocaleString() : '' }</td>
+          <td className="col-xs-1 col-sm-1 text-center">{ no.up3 > 0 ? no.up3.toLocaleString() : '' }</td>
+          <td className="col-xs-1 col-sm-1 text-center">{ no.permute > 0 ? no.permute.toLocaleString() : '' }</td>
+          <td className="col-xs-1 col-sm-1 text-center">{ no.down3 > 0 ? no.down3.toLocaleString() : '' }</td>
+
+          <td className="col-xs-1 col-sm-1 text-center">{ no.income > 0 ? no.income.toLocaleString() : '' }</td>
+        </tr>
+      )) }
+    </tbody>
+  </Table> : <Alert bsStyle="warning">No sum total yet.</Alert>
 );
 
 NosList.propTypes = {
@@ -208,11 +207,11 @@ export default container((props, onData) => {
           up3Cutloss,
           permuteCutloss,
           down3Cutloss,
+          risk: (nos[i].up2 * up2ROI) + (nos[i].down2 * down2ROI) +
+            (nos[i].up3 * up3ROI) + (nos[i].permute * permuteROI) + (nos[i].down3 * down3ROI),
         });
       }
     }
-
-    console.log(nosReds);
 
     Session.set('nosReds', nosReds);
 

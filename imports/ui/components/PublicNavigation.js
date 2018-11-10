@@ -11,7 +11,7 @@ const PublicNavigation = () => (<div>
       <NavItem eventKey={ 2 } href="/teams">Teams</NavItem>
     </LinkContainer> */}
     <LinkContainer to="/employ">
-      <NavItem eventKey={ 4 } href="/employ">จ้าง</NavItem>
+      <NavItem eventKey={ 4 } href="/employ">หาคน</NavItem>
     </LinkContainer>
     <LinkContainer to="/job">
       <NavItem eventKey={ 5 } href="/job">หางาน</NavItem>

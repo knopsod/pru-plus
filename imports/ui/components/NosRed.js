@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Session } from 'meteor/session';
-import { Table, FormControl } from 'react-bootstrap';
+import { Table, FormControl, Alert } from 'react-bootstrap';
 import container from '../../modules/container';
 
 class NosRed extends Component {
@@ -36,107 +36,111 @@ class NosRed extends Component {
 
   render() {
     return (
-      <div>
-        <Table className="NosRed"
-          striped bordered condensed hover>
-          <thead>
-            <tr>
-              <th className="col-xs-2 col-sm-1 text-center" style={{ verticalAlign: 'middle' }} rowSpan="3">
-                ป-ด-ว</th>
+      this.props.nosReds.length ? <Table className="NosRed"
+        striped bordered condensed hover>
+        <thead>
+          <tr>
+            <th className="col-xs-1 col-sm-1 text-center" style={{ verticalAlign: 'middle' }} rowSpan="3">
+              ป-ด-ว</th>
 
-              <th className="col-xs-1 col-sm-1 text-center" style={{ verticalAlign: 'middle' }} rowSpan="3">
-                เบอร์ตัดออก</th>
+            <th className="col-xs-1 col-sm-1 text-center" style={{ verticalAlign: 'middle' }} rowSpan="3">
+              เบอร์ตัดออก</th>
 
-              <th className="col-xs-5 col-sm-5 text-center" style={{ verticalAlign: 'middle' }} colSpan="5">
-                อัตราจ่าย</th>
+            <th className="col-xs-5 col-sm-5 text-center" style={{ verticalAlign: 'middle' }} colSpan="5">
+              อัตราจ่าย</th>
 
-            </tr>
+            <th className="col-xs-1 col-sm-1 text-center" rowSpan={3} style={{ verticalAlign: 'middle' }}>
+              เสี่ยงจ่ายคืน</th>
 
-            <tr>
-              <th className="col-xs-1 col-xs-offset-3 col-sm-1 col-sm-offset-3">
-                <FormControl type="number" style={{ textAlign: 'right', color: 'red' }}
-                  name="up2ROI"
-                  value={this.state.up2ROI}
-                  onChange={this.handleChange} />
-              </th>
-              <th className="col-xs-1 col-sm-1">
-                <FormControl type="number" style={{ textAlign: 'right', color: 'red' }}
-                  name="down2ROI"
-                  value={this.state.down2ROI}
-                  onChange={this.handleChange} />
-              </th>
-              <th className="col-xs-1 col-sm-1">
-                <FormControl type="number" style={{ textAlign: 'right', color: 'red' }}
-                  name="up3ROI"
-                  value={this.state.up3ROI}
-                  onChange={this.handleChange} />
-              </th>
-              <th className="col-xs-1 col-sm-1">
-                <FormControl type="number" style={{ textAlign: 'right', color: 'red' }}
-                  name="permuteROI"
-                  value={this.state.permuteROI}
-                  onChange={this.handleChange} />
-              </th>
-              <th className="col-xs-1 col-sm-1">
-                <FormControl type="number" style={{ textAlign: 'right', color: 'red' }}
-                  name="down3ROI"
-                  value={this.state.down3ROI}
-                  onChange={this.handleChange} />
-              </th>
-            </tr>
+          </tr>
 
-            <tr>
-              
-              <th className="col-xs-1 col-xs-offset-3 col-sm-1 col-sm-offset-3 text-center">2บน</th>
-              <th className="col-xs-1 col-sm-1 text-center">2ล่าง</th>
-              <th className="col-xs-1 col-sm-1 text-center">3ตรง</th>
-              <th className="col-xs-1 col-sm-1 text-center">3โต๊ด</th>
-              <th className="col-xs-1 col-sm-1 text-center">3ล่าง</th>
-            </tr>
-          </thead>
+          <tr>
+            <th className="col-xs-1 col-xs-offset-3 col-sm-1 col-sm-offset-3 text-center">2บน</th>
+            <th className="col-xs-1 col-sm-1 text-center">2ล่าง</th>
+            <th className="col-xs-1 col-sm-1 text-center">3ตรง</th>
+            <th className="col-xs-1 col-sm-1 text-center">3โต๊ด</th>
+            <th className="col-xs-1 col-sm-1 text-center">3ล่าง</th>
+          </tr>
 
-          <tbody>
-            { this.props.nosReds.map((nosRed, index) => (<tr key={index}>
-              <td className="col-xs-2 col-sm-1 text-center">{ nosRed.createdDate }</td>
-              <td className="col-xs-1 col-sm-1 text-center" style={{ color: 'red' }}>
-                <b>{ nosRed.no }</b>
-                { nosRed.no.length == 2 ? (<a style={{ color: 'red', textDecoration: 'none' }}> = {nosRed.up2Cutloss}x{nosRed.down2Cutloss}</a>) : '' }
-                { nosRed.no.length == 3 ? (<a style={{ color: 'red', textDecoration: 'none' }}> = {nosRed.up3Cutloss}x{nosRed.permuteCutloss}</a>) : '' }
-                { nosRed.no.length == 3 && nosRed.down3Cutloss ? (<a style={{ color: 'red', textDecoration: 'none' }}> + ({nosRed.down3Cutloss} ล่าง)</a>) : '' }
-              </td>
+          <tr>
+            <th className="col-xs-1 col-xs-offset-3 col-sm-1 col-sm-offset-3">
+              <FormControl type="number" style={{ textAlign: 'right', color: 'red' }}
+                name="up2ROI"
+                value={this.state.up2ROI}
+                onChange={this.handleChange} />
+            </th>
+            <th className="col-xs-1 col-sm-1">
+              <FormControl type="number" style={{ textAlign: 'right', color: 'red' }}
+                name="down2ROI"
+                value={this.state.down2ROI}
+                onChange={this.handleChange} />
+            </th>
+            <th className="col-xs-1 col-sm-1">
+              <FormControl type="number" style={{ textAlign: 'right', color: 'red' }}
+                name="up3ROI"
+                value={this.state.up3ROI}
+                onChange={this.handleChange} />
+            </th>
+            <th className="col-xs-1 col-sm-1">
+              <FormControl type="number" style={{ textAlign: 'right', color: 'red' }}
+                name="permuteROI"
+                value={this.state.permuteROI}
+                onChange={this.handleChange} />
+            </th>
+            <th className="col-xs-1 col-sm-1">
+              <FormControl type="number" style={{ textAlign: 'right', color: 'red' }}
+                name="down3ROI"
+                value={this.state.down3ROI}
+                onChange={this.handleChange} />
+            </th>
+          </tr>
+        </thead>
 
-              <td className="col-xs-1 col-sm-1 text-center">
-                { nosRed.up2Cutloss > 0 ? (<a style={{ color: 'red', textDecoration: 'none' }}>{ nosRed.up2Cutloss }</a>) : '' }
-                { nosRed.up2 ? '/' + nosRed.up2.toLocaleString() : '' }
-              </td>
-              <td className="col-xs-1 col-sm-1 text-center">
-                { nosRed.down2Cutloss > 0 ? (<a style={{ color: 'red', textDecoration: 'none' }}>{ nosRed.down2Cutloss }</a>) : '' }
-                { nosRed.down2 ? '/' + nosRed.down2.toLocaleString() : '' }
-              </td>
-              <td className="col-xs-1 col-sm-1 text-center">
-                { nosRed.up3Cutloss > 0 ? (<a style={{ color: 'red', textDecoration: 'none' }}>{ nosRed.up3Cutloss }</a>) : '' }
-                { nosRed.up3 ? '/' + nosRed.up3.toLocaleString() : '' }
-              </td>
-              <td className="col-xs-1 col-sm-1 text-center">
-                { nosRed.permuteCutloss > 0 ? (<a style={{ color: 'red', textDecoration: 'none' }}>{ nosRed.permuteCutloss }</a>) : '' }
-                { nosRed.permute ? '/' + nosRed.permute.toLocaleString() : '' }
-              </td>
-              <td className="col-xs-1 col-sm-1 text-center">
-                { nosRed.down3Cutloss > 0 ? (<a style={{ color: 'red', textDecoration: 'none' }}>{ nosRed.down3Cutloss }</a>) : '' }
-                { nosRed.down3 ? '/' + nosRed.down3.toLocaleString() : '' }
-              </td>
-            </tr>))}
-          </tbody>
+        <tbody>
+          { this.props.nosReds.map((nosRed, index) => (<tr key={index}>
+            <td className="col-xs-1 col-sm-1 text-center">{ nosRed.createdDate }</td>
+            <td className="col-xs-1 col-sm-1 text-center" style={{ color: 'red' }}>
+              <b>{ nosRed.no }</b>
+              { nosRed.no.length === 2 ? (<a style={{ color: 'red', textDecoration: 'none' }}> = {nosRed.up2Cutloss}x{nosRed.down2Cutloss}</a>) : '' }
+              { nosRed.no.length === 3 ? (<a style={{ color: 'red', textDecoration: 'none' }}> = {nosRed.up3Cutloss}x{nosRed.permuteCutloss}</a>) : '' }
+              { nosRed.no.length === 3 && nosRed.down3Cutloss ? (<a style={{ color: 'red', textDecoration: 'none' }}> + ({nosRed.down3Cutloss} ล่าง)</a>) : '' }
+            </td>
 
-          <tfoot>
-            <tr>
-              <td style={{ textAlign: 'center'}}>รวม</td>
-              <td style={{ textAlign: 'center', color: 'red' }}>{ this.props.nosTotal }</td>
-              <td colSpan={5}></td>
-            </tr>
-          </tfoot>
-        </Table>
-      </div>
+            <td className="col-xs-1 col-sm-1 text-center">
+              { nosRed.up2Cutloss > 0 ? (<a style={{ color: 'red', textDecoration: 'none' }}>{ nosRed.up2Cutloss.toLocaleString() }</a>) : '' }
+              { nosRed.up2 ? '/' + nosRed.up2.toLocaleString() : '' }
+            </td>
+            <td className="col-xs-1 col-sm-1 text-center">
+              { nosRed.down2Cutloss > 0 ? (<a style={{ color: 'red', textDecoration: 'none' }}>{ nosRed.down2Cutloss.toLocaleString() }</a>) : '' }
+              { nosRed.down2 ? '/' + nosRed.down2.toLocaleString() : '' }
+            </td>
+            <td className="col-xs-1 col-sm-1 text-center">
+              { nosRed.up3Cutloss > 0 ? (<a style={{ color: 'red', textDecoration: 'none' }}>{ nosRed.up3Cutloss.toLocaleString() }</a>) : '' }
+              { nosRed.up3 ? '/' + nosRed.up3.toLocaleString() : '' }
+            </td>
+            <td className="col-xs-1 col-sm-1 text-center">
+              { nosRed.permuteCutloss > 0 ? (<a style={{ color: 'red', textDecoration: 'none' }}>{ nosRed.permuteCutloss.toLocaleString() }</a>) : '' }
+              { nosRed.permute ? '/' + nosRed.permute.toLocaleString() : '' }
+            </td>
+            <td className="col-xs-1 col-sm-1 text-center">
+              { nosRed.down3Cutloss > 0 ? (<a style={{ color: 'red', textDecoration: 'none' }}>{ nosRed.down3Cutloss.toLocaleString() }</a>) : '' }
+              { nosRed.down3 ? '/' + nosRed.down3.toLocaleString() : '' }
+            </td>
+            <td className="col-xs-1 col-sm-1 text-center">
+              { nosRed.risk > 0 ? (<a style={{ color: 'red', textDecoration: 'none' }}>{ nosRed.risk.toLocaleString() }</a>) : '' }
+            </td>
+          </tr>))}
+        </tbody>
+
+        <tfoot>
+          <tr>
+            <td style={{ textAlign: 'center'}}>รวม</td>
+            <td style={{ textAlign: 'center', color: 'red' }}>{ this.props.nosTotal }</td>
+            <td colSpan={5}></td>
+            <td />
+          </tr>
+        </tfoot>
+      </Table> : <Alert bsStyle="warning">No cuts yet.</Alert>
     );
   }
 }
