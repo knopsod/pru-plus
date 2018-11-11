@@ -17,7 +17,7 @@ const Index = ({ hasUser }) => (
       </p>
       <br />
       <hr />
-      <p><Link to="/employ" className="btn btn-success">จ้าง</Link></p>
+      <p><Link to="/employ" className="btn btn-success">หาคน</Link></p>
       <hr />
       <p><Link to="/job" className="btn btn-success">หางาน</Link></p>
       <hr />

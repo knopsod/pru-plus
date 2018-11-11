@@ -109,6 +109,8 @@ export default container((props, onData) => {
     permuteCutloss = 0,
     down3Cutloss = 0;
 
+  var risk = 0;
+
   if (subscription.ready()) {
     const bets = Bets.find({}, { sort: { createdAt: -1 } }).fetch();
 
@@ -194,6 +196,9 @@ export default container((props, onData) => {
         down3Cutloss = nos[i].down3 * down3ROI > allIncome ?
           nos[i].down3 - Math.floor(allIncome / down3ROI) : 0;
 
+        risk = (nos[i].up2 * up2ROI) + (nos[i].down2 * down2ROI) +
+          (nos[i].up3 * up3ROI) + (nos[i].permute * permuteROI) + (nos[i].down3 * down3ROI);
+
         nosReds.push({
           createdDate: nos[i].createdDate,
           no: nos[i].no,
@@ -207,8 +212,7 @@ export default container((props, onData) => {
           up3Cutloss,
           permuteCutloss,
           down3Cutloss,
-          risk: (nos[i].up2 * up2ROI) + (nos[i].down2 * down2ROI) +
-            (nos[i].up3 * up3ROI) + (nos[i].permute * permuteROI) + (nos[i].down3 * down3ROI),
+          risk,
         });
       }
     }

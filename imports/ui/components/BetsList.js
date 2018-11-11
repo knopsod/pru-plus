@@ -46,8 +46,8 @@ const BetsList = ({ bets }) => (
       </tr>
     </thead>
     <tbody>
-      { bets.map(({ _id, no, up2, down2, up3, down3, permute, createdDate, broker, createdAt, userId }, index) => 
-        { 
+      { bets.map(({ _id, no, up2, down2, up3, down3, permute,
+        createdDate, broker, createdAt, userId }, index) => {
           var typeOfNo = '';
 
           if ( up2 > 0 && down2 === 0 && up3 === 0 && down3 === 0 && permute === 0 ) typeOfNo = 'บน';
