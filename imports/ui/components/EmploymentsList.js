@@ -6,14 +6,14 @@ import { Meteor } from 'meteor/meteor';
 import Employments from '../../api/employments/employments';
 import container from '../../modules/container';
 
-const handleNav = _id => browserHistory.push(`/employments/${_id}`);
+const handleNav = _id => browserHistory.push(`/employments/${_id}/edit`);
 
 const EmploymentsList = ({ employments }) => (
   employments.length > 0 ? <ListGroup className="EmploymentsList">
-    {employments.map(({ _id, title, userId }) => (
+    {employments.map(({ _id, title, employees }) => (
       <ListGroupItem key={ _id } 
       onClick={ () => handleNav(_id) }>
-        { `${title} ${userId}` }
+        { `${title} (Allowed : ${employees && employees.length})` }
       </ListGroupItem>
     ))}
   </ListGroup> :

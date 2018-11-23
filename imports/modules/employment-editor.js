@@ -14,6 +14,9 @@ const handleUpsert = () => {
     title: document.querySelector('[name="title"]').value.trim(),
     body: document.querySelector('[name="body"]').value.trim(),
     userId: Meteor.userId(),
+    employees: [
+      { userId: Meteor.userId(), allowed: true },
+    ],
   };
 
   if (employment && employment._id) upsert._id = employment._id;
@@ -24,7 +27,7 @@ const handleUpsert = () => {
     } else {
       component.employmentEditorForm.reset();
       Bert.alert(confirmation, 'success');
-      browserHistory.push(`/employments/${response.insertedId || employment._id}`);
+      browserHistory.push(`/employments/${response.insertedId || employment._id}/edit`);
     }
   });
 };

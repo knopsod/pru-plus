@@ -30,6 +30,13 @@ Employments.schema = new SimpleSchema({
     type: String,
     label: 'The user ID of the employment.',
   },
+  employees: {
+    type: Array,
+    label: 'The employees of the employment.',
+  },
+  'employees.$': Object,
+  'employees.$.userId': String,
+  'employees.$.allowed': Boolean,
 });
 
 Employments.attachSchema(Employments.schema);
@@ -38,4 +45,5 @@ Factory.define('employment', Employments, {
   title: () => 'Factory Title',
   body: () => 'Factory Body',
   userId: () => 'Factory User ID',
+  employees: () => 'Factory Employees',
 });

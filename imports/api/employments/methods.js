@@ -10,6 +10,10 @@ export const upsertEmployment = new ValidatedMethod({
     title: { type: String, optional: true },
     body: { type: String, optional: true },
     userId: { type: String, optional: true },
+    employees: { type: Array, optional: true },
+    'employees.$': { type: Object, optional: true },
+    'employees.$.userId': { type: String, optional: true },
+    'employees.$.allowed': { type: Boolean, optional: true },
   }).validator(),
   run(employment) {
     return Employments.upsert({ _id: employment._id },

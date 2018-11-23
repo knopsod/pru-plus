@@ -39,6 +39,12 @@ const ViewEmployment = ({ employment }) => {
         </ButtonToolbar>
       </div>
       { employment && employment.body }
+      <ul>
+        { employment && employment.employees.length ?
+          employment.employees.map(({ userId, allowed }) => <li key={userId}>{`${userId} ${allowed}`}</li>)
+          : undefined
+        }
+      </ul>
     </div>
   ) : <NotFound />;
 };

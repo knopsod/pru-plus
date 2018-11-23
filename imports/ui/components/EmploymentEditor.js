@@ -35,6 +35,18 @@ export default class EmploymentEditor extends React.Component {
           placeholder="Congratulations! Today is your day. You're off to Great Places! You're off and away!"
         />
       </FormGroup>
+      { employment ?
+        <FormGroup>
+          <ControlLabel>Employees</ControlLabel>
+          <ul>
+            { employment && employment.employees.length ?
+              employment.employees.map(({ userId, allowed }) => <li key={userId}>{`${userId} ${allowed}`}</li>)
+              : undefined
+            }
+          </ul>
+        </FormGroup>
+        : undefined
+      }
       <Button type="submit" bsStyle="success">
         { employment && employment._id ? 'Save Changes' : 'Add Employment' }
       </Button>
