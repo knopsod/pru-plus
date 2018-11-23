@@ -30,6 +30,11 @@ import ViewBet from '../../ui/pages/ViewBet.js';
 
 import Nos from '../../ui/pages/Nos';
 
+import Employments from '../../ui/pages/Employments';
+import NewEmployment from '../../ui/pages/NewEmployment';
+import EditEmployment from '../../ui/pages/EditEmployment';
+import ViewEmployment from '../../ui/pages/ViewEmployment';
+
 const authenticate = (nextState, replace) => {
   if (!Meteor.loggingIn() && !Meteor.userId()) {
     replace({
@@ -48,6 +53,7 @@ Meteor.startup(() => {
         <Route name="newDocument" path="/documents/new" component={ NewDocument } onEnter={ authenticate } />
         <Route name="editDocument" path="/documents/:_id/edit" component={ EditDocument } onEnter={ authenticate } />
         <Route name="viewDocument" path="/documents/:_id" component={ ViewDocument } onEnter={ authenticate } />
+
         <Route name="login" path="/login" component={ Login } />
         <Route name="recover-password" path="/recover-password" component={ RecoverPassword } />
         <Route name="reset-password" path="/reset-password/:token" component={ ResetPassword } />
@@ -66,6 +72,11 @@ Meteor.startup(() => {
         <Route name="viewBet" path="/bets/:_id" component={ ViewBet } onEnter={ authenticate } />
 
         <Route name="nos" path="/nos" component={ Nos } onEnter={ authenticate } />
+
+        <Route name="employments" path="/employments" component={ Employments } onEnter={ authenticate } />
+        <Route name="newEmployments" path="/employments/new" component={ NewEmployment } onEnter={ authenticate } />
+        <Route name="editEmployments" path="/employments/:_id/edit" component={ EditEmployment } onEnter={ authenticate } />
+        <Route name="viewEmployments" path="/employments/:_id" component={ ViewEmployment } onEnter={ authenticate } />
 
         <Route path="*" component={ NotFound } />
       </Route>
