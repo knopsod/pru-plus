@@ -6,7 +6,7 @@ import { Meteor } from 'meteor/meteor';
 import Employments from '../../api/employments/employments';
 import container from '../../modules/container';
 
-const handleNav = _id => browserHistory.push(`/employments/${_id}/edit`);
+const handleNav = _id => browserHistory.push(`/employments/${_id}`);
 
 const EmploymentsList = ({ employments }) => (
   employments.length > 0 ? <ListGroup className="EmploymentsList">

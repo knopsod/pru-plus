@@ -13,13 +13,13 @@ const Index = ({ hasUser }) => (
         paddingTop: '8rem',
       }}>
       <p>
-        <h2>Lotto Go Fast</h2>
+        <span>Lotto Go Fast</span>
       </p>
       <br />
       <hr />
-      <p><Link to="/employ" className="btn btn-success">หาคน</Link></p>
+      <p><Link to="/employments" className="btn btn-success">สร้างงาน</Link></p>
       <hr />
-      <p><Link to="/job" className="btn btn-success">หางาน</Link></p>
+      <p><Link to="/jobs" className="btn btn-success">หางาน</Link></p>
       <hr />
     </Jumbotron>
   </div>

@@ -41,7 +41,7 @@ const ViewEmployment = ({ employment }) => {
       { employment && employment.body }
       <ul>
         { employment && employment.employees.length ?
-          employment.employees.map(({ userId, allowed }) => <li key={userId}>{`${userId} ${allowed}`}</li>)
+          employment.employees.map(({ user, allowed }) => <li key={user._id}>{`${user.profile.name.first} ${user.profile.name.last} ${allowed}`}</li>)
           : undefined
         }
       </ul>

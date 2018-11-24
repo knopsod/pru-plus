@@ -11,15 +11,16 @@ const handleUpsert = () => {
   const { employment } = component.props;
   const confirmation = employment && employment._id ? 'Employment updated!' : 'Employment added!';
   const upsert = {
+    lottoDate: new Date(),
     title: document.querySelector('[name="title"]').value.trim(),
     body: document.querySelector('[name="body"]').value.trim(),
     userId: Meteor.userId(),
-    employees: [
-      { userId: Meteor.userId(), allowed: true },
-    ],
   };
 
-  if (employment && employment._id) upsert._id = employment._id;
+  if (employment && employment._id) {
+    upsert._id = employment._id;
+    upsert.employees = employment.employees;
+  } else upsert.employees = [{ user: Meteor.user(), allowed: true }];
 
   upsertEmployment.call(upsert, (error, response) => {
     if (error) {
@@ -27,7 +28,7 @@ const handleUpsert = () => {
     } else {
       component.employmentEditorForm.reset();
       Bert.alert(confirmation, 'success');
-      browserHistory.push(`/employments/${response.insertedId || employment._id}/edit`);
+      browserHistory.push(`/employments/${response.insertedId || employment._id}`);
     }
   });
 };

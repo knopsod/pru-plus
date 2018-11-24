@@ -4,6 +4,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 import employmentEditor from '../../modules/employment-editor.js';
+import DatePicker from 'react-bootstrap-date-picker';
+import TimePicker from 'react-bootstrap-time-picker';
 
 export default class EmploymentEditor extends React.Component {
   componentDidMount() {
@@ -17,6 +19,16 @@ export default class EmploymentEditor extends React.Component {
       ref={ form => (this.employmentEditorForm = form) }
       onSubmit={ event => event.preventDefault() }
     >
+      <FormGroup>
+        <ControlLabel>Date</ControlLabel>
+        {/* https://www.npmjs.com/package/react-bootstrap-date-picker */}
+        <DatePicker name="date" dateFormat="YYYY-MM-DD" />
+      </FormGroup>
+      <FormGroup>
+        <ControlLabel>Time</ControlLabel>
+        {/* https://www.npmjs.com/package/react-bootstrap-time-picker */}
+        <TimePicker name="time" step={10} />
+      </FormGroup>
       <FormGroup>
         <ControlLabel>Title</ControlLabel>
         <FormControl
@@ -40,7 +52,7 @@ export default class EmploymentEditor extends React.Component {
           <ControlLabel>Employees</ControlLabel>
           <ul>
             { employment && employment.employees.length ?
-              employment.employees.map(({ userId, allowed }) => <li key={userId}>{`${userId} ${allowed}`}</li>)
+              employment.employees.map(({ user, allowed }) => <li key={user._id}>{`${user.profile.name.first} ${user.profile.name.last} ${allowed}`}</li>)
               : undefined
             }
           </ul>
