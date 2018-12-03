@@ -6,11 +6,52 @@ import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 import employmentEditor from '../../modules/employment-editor.js';
 import DatePicker from 'react-bootstrap-date-picker';
 import TimePicker from 'react-bootstrap-time-picker';
+// import Switch from 'react-bootstrap-switch';
+// import Toggle from 'react-bootstrap-toggle';
 
 export default class EmploymentEditor extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleDateChange = this.handleDateChange.bind(this);
+    this.handleTimeChange = this.handleTimeChange.bind(this);
+    this.onToggle = this.onToggle.bind(this);
+
+    this.state = { 
+      date: new Date().toISOString(),
+      formattedValue: '',
+      time: 0,
+      toggleActive: false,
+    };
+  }
+
   componentDidMount() {
     employmentEditor({ component: this });
-    setTimeout(() => { document.querySelector('[name="title"]').focus(); }, 0);
+    setTimeout(() => { document.querySelector('[name="date"]').focus(); }, 0);
+
+    const { employment } = this.props;
+    if (employment) {
+      const { date, time } = employment;
+      this.setState({ date, time });
+    }
+  }
+
+  handleDateChange(value, formattedValue) {
+    this.setState({ date: value });
+  }
+
+  handleTimeChange(time) {
+    this.setState({ time });
+  }
+
+  handleSwitch(elem, state) {
+    console.log('handleSwitch. elem:', elem);
+    console.log('name:', elem.props.name);
+    console.log('new state:', state);
+  }
+
+  onToggle() {
+    this.setState({ toggleActive: !this.state.toggleActive });
   }
 
   render() {
@@ -22,12 +63,14 @@ export default class EmploymentEditor extends React.Component {
       <FormGroup>
         <ControlLabel>Date</ControlLabel>
         {/* https://www.npmjs.com/package/react-bootstrap-date-picker */}
-        <DatePicker name="date" dateFormat="YYYY-MM-DD" />
+        <DatePicker name="date" dateFormat="YYYY-MM-DD"
+          onChange={this.handleDateChange} value={ this.state.date } />
       </FormGroup>
       <FormGroup>
         <ControlLabel>Time</ControlLabel>
         {/* https://www.npmjs.com/package/react-bootstrap-time-picker */}
-        <TimePicker name="time" step={10} />
+        <TimePicker name="time" step={10} format={24}
+          onChange={this.handleTimeChange} value={ this.state.time } />
       </FormGroup>
       <FormGroup>
         <ControlLabel>Title</ControlLabel>
@@ -56,6 +99,13 @@ export default class EmploymentEditor extends React.Component {
               : undefined
             }
           </ul>
+          {/* <Switch onChange={(el, state) => this.handleSwitch(el, state)} name='test' /> */}
+          {/* <Toggle
+            onClick={this.onToggle}
+            on={<h2>ON</h2>}
+            off={<h2>OFF</h2>}
+            active={this.state.toggleActive}
+          /> */}
         </FormGroup>
         : undefined
       }

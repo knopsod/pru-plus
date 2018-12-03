@@ -8,6 +8,7 @@ import Employments from '../../api/employments/employments';
 import { removeEmployment } from '../../api/employments/methods';
 import NotFound from './NotFound';
 import container from '../../modules/container';
+import { timeFromInt } from 'time-number';
 
 const handleEdit = (_id) => {
   browserHistory.push(`/employments/${_id}/edit`);
@@ -30,14 +31,18 @@ const ViewEmployment = ({ employment }) => {
   return employment ? (
     <div className="ViewEmployment">
       <div className="page-header clearfix">
-        <h4 className="pull-left">{ employment && employment.title }</h4>
+        <h4 className="pull-left">
+          { employment && employment.date.substr(0, 10) } { employment && timeFromInt(employment.time) }
+        </h4>
         <ButtonToolbar className="pull-right">
           <ButtonGroup bsSize="small">
             <Button onClick={ () => handleEdit(employment._id) }>Edit</Button>
-            <Button onClick={ () => handleRemove(employment._id) } className="text-danger">Delete</Button>
+            <Button onClick={ () => handleRemove(employment._id) }
+              className="text-danger">Delete</Button>
           </ButtonGroup>
         </ButtonToolbar>
       </div>
+      <h4>{ employment && employment.title }</h4>
       { employment && employment.body }
       <ul>
         { employment && employment.employees.length ?

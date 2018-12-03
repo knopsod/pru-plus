@@ -18,9 +18,14 @@ Employments.deny({
 });
 
 Employments.schema = new SimpleSchema({
-  lottoDate: {
-    type: Date,
-    label: 'The lotto date of the employment.',
+  date: {
+    type: String,
+    label: 'The date of the employment.',
+    optional: true,
+  },
+  time: {
+    type: String,
+    label: 'The time of the employment.',
     optional: true,
   },
   title: {
@@ -60,7 +65,8 @@ Employments.schema = new SimpleSchema({
 Employments.attachSchema(Employments.schema);
 
 Factory.define('employment', Employments, {
-  lottoDate: () => 'Factory Lotto Date',
+  date: () => 'Factory Lotto Date',
+  time: () => 'Factory Lotto Time',
   title: () => 'Factory Title',
   body: () => 'Factory Body',
   userId: () => 'Factory User ID',

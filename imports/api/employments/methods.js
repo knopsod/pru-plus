@@ -7,7 +7,8 @@ export const upsertEmployment = new ValidatedMethod({
   name: 'employments.upsert',
   validate: new SimpleSchema({
     _id: { type: String, optional: true },
-    lottoDate: { type: Date, optional: true },
+    date: { type: String, optional: true },
+    time: { type: String, optional: true },
     title: { type: String, optional: true },
     body: { type: String, optional: true },
     userId: { type: String, optional: true },

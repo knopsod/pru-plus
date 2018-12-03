@@ -11,7 +11,8 @@ const handleUpsert = () => {
   const { employment } = component.props;
   const confirmation = employment && employment._id ? 'Employment updated!' : 'Employment added!';
   const upsert = {
-    lottoDate: new Date(),
+    date: document.querySelector('[name="date"]').value.trim(),
+    time: document.querySelector('[name="time"]').value.trim(),
     title: document.querySelector('[name="title"]').value.trim(),
     body: document.querySelector('[name="body"]').value.trim(),
     userId: Meteor.userId(),
@@ -36,6 +37,12 @@ const handleUpsert = () => {
 const validate = () => {
   $(component.employmentEditorForm).validate({
     rules: {
+      date: {
+        required: true,
+      },
+      time: {
+        required: true,
+      },
       title: {
         required: true,
       },
@@ -44,6 +51,12 @@ const validate = () => {
       },
     },
     messages: {
+      date: {
+        required: 'Need a date in here.',
+      },
+      time: {
+        required: 'Need a time in here.',
+      },
       title: {
         required: 'Need a title in here, Seuss.',
       },
