@@ -12,7 +12,8 @@ const handleUpsert = () => {
   const confirmation = employment && employment._id ? 'Employment updated!' : 'Employment added!';
   const upsert = {
     date: document.querySelector('[name="date"]').value.trim(),
-    time: document.querySelector('[name="time"]').value.trim(),
+    startTime: document.querySelector('[name="startTime"]').value.trim(),
+    endTime: document.querySelector('[name="endTime"]').value.trim(),
     title: document.querySelector('[name="title"]').value.trim(),
     body: document.querySelector('[name="body"]').value.trim(),
     userId: Meteor.userId(),
@@ -40,7 +41,10 @@ const validate = () => {
       date: {
         required: true,
       },
-      time: {
+      startTime: {
+        required: true,
+      },
+      endTime: {
         required: true,
       },
       title: {
@@ -54,8 +58,11 @@ const validate = () => {
       date: {
         required: 'Need a date in here.',
       },
-      time: {
-        required: 'Need a time in here.',
+      startTime: {
+        required: 'Need a start time in here.',
+      },
+      endTime: {
+        required: 'Need a end time in here.',
       },
       title: {
         required: 'Need a title in here, Seuss.',

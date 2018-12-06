@@ -23,9 +23,14 @@ Employments.schema = new SimpleSchema({
     label: 'The date of the employment.',
     optional: true,
   },
-  time: {
+  startTime: {
     type: String,
-    label: 'The time of the employment.',
+    label: 'The start time of the employment.',
+    optional: true,
+  },
+  endTime: {
+    type: String,
+    label: 'The end time of the employment.',
     optional: true,
   },
   title: {
@@ -65,8 +70,9 @@ Employments.schema = new SimpleSchema({
 Employments.attachSchema(Employments.schema);
 
 Factory.define('employment', Employments, {
-  date: () => 'Factory Lotto Date',
-  time: () => 'Factory Lotto Time',
+  date: () => 'Factory Date',
+  startTime: () => 'Factory Start Time',
+  endTime: () => 'Factory End Time',
   title: () => 'Factory Title',
   body: () => 'Factory Body',
   userId: () => 'Factory User ID',

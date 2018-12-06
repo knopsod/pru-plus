@@ -14,13 +14,15 @@ export default class EmploymentEditor extends React.Component {
     super(props);
 
     this.handleDateChange = this.handleDateChange.bind(this);
-    this.handleTimeChange = this.handleTimeChange.bind(this);
+    this.handleStartTimeChange = this.handleStartTimeChange.bind(this);
+    this.handleEndTimeChange = this.handleEndTimeChange.bind(this);
     this.onToggle = this.onToggle.bind(this);
 
     this.state = { 
       date: new Date().toISOString(),
       formattedValue: '',
-      time: 0,
+      startTime: 0,
+      endTime: 0,
       toggleActive: false,
     };
   }
@@ -31,8 +33,8 @@ export default class EmploymentEditor extends React.Component {
 
     const { employment } = this.props;
     if (employment) {
-      const { date, time } = employment;
-      this.setState({ date, time });
+      const { date, startTime, endTime } = employment;
+      this.setState({ date, startTime, endTime });
     }
   }
 
@@ -40,8 +42,12 @@ export default class EmploymentEditor extends React.Component {
     this.setState({ date: value });
   }
 
-  handleTimeChange(time) {
-    this.setState({ time });
+  handleStartTimeChange(startTime) {
+    this.setState({ startTime });
+  }
+
+  handleEndTimeChange(endTime) {
+    this.setState({ endTime });
   }
 
   handleSwitch(elem, state) {
@@ -67,10 +73,16 @@ export default class EmploymentEditor extends React.Component {
           onChange={this.handleDateChange} value={ this.state.date } />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Time</ControlLabel>
+        <ControlLabel>Start time</ControlLabel>
         {/* https://www.npmjs.com/package/react-bootstrap-time-picker */}
-        <TimePicker name="time" step={10} format={24}
-          onChange={this.handleTimeChange} value={ this.state.time } />
+        <TimePicker name="startTime" step={10} format={24}
+          onChange={this.handleStartTimeChange} value={ this.state.startTime } />
+      </FormGroup>
+      <FormGroup>
+        <ControlLabel>End time</ControlLabel>
+        {/* https://www.npmjs.com/package/react-bootstrap-time-picker */}
+        <TimePicker name="endTime" step={10} format={24}
+          onChange={this.handleEndTimeChange} value={ this.state.endTime } />
       </FormGroup>
       <FormGroup>
         <ControlLabel>Title</ControlLabel>
@@ -92,7 +104,7 @@ export default class EmploymentEditor extends React.Component {
       </FormGroup>
       { employment ?
         <FormGroup>
-          <ControlLabel>Employees</ControlLabel>
+          <ControlLabel>Employee{ employment.employees.length > 1 ? 's' : undefined }</ControlLabel>
           <ul>
             { employment && employment.employees.length ?
               employment.employees.map(({ user, allowed }) => <li key={user._id}>{`${user.profile.name.first} ${user.profile.name.last} ${allowed}`}</li>)
