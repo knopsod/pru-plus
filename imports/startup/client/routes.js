@@ -35,6 +35,8 @@ import NewEmployment from '../../ui/pages/NewEmployment';
 import EditEmployment from '../../ui/pages/EditEmployment';
 import ViewEmployment from '../../ui/pages/ViewEmployment';
 
+import Jobs from '../../ui/pages/Jobs';
+
 const authenticate = (nextState, replace) => {
   if (!Meteor.loggingIn() && !Meteor.userId()) {
     replace({
@@ -77,6 +79,8 @@ Meteor.startup(() => {
         <Route name="newEmployments" path="/employments/new" component={ NewEmployment } onEnter={ authenticate } />
         <Route name="editEmployments" path="/employments/:_id/edit" component={ EditEmployment } onEnter={ authenticate } />
         <Route name="viewEmployments" path="/employments/:_id" component={ ViewEmployment } onEnter={ authenticate } />
+
+        <Route name="jobs" path="/jobs" component={ Jobs } onEnter={ authenticate } />
 
         <Route path="*" component={ NotFound } />
       </Route>

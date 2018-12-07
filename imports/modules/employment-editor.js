@@ -16,12 +16,16 @@ const handleUpsert = () => {
     endTime: document.querySelector('[name="endTime"]').value.trim(),
     title: document.querySelector('[name="title"]').value.trim(),
     body: document.querySelector('[name="body"]').value.trim(),
-    userId: Meteor.userId(),
   };
 
   if (employment && employment._id) {
     upsert._id = employment._id;
-  } else upsert.employees = [{ user: Meteor.user(), allowed: true }];
+  } else {
+    upsert.userId = Meteor.userId();
+    console.log(Meteor.user());
+    upsert.employer = Meteor.user();
+    upsert.employees = [{ user: Meteor.user(), allowed: true }];
+  }
 
   upsertEmployment.call(upsert, (error, response) => {
     if (error) {

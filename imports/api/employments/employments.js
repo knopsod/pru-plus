@@ -48,6 +48,20 @@ Employments.schema = new SimpleSchema({
     label: 'The user ID of the employment.',
     optional: true,
   },
+  employer: {
+    type: Object,
+    label: 'The employer of the employment.',
+    optional: true,
+  },
+  'employer.emails': { type: Array, optional: true },
+  'employer.emails.$': { type: Object, optional: true },
+  'employer.emails.$.address': { type: String, optional: true },
+  'employer.emails.$.verified': { type: Boolean, optional: true },
+  'employer.profile': { type: Object, optional: true },
+  'employer.profile.name': { type: Object, optional: true },
+  'employer.profile.name.first': { type: String, optional: true },
+  'employer.profile.name.last': { type: String, optional: true },
+  'employer._id': { type: String, optional: true },
   employees: {
     type: Array,
     label: 'The employees of the employment.',
@@ -76,5 +90,6 @@ Factory.define('employment', Employments, {
   title: () => 'Factory Title',
   body: () => 'Factory Body',
   userId: () => 'Factory User ID',
+  employer: () => 'Factory Employer',
   employees: () => 'Factory Employees',
 });

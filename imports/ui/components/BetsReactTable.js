@@ -140,6 +140,7 @@ const BetsReactTable = ({ bets }) => (
               onClick={() => handleRemove(_id)}>Remove</button>
             : undefined
         ),
+        maxWidth: 84,
         style: {
           textAlign: 'center',
         },
