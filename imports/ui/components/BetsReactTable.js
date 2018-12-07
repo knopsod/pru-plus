@@ -48,9 +48,9 @@ const BetsReactTable = ({ bets }) => (
         },
       },
       {
-        Header: 'ฉบับที่',
+        Header: 'ใบที่',
         accessor: 'broker',
-        maxWidth: 72,
+        maxWidth: 48,
         style: {
           textAlign: 'center',
         },
@@ -65,7 +65,15 @@ const BetsReactTable = ({ bets }) => (
         },
       },
       {
-        maxWidth: 72,
+        Header: '%',
+        accessor: 'percent',
+        maxWidth: 32,
+        style: {
+          textAlign: 'center'
+        },
+      },
+      {
+        maxWidth: 96,
         Cell: ({ original: { up2, down2, up3, permute, down3 } }) => {
           if (up2 && !down2 && !up3 && !permute && !down3) return 'บน';
           else if (!up2 && down2 && !up3 && !permute && !down3) return 'ล่าง';
@@ -83,7 +91,7 @@ const BetsReactTable = ({ bets }) => (
       {
         Header: '2บน',
         accessor: 'up2',
-        maxWidth: 72,
+        maxWidth: 64,
         Cell: ({ original: { up2 } }) => (up2 || undefined),
         style: {
           textAlign: 'center',
@@ -92,7 +100,7 @@ const BetsReactTable = ({ bets }) => (
       {
         Header: '2ล่าง',
         accessor: 'down2',
-        maxWidth: 72,
+        maxWidth: 64,
         Cell: ({ original: { down2 } }) => (down2 || undefined),
         style: {
           textAlign: 'center',
@@ -101,7 +109,7 @@ const BetsReactTable = ({ bets }) => (
       {
         Header: '3ตรง',
         accessor: 'up3',
-        maxWidth: 72,
+        maxWidth: 64,
         Cell: ({ original: { up3 } }) => (up3 || undefined),
         style: {
           textAlign: 'center',
@@ -110,7 +118,7 @@ const BetsReactTable = ({ bets }) => (
       {
         Header: '3โต๊ด',
         accessor: 'permute',
-        maxWidth: 72,
+        maxWidth: 64,
         Cell: ({ original: { permute } }) => (permute || undefined),
         style: {
           textAlign: 'center',
@@ -119,7 +127,7 @@ const BetsReactTable = ({ bets }) => (
       {
         Header: '3ล่าง',
         accessor: 'down3',
-        maxWidth: 72,
+        maxWidth: 64,
         Cell: ({ original: { down3 } }) => (down3 || undefined),
         style: {
           textAlign: 'center',

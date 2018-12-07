@@ -16,14 +16,12 @@ const NosList = (props) => (
         <th className="col-xs-1 col-sm-1 text-center" style={{ verticalAlign: 'middle' }}
           rowSpan={2}>เบอร์</th>
 
-        <th className="col-xs-1 col-xs-offset-3 col-sm-1 col-sm-offset-3 text-center" colSpan={5} style={{ color: 'red' }}>
-          { props.allTotal.toLocaleString() } .-
+        <th className="col-xs-1 col-xs-offset-3 col-sm-1 col-sm-offset-3 text-center" colSpan={5}>
+          ยอดรวม <strong style={{ color: 'red' }}>{ props.allTotal.toLocaleString() } .-</strong>
         </th>
 
         <th className="col-xs-1 col-sm-1 text-center" rowSpan={2} style={{ verticalAlign: 'middle' }}>
-          <strong style={{ color: 'red' }}>{ props.allIncome.toLocaleString() } .- </strong> 
-          <br />
-          (หัก % แล้ว)
+          หัก % ผู้ส่ง และค่าพิมพ์ 0.5% คงเหลือ <strong style={{ color: 'red' }}>{ props.allIncome.toLocaleString() } .- </strong> 
         </th>
       </tr>
 

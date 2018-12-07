@@ -59,7 +59,7 @@ const BetsList = ({ bets }) => (
           if ( up2 === 0 && down2 === 0 && up3 > 0 && down3 === 0 && permute > 0 ) typeOfNo = '' + up3 + 'x' + permute;
 
           return ( <tr key={ _id }>
-            <td className="col-xs-1 col-sm-1 text-center">{ (index + 1) }</td>
+            <td className="col-xs-1 col-sm-1 text-center">{ (index + 1) }x</td>
             <td className="col-xs-2 col-sm-2 text-center">{ moment(createdAt).format('YYYY-MM-DD HH:mm:ss') }</td>
             <td className="col-xs-1 col-sm-1 text-center">{ broker }</td>
             <td className="col-xs-1 col-sm-1 text-center"><b>{ no }</b></td>

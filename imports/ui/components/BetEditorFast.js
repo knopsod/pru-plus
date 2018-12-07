@@ -241,7 +241,7 @@ class BetEditorFast extends React.Component {
       </FormGroup>
 
       <FormGroup>
-        <ControlLabel>ฉบับที่</ControlLabel>
+        <ControlLabel>ใบที่</ControlLabel>
         <FormControl type="text" name="broker" 
           ref="broker"
           value={this.state.broker}
@@ -249,7 +249,7 @@ class BetEditorFast extends React.Component {
       </FormGroup>
 
       <FormGroup>
-        <ControlLabel>เปอร์เซ็นต์ (+{ this.state.fee })</ControlLabel>
+        <ControlLabel>% ผู้ส่ง (ไม่รวมค่าพิมพ์ +{ this.state.fee }%)</ControlLabel>
         <FormControl type="number" name="percent" 
           ref="percent" min={ 0 } max={ 99 }
           value={this.state.percent}
