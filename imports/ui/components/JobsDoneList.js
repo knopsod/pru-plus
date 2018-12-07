@@ -14,7 +14,7 @@ const JobsDoneList = ({ employments }) => (
     {employments.map(({ _id, date, startTime, endTime, title, employees }) => (
       <ListGroupItem key={ _id } 
       onClick={ () => handleNav(_id) }>
-        { `${date.substr(0, 10)} at ${timeFromInt(startTime)}-${timeFromInt(endTime)} ${title} ` }<span className='pull-right'>{ `(${employees && employees.length} employee${employees && employees.length > 1 ? 's': ''})` }</span>
+        { `${date.substr(0, 10)} at ${timeFromInt(startTime)}-${timeFromInt(endTime)} ${title} ` }<button className="btn btn-link btn-xs pull-right">Feedback</button>
       </ListGroupItem>
     ))}
   </ListGroup> :
