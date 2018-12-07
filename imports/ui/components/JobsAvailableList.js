@@ -11,10 +11,10 @@ const handleNav = _id => browserHistory.push(`/employments/${_id}`);
 
 const JobsAvailableList = ({ employments }) => (
   employments.length > 0 ? <ListGroup className="EmploymentsList">
-    {employments.map(({ _id, date, startTime, endTime, title, employees }) => (
+    {employments.map(({ _id, date, startTime, endTime, title }) => (
       <ListGroupItem key={ _id } 
       onClick={ () => handleNav(_id) }>
-        { `${date.substr(0, 10)} at ${timeFromInt(startTime)}-${timeFromInt(endTime)} ${title} ` }<button className="btn btn-link btn-xs pull-right">Request</button>
+        { `${date.substr(0, 10)}, ${timeFromInt(startTime)}-${timeFromInt(endTime)} ${title} ` }<button className="btn btn-link btn-xs pull-right">Request</button>
       </ListGroupItem>
     ))}
   </ListGroup> :

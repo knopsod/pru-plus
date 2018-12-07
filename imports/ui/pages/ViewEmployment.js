@@ -32,7 +32,7 @@ const ViewEmployment = ({ employment }) => {
     <div className="ViewEmployment">
       <div className="page-header clearfix">
         <h4 className="pull-left">
-          { employment && employment.date.substr(0, 10) } at { employment && timeFromInt(employment.startTime) }-{ employment && timeFromInt(employment.endTime) }
+          { employment && employment.date.substr(0, 10) }, { employment && timeFromInt(employment.startTime) }-{ employment && timeFromInt(employment.endTime) }
         </h4>
         <ButtonToolbar className="pull-right">
           <ButtonGroup bsSize="small">
