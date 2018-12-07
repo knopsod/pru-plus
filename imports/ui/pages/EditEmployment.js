@@ -9,7 +9,7 @@ import { timeFromInt } from 'time-number';
 
 const EditEmployment = ({ employment }) => (employment ? (
   <div className="EditEmployment">
-    <h4 className="page-header">Editing "{ employment.date.substr(0, 10) } at { timeFromInt(employment.startTime) } - { timeFromInt(employment.endTime) }"</h4>
+    <h4 className="page-header">Editing "{ employment.date.substr(0, 10) } at { timeFromInt(employment.startTime) }-{ timeFromInt(employment.endTime) }"</h4>
     <EmploymentEditor employment={ employment }/>
   </div>
 ) : <NotFound />);

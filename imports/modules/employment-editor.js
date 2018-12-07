@@ -21,7 +21,6 @@ const handleUpsert = () => {
 
   if (employment && employment._id) {
     upsert._id = employment._id;
-    upsert.employees = employment.employees;
   } else upsert.employees = [{ user: Meteor.user(), allowed: true }];
 
   upsertEmployment.call(upsert, (error, response) => {
