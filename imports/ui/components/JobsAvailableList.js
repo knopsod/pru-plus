@@ -7,13 +7,15 @@ import Employments from '../../api/employments/employments';
 import container from '../../modules/container';
 import { timeFromInt } from 'time-number';
 
-const handleNav = _id => browserHistory.push(`/employments/${_id}`);
+const handleNav = (_id, employees) => {
+  console.log(_id, employees);
+};
 
 const JobsAvailableList = ({ employments }) => (
   employments.length > 0 ? <ListGroup className="EmploymentsList">
-    {employments.map(({ _id, date, startTime, endTime, title, employer }) => (
+    {employments.map(({ _id, date, startTime, endTime, title, employer, employees }) => (
       <ListGroupItem key={ _id } 
-      onClick={ () => handleNav(_id) }>
+      onClick={ () => handleNav(_id, employees) }>
         { `${date.substr(0, 10)}, ${timeFromInt(startTime)}-${timeFromInt(endTime)}, Title : ${title}, by : ${employer.profile.name.first} ${employer.profile.name.last.substr(0, 1)}.` }<a className="btn btn-link btn-xs pull-right">Join</a>
       </ListGroupItem>
     ))}

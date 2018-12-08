@@ -2,7 +2,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import { Meteor } from 'meteor/meteor';
+import { FormGroup, ControlLabel, FormControl, Button, Checkbox } from 'react-bootstrap';
 import employmentEditor from '../../modules/employment-editor.js';
 import DatePicker from 'react-bootstrap-date-picker';
 import TimePicker from 'react-bootstrap-time-picker';
@@ -107,8 +108,13 @@ export default class EmploymentEditor extends React.Component {
           <ControlLabel>Employee{ employment.employees.length > 1 ? 's' : undefined }</ControlLabel>
           <ul>
             { employment && employment.employees.length ?
-              employment.employees.map(({ user, allowed }) => <li key={user._id}>{`${user.profile.name.first} ${user.profile.name.last} ${allowed}`}</li>)
-              : undefined
+              employment.employees.map(({ user, allowed }) =>
+                <li key={user._id}>
+                  <Checkbox defaultChecked={allowed} disabled={user._id === Meteor.userId()}>
+                    {`${user.profile.name.first} ${user.profile.name.last} ${allowed}`}
+                  </Checkbox>
+                </li>
+              ) : undefined
             }
           </ul>
           {/* <Switch onChange={(el, state) => this.handleSwitch(el, state)} name='test' /> */}

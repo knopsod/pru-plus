@@ -18,6 +18,11 @@ const Jobs = () => (
     </Row>
     <Row>
       <Col xs={ 12 }>
+        <span>Pending</span>
+      </Col>
+    </Row>
+    <Row>
+      <Col xs={ 12 }>
         <span>On-hand</span>
         <JobsOnHandList />
       </Col>

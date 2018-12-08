@@ -7,7 +7,9 @@ import Employments from '../../api/employments/employments';
 import container from '../../modules/container';
 import { timeFromInt } from 'time-number';
 
-const handleNav = _id => browserHistory.push(`/employments/${_id}`);
+const handleNav = _id => {
+  console.log(_id);
+};
 
 const JobsDoneList = ({ employments }) => (
   employments.length > 0 ? <ListGroup className="EmploymentsList">
