@@ -26,9 +26,14 @@ JobsOnHandList.propTypes = {
 };
 
 export default container((props, onData) => {
-  const subscription = Meteor.subscribe('employments.list', Meteor.userId());
+  const now = new Date().toISOString().substr(0, 10); // send now with format 'YYYY-MM-DD'
+  const subscription = Meteor.subscribe('employments.onHand.list', now, Meteor.userId());
   if (subscription.ready()) {
-    const employments = Employments.find().fetch();
+    const employments = Employments.find(
+      { date: { $gte: now }, employees: { $elemMatch: { userId: Meteor.userId() } } },
+      { sort: { date: -1 } }
+    ).fetch();
+
     onData(null, { employments });
   }
 }, JobsOnHandList);

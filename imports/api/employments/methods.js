@@ -25,6 +25,7 @@ export const upsertEmployment = new ValidatedMethod({
     'employer._id': { type: String, optional: true },
     employees: { type: Array, optional: true },
     'employees.$': { type: Object, optional: true },
+    'employees.$.userId': { type: String, optional: true },
     'employees.$.user': { type: Object, optional: true },
     'employees.$.user.emails': { type: Array, optional: true },
     'employees.$.user.emails.$': { type: Object, optional: true },

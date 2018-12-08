@@ -68,6 +68,7 @@ Employments.schema = new SimpleSchema({
     optional: true,
   },
   'employees.$': Object,
+  'employees.$.userId': { type: String, optional: true },
   'employees.$.user': { type: Object, optional: true },
   'employees.$.user.emails': { type: Array, optional: true },
   'employees.$.user.emails.$': { type: Object, optional: true },

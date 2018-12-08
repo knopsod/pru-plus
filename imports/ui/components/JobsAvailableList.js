@@ -29,7 +29,11 @@ export default container((props, onData) => {
   const now = new Date().toISOString().substr(0, 10); // send now with format 'YYYY-MM-DD'
   const subscription = Meteor.subscribe('employments.available.list', now);
   if (subscription.ready()) {
-    const employments = Employments.find({ date: { '$gte': now } }, { sort: { date: -1 } }).fetch();
+    const employments = Employments.find(
+      { date: { $gte: now } },
+      { sort: { date: -1 } }
+    ).fetch();
+
     onData(null, { employments });
   }
 }, JobsAvailableList);

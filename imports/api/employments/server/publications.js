@@ -4,7 +4,10 @@ import Employments from '../employments';
 
 Meteor.publish('employments.list', (userId) => {
   check(userId, String);
-  return Employments.find({ userId }, { sort: { date: -1 } });
+  return Employments.find(
+    { userId },
+    { sort: { date: -1 } }
+  );
 });
 
 Meteor.publish('employments.view', (_id) => {
@@ -14,5 +17,17 @@ Meteor.publish('employments.view', (_id) => {
 
 Meteor.publish('employments.available.list', (now) => {
   check(now, String);
-  return Employments.find({ date: { '$gte': now } }, { sort: { date: -1 } });
+  return Employments.find(
+    { date: { $gte: now } },
+    { sort: { date: -1 } }
+  );
+});
+
+Meteor.publish('employments.onHand.list', (now, userId) => {
+  check(now, String);
+  check(userId, String);
+  return Employments.find(
+    { date: { $gte: now }, employees: { $elemMatch: { userId } } },
+    { sort: { date: -1 } }
+  );
 });
