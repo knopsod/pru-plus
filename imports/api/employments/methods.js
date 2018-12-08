@@ -36,7 +36,6 @@ export const upsertEmployment = new ValidatedMethod({
     'employees.$.user.profile.name.first': { type: String, optional: true },
     'employees.$.user.profile.name.last': { type: String, optional: true },
     'employees.$.user._id': { type: String, optional: true },
-    'employees.$.allowed': { type: Boolean, optional: true },
   }).validator(),
   run(employment) {
     return Employments.upsert({ _id: employment._id },
