@@ -14,7 +14,7 @@ const JobsAvailableList = ({ employments }) => (
     {employments.map(({ _id, date, startTime, endTime, title, employer }) => (
       <ListGroupItem key={ _id } 
       onClick={ () => handleNav(_id) }>
-        { `${date.substr(0, 10)}, ${timeFromInt(startTime)}-${timeFromInt(endTime)}, Title : ${title}, by : ${employer.profile.name.first} ${employer.profile.name.last.substr(0, 1)}.` }<a className="btn btn-link btn-xs pull-right">Request</a>
+        { `${date.substr(0, 10)}, ${timeFromInt(startTime)}-${timeFromInt(endTime)}, Title : ${title}, by : ${employer.profile.name.first} ${employer.profile.name.last.substr(0, 1)}.` }<a className="btn btn-link btn-xs pull-right">Join</a>
       </ListGroupItem>
     ))}
   </ListGroup> :

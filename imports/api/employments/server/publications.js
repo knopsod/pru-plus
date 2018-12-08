@@ -31,3 +31,12 @@ Meteor.publish('employments.onHand.list', (now, userId) => {
     { sort: { date: -1 } }
   );
 });
+
+Meteor.publish('employments.done.list', (now, userId) => {
+  check(now, String);
+  check(userId, String);
+  return Employments.find(
+    { date: { $lt: now }, employees: { $elemMatch: { userId } } },
+    { sort: { date: -1 } }
+  );
+});
