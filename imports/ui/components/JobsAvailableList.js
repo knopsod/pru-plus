@@ -11,10 +11,10 @@ const handleNav = _id => browserHistory.push(`/employments/${_id}`);
 
 const JobsAvailableList = ({ employments }) => (
   employments.length > 0 ? <ListGroup className="EmploymentsList">
-    {employments.map(({ _id, date, startTime, endTime, title }) => (
+    {employments.map(({ _id, date, startTime, endTime, title, employer }) => (
       <ListGroupItem key={ _id } 
       onClick={ () => handleNav(_id) }>
-        { `${date.substr(0, 10)}, ${timeFromInt(startTime)}-${timeFromInt(endTime)} ${title} ` }<button className="btn btn-link btn-xs pull-right">Request</button>
+        { `${date.substr(0, 10)}, ${timeFromInt(startTime)}-${timeFromInt(endTime)}, Title : ${title}, by : ${employer.profile.name.first} ${employer.profile.name.last.substr(0, 1)}.` }<a className="btn btn-link btn-xs pull-right">Request</a>
       </ListGroupItem>
     ))}
   </ListGroup> :
@@ -26,9 +26,10 @@ JobsAvailableList.propTypes = {
 };
 
 export default container((props, onData) => {
-  const subscription = Meteor.subscribe('employments.list', Meteor.userId());
+  const now = new Date().toISOString().substr(0, 10); // send now with format 'YYYY-MM-DD'
+  const subscription = Meteor.subscribe('employments.available.list', now);
   if (subscription.ready()) {
-    const employments = Employments.find().fetch();
+    const employments = Employments.find({ date: { '$gte': now } }, { sort: { date: -1 } }).fetch();
     onData(null, { employments });
   }
 }, JobsAvailableList);

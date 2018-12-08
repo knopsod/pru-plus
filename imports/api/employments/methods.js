@@ -8,8 +8,8 @@ export const upsertEmployment = new ValidatedMethod({
   validate: new SimpleSchema({
     _id: { type: String, optional: true },
     date: { type: String, optional: true },
-    startTime: { type: String, optional: true },
-    endTime: { type: String, optional: true },
+    startTime: { type: Number, optional: true },
+    endTime: { type: Number, optional: true },
     title: { type: String, optional: true },
     body: { type: String, optional: true },
     userId: { type: String, optional: true },

@@ -11,9 +11,9 @@ const handleUpsert = () => {
   const { employment } = component.props;
   const confirmation = employment && employment._id ? 'Employment updated!' : 'Employment added!';
   const upsert = {
-    date: document.querySelector('[name="date"]').value.trim(),
-    startTime: document.querySelector('[name="startTime"]').value.trim(),
-    endTime: document.querySelector('[name="endTime"]').value.trim(),
+    date: document.querySelector('[name="date"]').value.substr(0, 10),
+    startTime: parseInt(document.querySelector('[name="startTime"]').value),
+    endTime: parseInt(document.querySelector('[name="endTime"]').value),
     title: document.querySelector('[name="title"]').value.trim(),
     body: document.querySelector('[name="body"]').value.trim(),
   };
@@ -22,7 +22,6 @@ const handleUpsert = () => {
     upsert._id = employment._id;
   } else {
     upsert.userId = Meteor.userId();
-    console.log(Meteor.user());
     upsert.employer = Meteor.user();
     upsert.employees = [{ user: Meteor.user(), allowed: true }];
   }

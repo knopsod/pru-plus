@@ -28,7 +28,7 @@ EmploymentsList.propTypes = {
 export default container((props, onData) => {
   const subscription = Meteor.subscribe('employments.list', Meteor.userId());
   if (subscription.ready()) {
-    const employments = Employments.find().fetch();
+    const employments = Employments.find({ userId: Meteor.userId() }, { sort: { date: -1 } }).fetch();
     onData(null, { employments });
   }
 }, EmploymentsList);

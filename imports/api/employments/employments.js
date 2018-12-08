@@ -24,12 +24,12 @@ Employments.schema = new SimpleSchema({
     optional: true,
   },
   startTime: {
-    type: String,
+    type: Number,
     label: 'The start time of the employment.',
     optional: true,
   },
   endTime: {
-    type: String,
+    type: Number,
     label: 'The end time of the employment.',
     optional: true,
   },
