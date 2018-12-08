@@ -107,7 +107,7 @@ export default class EmploymentEditor extends React.Component {
           <ControlLabel>Employee{ employment.employees.length > 1 ? 's' : undefined }</ControlLabel>
           <ul>
             { employment && employment.employees.length ?
-              employment.employees.map(({ user }) => <li key={user._id}>{`${user.profile.name.first} ${user.profile.name.last}`}</li>)
+              employment.employees.map(({ user, allowed }) => <li key={user._id}>{`${user.profile.name.first} ${user.profile.name.last} ${allowed}`}</li>)
               : undefined
             }
           </ul>
