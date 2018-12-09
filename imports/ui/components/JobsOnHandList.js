@@ -32,7 +32,7 @@ export default container((props, onData) => {
   const subscription = Meteor.subscribe('employments.onHand.list', now, Meteor.userId());
   if (subscription.ready()) {
     const employments = Employments.find(
-      { date: { $gte: now }, employees: { $elemMatch: { userId: Meteor.userId() } } },
+      { date: { $gte: now }, employees: { $elemMatch: { userId: Meteor.userId(), allowed: true } } },
       { sort: { date: -1 } }
     ).fetch();
 

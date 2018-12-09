@@ -86,21 +86,21 @@ export default class EmploymentEditor extends React.Component {
           onChange={this.handleEndTimeChange} value={ this.state.endTime } />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Title</ControlLabel>
+        <ControlLabel>รายละเอียด เงื่อนไข ข้อกำหนด ฯลฯ โดยย่อ</ControlLabel>
         <FormControl
           type="text"
           name="title"
           defaultValue={ employment && employment.title }
-          placeholder="Oh, The Places You'll Go!"
+          placeholder="ตัวอย่าง : มีทักษะพิมพ์สัมผัส จะพิจารณาเป็นพิเศษ"
         />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Body</ControlLabel>
+        <ControlLabel>บันทึกช่วยจำ</ControlLabel>
         <FormControl
           componentClass="textarea"
           name="body"
           defaultValue={ employment && employment.body }
-          placeholder="Congratulations! Today is your day. You're off to Great Places! You're off and away!"
+          placeholder="ตัวอย่าง : รับความเสี่ยงในวงเงิน 200,000 บาท (สองแสนบาทถ้วน), รับคน 5 คน, ส่งก่อนบ่าย 2 ครึ่ง (14:30 น.)"
         />
       </FormGroup>
       { employment ?
@@ -108,10 +108,10 @@ export default class EmploymentEditor extends React.Component {
           <ControlLabel>Employee{ employment.employees.length > 1 ? 's' : undefined }</ControlLabel>
           <ul>
             { employment && employment.employees.length ?
-              employment.employees.map(({ user, allowed }) =>
+              employment.employees.map(({ userId, user, allowed }) =>
                 <li key={user._id}>
-                  <Checkbox defaultChecked={allowed} disabled={user._id === Meteor.userId()}>
-                    {`${user.profile.name.first} ${user.profile.name.last} ${allowed}`}
+                  <Checkbox defaultChecked={allowed} disabled={user._id === Meteor.userId()} value={userId}>
+                    {`${user.profile.name.first} ${user.profile.name.last}`} { allowed ? <span style={{ color: 'green' }}>อนุญาต</span> : <span style={{ color: 'red' }}>บล็อค</span> }
                   </Checkbox>
                 </li>
               ) : undefined

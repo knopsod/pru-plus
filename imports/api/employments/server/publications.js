@@ -23,11 +23,20 @@ Meteor.publish('employments.available.list', (now) => {
   );
 });
 
+Meteor.publish('employments.pending.list', (now, userId) => {
+  check(now, String);
+  check(userId, String);
+  return Employments.find(
+    { date: { $gte: now }, employees: { $elemMatch: { userId, allowed: false } } },
+    { sort: { date: -1 } }
+  );
+});
+
 Meteor.publish('employments.onHand.list', (now, userId) => {
   check(now, String);
   check(userId, String);
   return Employments.find(
-    { date: { $gte: now }, employees: { $elemMatch: { userId } } },
+    { date: { $gte: now }, employees: { $elemMatch: { userId, allowed: true } } },
     { sort: { date: -1 } }
   );
 });
@@ -36,7 +45,7 @@ Meteor.publish('employments.done.list', (now, userId) => {
   check(now, String);
   check(userId, String);
   return Employments.find(
-    { date: { $lt: now }, employees: { $elemMatch: { userId } } },
+    { date: { $lt: now }, employees: { $elemMatch: { userId, allowed: true } } },
     { sort: { date: -1 } }
   );
 });

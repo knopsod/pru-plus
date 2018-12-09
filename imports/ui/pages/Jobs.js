@@ -2,6 +2,7 @@ import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 
 import JobsAvailableList from '../components/JobsAvailableList';
+import JobsPengingList from '../components/JobsPendingList';
 import JobsOnHandList from '../components/JobsOnHandList';
 import JobsDoneList from '../components/JobsDoneList';
 
@@ -18,7 +19,8 @@ const Jobs = () => (
     </Row>
     <Row>
       <Col xs={ 12 }>
-        <span>Pending</span>
+      <span>Pending</span>
+        <JobsPengingList />
       </Col>
     </Row>
     <Row>

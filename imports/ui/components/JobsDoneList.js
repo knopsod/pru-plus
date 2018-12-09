@@ -16,7 +16,7 @@ const JobsDoneList = ({ employments }) => (
     {employments.map(({ _id, date, startTime, endTime, title, employer }) => (
       <ListGroupItem key={ _id } 
       onClick={ () => handleNav(_id) }>
-        { `${date.substr(0, 10)}, ${timeFromInt(startTime)}-${timeFromInt(endTime)}, Title : ${title}, by : ${employer.profile.name.first} ${employer.profile.name.last.substr(0, 1)}.` }<a className="btn btn-link btn-xs pull-right">Feedback</a>
+        { `${date.substr(0, 10)}, ${timeFromInt(startTime)}-${timeFromInt(endTime)}, Title : ${title}, by : ${employer.profile.name.first} ${employer.profile.name.last.substr(0, 1)}.` }<a className="btn btn-link btn-xs pull-right">Leave feedback</a>
       </ListGroupItem>
     ))}
   </ListGroup> :
@@ -32,7 +32,7 @@ export default container((props, onData) => {
   const subscription = Meteor.subscribe('employments.done.list', now, Meteor.userId());
   if (subscription.ready()) {
     const employments = Employments.find(
-      { date: { $lt: now }, employees: { $elemMatch: { userId: Meteor.userId() } } },
+      { date: { $lt: now }, employees: { $elemMatch: { userId: Meteor.userId(), allowed: true } } },
       { sort: { date: -1 } }
     ).fetch();
     onData(null, { employments });

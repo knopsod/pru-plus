@@ -46,7 +46,10 @@ const ViewEmployment = ({ employment }) => {
       { employment && employment.body }
       <ul>
         { employment && employment.employees.length ?
-          employment.employees.map(({ user, allowed }) => <li key={user._id}>{`${user.profile.name.first} ${user.profile.name.last} ${allowed}`}</li>)
+          employment.employees.map(({ user, allowed }) => 
+            <li key={user._id}>
+              {`${user.profile.name.first} ${user.profile.name.last}`} { allowed ? <span style={{ color: 'green' }}>อนุญาต</span> : <span style={{ color: 'red' }}>บล็อค</span> }
+            </li>)
           : undefined
         }
       </ul>

@@ -20,6 +20,14 @@ const handleUpsert = () => {
 
   if (employment && employment._id) {
     upsert._id = employment._id;
+    upsert.employees = employment.employees;
+
+    const checkedboxs = document.querySelectorAll('input[type="checkbox"]');
+    checkedboxs.forEach(
+      (val, index) => {
+        upsert.employees[index].allowed = val.checked;
+      }
+    );
   } else {
     upsert.userId = Meteor.userId();
     upsert.employer = Meteor.user();
