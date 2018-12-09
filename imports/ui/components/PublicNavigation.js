@@ -27,10 +27,10 @@ const PublicNavigation = () => (<div>
   </Nav>
   <Nav pullRight>
     <LinkContainer to="signup">
-      <NavItem eventKey={ 1 } href="/signup">Sign Up</NavItem>
+      <NavItem eventKey={ 1 } href="/signup">ลงทะเบียน</NavItem>
     </LinkContainer>
     <LinkContainer to="login">
-      <NavItem eventKey={ 2 } href="/login">Log In</NavItem>
+      <NavItem eventKey={ 2 } href="/login">เข้าสู่ระบบ</NavItem>
     </LinkContainer>
   </Nav>
 </div>);

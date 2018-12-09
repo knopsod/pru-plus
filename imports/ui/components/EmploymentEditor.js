@@ -68,19 +68,19 @@ export default class EmploymentEditor extends React.Component {
       onSubmit={ event => event.preventDefault() }
     >
       <FormGroup>
-        <ControlLabel>Date</ControlLabel>
+        <ControlLabel>วันที่</ControlLabel>
         {/* https://www.npmjs.com/package/react-bootstrap-date-picker */}
         <DatePicker name="date" dateFormat="YYYY-MM-DD"
           onChange={this.handleDateChange} value={ this.state.date } />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Start time</ControlLabel>
+        <ControlLabel>เวลาเริ่มต้น</ControlLabel>
         {/* https://www.npmjs.com/package/react-bootstrap-time-picker */}
         <TimePicker name="startTime" step={10} format={24}
           onChange={this.handleStartTimeChange} value={ this.state.startTime } />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>End time</ControlLabel>
+        <ControlLabel>เวลาสิ้นสุด</ControlLabel>
         {/* https://www.npmjs.com/package/react-bootstrap-time-picker */}
         <TimePicker name="endTime" step={10} format={24}
           onChange={this.handleEndTimeChange} value={ this.state.endTime } />
@@ -105,7 +105,7 @@ export default class EmploymentEditor extends React.Component {
       </FormGroup>
       { employment ?
         <FormGroup>
-          <ControlLabel>Employee{ employment.employees.length > 1 ? 's' : undefined }</ControlLabel>
+          <ControlLabel>ผู้พิมพ์(คีย์ข้อมูล)</ControlLabel>
           <ul>
             { employment && employment.employees.length ?
               employment.employees.map(({ userId, user, allowed }) =>

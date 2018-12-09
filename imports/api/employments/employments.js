@@ -80,6 +80,8 @@ Employments.schema = new SimpleSchema({
   'employees.$.user.profile.name.last': { type: String, optional: true },
   'employees.$.user._id': { type: String, optional: true },
   'employees.$.allowed': { type: Boolean, optional: true },
+  'employees.$.feedbackLeft': { type: Boolean, optional: true },
+  'employees.$.feedbackReceived': { type: Boolean, optional: true },
 });
 
 Employments.attachSchema(Employments.schema);

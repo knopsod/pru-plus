@@ -11,27 +11,27 @@ const Jobs = () => (
     <Row>
       <Col xs={ 12 }>
         <div className="page-header clearfix">
-          <h4 className="pull-left">Jobs</h4>
+          <h4 className="pull-left">หางาน</h4>
         </div>
-        <span>Available</span>
+        <span>งานใหม่</span>
         <JobsAvailableList />
       </Col>
     </Row>
     <Row>
       <Col xs={ 12 }>
-      <span>Pending</span>
+      <span>รอการตอบรับ</span>
         <JobsPengingList />
       </Col>
     </Row>
     <Row>
       <Col xs={ 12 }>
-        <span>On-hand</span>
+        <span>ตอบรับแล้ว</span>
         <JobsOnHandList />
       </Col>
     </Row>
     <Row>
       <Col xs={ 12 }>
-        <span>Done</span>
+        <span>งานสิ้นสุด รอให้คะแนน</span>
         <JobsDoneList />
       </Col>
     </Row>

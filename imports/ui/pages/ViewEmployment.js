@@ -36,9 +36,8 @@ const ViewEmployment = ({ employment }) => {
         </h4>
         <ButtonToolbar className="pull-right">
           <ButtonGroup bsSize="small">
-            <Button onClick={ () => handleEdit(employment._id) }>Edit</Button>
-            <Button onClick={ () => handleRemove(employment._id) }
-              className="text-danger">Delete</Button>
+            <Button onClick={ () => handleEdit(employment._id) }>แก้ไข</Button>
+            <Button onClick={ () => handleRemove(employment._id) } className="text-danger">ลบ</Button>
           </ButtonGroup>
         </ButtonToolbar>
       </div>

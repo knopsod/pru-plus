@@ -17,7 +17,7 @@ export default class Signup extends React.Component {
       <div className="Signup">
         <Row>
           <Col xs={ 12 } sm={ 6 } md={ 4 }>
-            <h4 className="page-header">Sign Up</h4>
+            <h4 className="page-header">ลงทะเบียน</h4>
             <form
               ref={ form => (this.signupForm = form) }
               onSubmit={ this.handleSubmit }
@@ -25,7 +25,7 @@ export default class Signup extends React.Component {
               <Row>
                 <Col xs={ 6 } sm={ 6 }>
                   <FormGroup>
-                    <ControlLabel>First Name</ControlLabel>
+                    <ControlLabel>ชื่อ</ControlLabel>
                     <FormControl
                       type="text"
                       ref="firstName"
@@ -36,7 +36,7 @@ export default class Signup extends React.Component {
                 </Col>
                 <Col xs={ 6 } sm={ 6 }>
                   <FormGroup>
-                    <ControlLabel>Last Name</ControlLabel>
+                    <ControlLabel>นามสกุล</ControlLabel>
                     <FormControl
                       type="text"
                       ref="lastName"
@@ -47,7 +47,7 @@ export default class Signup extends React.Component {
                 </Col>
               </Row>
               <FormGroup>
-                <ControlLabel>Email Address</ControlLabel>
+                <ControlLabel>อีเมล์</ControlLabel>
                 <FormControl
                   type="text"
                   ref="emailAddress"
@@ -56,7 +56,7 @@ export default class Signup extends React.Component {
                 />
               </FormGroup>
               <FormGroup>
-                <ControlLabel>Password</ControlLabel>
+                <ControlLabel>รหัสผ่าน</ControlLabel>
                 <FormControl
                   type="password"
                   ref="password"
@@ -64,9 +64,9 @@ export default class Signup extends React.Component {
                   placeholder="Password"
                 />
               </FormGroup>
-              <Button type="submit" bsStyle="success">Sign Up</Button>
+              <Button type="submit" bsStyle="success">ลงทะเบียน</Button>
             </form>
-            <p>Already have an account? <Link to="/login">Log In</Link>.</p>
+            <p>ลงทะเบียนแล้ว? <Link to="/login">เข้าสู่ระบบ</Link>.</p>
           </Col>
         </Row>
       </div>

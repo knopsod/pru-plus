@@ -13,7 +13,7 @@ const AppNavigation = ({ hasUser }) => (
   <Navbar inverse collapseOnSelect style={{ borderRadius: 0 }}>
     <Navbar.Header>
       <Navbar.Brand>
-        <Link to="/">Home</Link>
+        <Link to="/">หน้าแรก</Link>
       </Navbar.Brand>
       <Navbar.Toggle />
     </Navbar.Header>

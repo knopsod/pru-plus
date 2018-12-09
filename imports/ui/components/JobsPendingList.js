@@ -31,7 +31,7 @@ const JobsPendingList = ({ employments }) => (
     {employments.map(({ _id, date, startTime, endTime, title, employer, employees }) => (
       <ListGroupItem key={ _id }
       onClick={ () => handleNav(_id, employees) }>
-        { `${date.substr(0, 10)}, ${timeFromInt(startTime)}-${timeFromInt(endTime)}, Title : ${title}, by : ${employer.profile.name.first} ${employer.profile.name.last.substr(0, 1)}.` }<a className="btn btn-link btn-xs pull-right">Cancle join</a>
+        { `${date.substr(0, 10)}, ${timeFromInt(startTime)}-${timeFromInt(endTime)}, Title : ${title}, by : ${employer.profile.name.first} ${employer.profile.name.last.substr(0, 1)}.` }<a className="btn btn-link btn-xs pull-right">ยกเลิก</a>
       </ListGroupItem>
     ))}
   </ListGroup> :

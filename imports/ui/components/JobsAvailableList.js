@@ -21,6 +21,8 @@ const handleNav = (_id, employees) => {
           userId: Meteor.userId(),
           user: Meteor.user(),
           allowed: false,
+          feedbackLeft: false,
+          feedbackReceived: false,
         },
       ],
     };
@@ -40,7 +42,7 @@ const JobsAvailableList = ({ employments }) => (
     {employments.map(({ _id, date, startTime, endTime, title, employer, employees }) => (
       <ListGroupItem key={ _id } 
       onClick={ () => handleNav(_id, employees) }>
-        { `${date.substr(0, 10)}, ${timeFromInt(startTime)}-${timeFromInt(endTime)}, Title : ${title}, by : ${employer.profile.name.first} ${employer.profile.name.last.substr(0, 1)}.` }<a className="btn btn-link btn-xs pull-right">Join</a>
+        { `${date.substr(0, 10)}, ${timeFromInt(startTime)}-${timeFromInt(endTime)}, Title : ${title}, by : ${employer.profile.name.first} ${employer.profile.name.last.substr(0, 1)}.` }<a className="btn btn-link btn-xs pull-right">ร่วมงาน</a>
       </ListGroupItem>
     ))}
   </ListGroup> :
