@@ -82,6 +82,11 @@ Meteor.startup(() => {
 
         <Route name="jobs" path="/jobs" component={ Jobs } onEnter={ authenticate } />
 
+        <Route name="user" path="/user/:_id" component={ NotFound } />
+
+        <Route name="profile" path="/profile" component={ NotFound } />
+        <Route name="editProfile" path="/profile/edit" component={ NotFound } />
+
         <Route path="*" component={ NotFound } />
       </Route>
     </Router>,
