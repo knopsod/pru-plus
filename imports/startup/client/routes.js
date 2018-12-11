@@ -37,6 +37,8 @@ import ViewEmployment from '../../ui/pages/ViewEmployment';
 
 import Jobs from '../../ui/pages/Jobs';
 
+import Typing from '../../ui/pages/Typing';
+
 const authenticate = (nextState, replace) => {
   if (!Meteor.loggingIn() && !Meteor.userId()) {
     replace({
@@ -86,6 +88,8 @@ Meteor.startup(() => {
 
         <Route name="profile" path="/profile" component={ NotFound } />
         <Route name="editProfile" path="/profile/edit" component={ NotFound } />
+
+        <Route name="typing" path="/typing/:_id" component={ Typing } onEnter={ authenticate } />
 
         <Route path="*" component={ NotFound } />
       </Route>

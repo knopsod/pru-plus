@@ -191,7 +191,8 @@ class BetEditorFast extends React.Component {
     }
 
     if ( no !== '' ) {
-      upsert = { no, 
+      upsert = { 
+        no, 
         up2, 
         down2, 
         up3, 

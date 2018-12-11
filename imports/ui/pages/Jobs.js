@@ -31,7 +31,7 @@ const Jobs = () => (
     </Row>
     <Row>
       <Col xs={ 12 }>
-        <span>งานสิ้นสุด รอให้คะแนน</span>
+        <span>ให้คะแนนงาน</span>
         <JobsDoneList />
       </Col>
     </Row>
