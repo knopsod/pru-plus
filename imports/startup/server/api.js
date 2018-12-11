@@ -13,4 +13,7 @@ import '../../api/bets/server/publications.js';
 import '../../api/employments/methods.js';
 import '../../api/employments/server/publications.js';
 
+import '../../api/typings/methods.js';
+import '../../api/typings/server/publications.js';
+
 import '../../api/users/server/publications.js';
