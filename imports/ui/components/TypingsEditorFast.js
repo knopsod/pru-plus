@@ -8,9 +8,10 @@ import PropTypes from 'prop-types';
 import { FormGroup, ControlLabel, FormControl, Table } from 'react-bootstrap';
 import moment from 'moment';
 import _ from 'lodash';
-import DatePicker from 'react-bootstrap-date-picker';
 import container from '../../modules/container';
+import { timeFromInt } from 'time-number';
 
+import Employments from '../../api/employments/employments';
 import { upsertTyping } from '../../api/typings/methods.js';
 
 class TypingsEditorFast extends React.Component {
@@ -18,29 +19,15 @@ class TypingsEditorFast extends React.Component {
     super(props);
 
     this.state = {
-      createdDate: moment().toISOString(true).substring(0, 10),
       broker: '',
       percent: 20,
       fee: 0.5,
       betMessage: '',
     };
 
-    this.props.Session.set('createdDate', moment().toISOString(true).substring(0, 10));
-
-    this.handleCreatedDateChange = this.handleCreatedDateChange.bind(this);
     this.handleBrokerChange = this.handleBrokerChange.bind(this);
     this.handlePercentChange = this.handlePercentChange.bind(this);
     this.handleChangeV2 = this.handleChangeV2.bind(this);
-  }
-
-  handleCreatedDateChange(value) {
-    const createdDate = value;
-    this.setState({ 
-      ...this.state,
-      createdDate,
-    });
-
-    this.props.Session.set('createdDate', createdDate.substring(0, 10));
   }
 
   handleBrokerChange(e) {
@@ -82,7 +69,7 @@ class TypingsEditorFast extends React.Component {
       broker = this.state.broker, 
       percent = this.state.percent,
       fee = this.state.fee,
-      createdDate = this.state.createdDate.substr(0, 10),
+      createdDate = this.props.employment.date,
       employmentId = this.props.employmentId,
       employeeId = Meteor.userId();
 
@@ -158,15 +145,15 @@ class TypingsEditorFast extends React.Component {
     ) {
       console.log('no2+latestSpend');
 
-      if ( this.props.Session.get('latestSessionBet').up3 > 0 || 
-        this.props.Session.get('latestSessionBet').down3 > 0 ||
-        this.props.Session.get('latestSessionBet').permute > 0
+      if ( this.props.Session.get('latestSessionTyping').up3 > 0 || 
+        this.props.Session.get('latestSessionTyping').down3 > 0 ||
+        this.props.Session.get('latestSessionTyping').permute > 0
       ) {
         return;
       } else {
         no = arr[arr.length - 3];
-        up2 = this.props.Session.get('latestSessionBet').up2;
-        down2 = this.props.Session.get('latestSessionBet').down2;
+        up2 = this.props.Session.get('latestSessionTyping').up2;
+        down2 = this.props.Session.get('latestSessionTyping').down2;
       }
     }
 
@@ -179,15 +166,15 @@ class TypingsEditorFast extends React.Component {
     ) {
       console.log('no3+latestSpend');
 
-      if ( this.props.Session.get('latestSessionBet').up2 > 0 ||
-        this.props.Session.get('latestSessionBet').down2 > 0 
+      if ( this.props.Session.get('latestSessionTyping').up2 > 0 ||
+        this.props.Session.get('latestSessionTyping').down2 > 0 
       ) {
         return;
       } else {
         no = arr[arr.length - 3];
-        up3 = this.props.Session.get('latestSessionBet').up3;
-        down3 = this.props.Session.get('latestSessionBet').down3;
-        permute = this.props.Session.get('latestSessionBet').permute;
+        up3 = this.props.Session.get('latestSessionTyping').up3;
+        down3 = this.props.Session.get('latestSessionTyping').down3;
+        permute = this.props.Session.get('latestSessionTyping').permute;
       }
     }
 
@@ -214,10 +201,10 @@ class TypingsEditorFast extends React.Component {
         if (error) {
           Bert.alert(error.reason, 'danger');
         } else {
-          Bert.alert('Bet added', 'success');
+          Bert.alert('Typing added', 'success');
 
           this.insertedId = response.insertedId;
-          this.props.Session.set('insertedId', response.insertedId);
+          this.props.Session.set('latestSessionTyping', upsert);
         }
       });
 
@@ -237,10 +224,7 @@ class TypingsEditorFast extends React.Component {
     return (<form>      
       <FormGroup>
         <ControlLabel>ป-ด-ว</ControlLabel>
-        <DatePicker dateFormat="YYYY-MM-DD" 
-          name="createdDate" ref="createdDate"
-          value={this.state.createdDate}
-          onChange={this.handleCreatedDateChange}/>
+        <h4>{this.props.employment.date} {timeFromInt(this.props.employment.startTime)}-{timeFromInt(this.props.employment.endTime)}</h4>
       </FormGroup>
 
       <FormGroup>
@@ -339,8 +323,15 @@ class TypingsEditorFast extends React.Component {
 TypingsEditorFast.propTypes = {
   Session: PropTypes.object,
   employmentId: PropTypes.string,
+  employment: PropTypes.object,
 };
 
 export default container((props, onData) => {
-  onData(null, { Session });
+  const employmentId = props.employmentId;
+  const subscription = Meteor.subscribe('employments.view', employmentId);
+
+  if (subscription.ready()) {
+    const employment = Employments.findOne(employmentId);
+    onData(null, { employment, Session });
+  }
 }, TypingsEditorFast);

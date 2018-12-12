@@ -24,7 +24,7 @@ const handleRemove = (_id) => {
   }
 };
 
-const TypingsReactTable = ({ typings }) => (
+const ViewEmploymentTRT = ({ typings }) => (
   typings.length > 0 ? <ReactTable
     data={typings}
     columns={[
@@ -37,9 +37,18 @@ const TypingsReactTable = ({ typings }) => (
         },
       },
       {
+        Header: 'Employee ID',
+        accessor: 'employeeId',
+        Cell: ({ original: { employeeId } }) => (employeeId || undefined),
+        style: {
+          textAlign: 'center',
+        },
+      },
+      {
         Header: 'ป-ด-ว',
         accessor: 'createdAt',
         minWidth: 145,
+        maxWidth: 150,
         Cell: ({ original: { createdAt } }) => (moment(createdAt).format('YYYY-MM-DD HH:mm:ss')),
         style: {
           textAlign: 'center',
@@ -131,37 +140,24 @@ const TypingsReactTable = ({ typings }) => (
           textAlign: 'center',
         },
       },
-      {
-        Cell: ({ original: { _id, employeeId } }) => (
-          Meteor.userId() === employeeId ?
-            <button className="btn btn-xs btn-danger"
-              onClick={() => handleRemove(_id)}>X</button>
-            : undefined
-        ),
-        maxWidth: 48,
-        style: {
-          textAlign: 'center',
-        },
-      }
     ]}
     defaultPageSize={10}
     className="-striped -highlight"
   /> : <Alert bsStyle="warning">No bets yet.</Alert>
 );
 
-TypingsReactTable.propTypes = {
+ViewEmploymentTRT.propTypes = {
   typings: PropTypes.array,
 };
 
 export default container((props, onData) => { 
   const employmentId = props.employmentId;
-  const employeeId = Meteor.userId();
 
-  const subscription = Meteor.subscribe('typings.user.list', employmentId, employeeId);
+  const subscription = Meteor.subscribe('typings.list', employmentId);
 
   if (subscription.ready()) {
-    const typings = Typings.find({ employmentId, employeeId }, { sort: { createdAt: 1 } }).fetch();
+    const typings = Typings.find({ employmentId }, { sort: { createdAt: 1 } }).fetch();
 
     onData(null, { typings });
   }
-}, TypingsReactTable);
+}, ViewEmploymentTRT);

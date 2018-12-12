@@ -50,7 +50,7 @@ const BetsReactTable = ({ bets }) => (
       {
         Header: 'ใบที่',
         accessor: 'broker',
-        maxWidth: 48,
+        maxWidth: 84,
         style: {
           textAlign: 'center',
         },
@@ -137,10 +137,10 @@ const BetsReactTable = ({ bets }) => (
         Cell: ({ original: { _id, userId } }) => (
           Meteor.userId() === userId ?
             <button className="btn btn-xs btn-danger"
-              onClick={() => handleRemove(_id)}>Remove</button>
+              onClick={() => handleRemove(_id)}>X</button>
             : undefined
         ),
-        maxWidth: 84,
+        maxWidth: 48,
         style: {
           textAlign: 'center',
         },

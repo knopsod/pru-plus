@@ -9,6 +9,8 @@ import { removeEmployment } from '../../api/employments/methods';
 import NotFound from './NotFound';
 import container from '../../modules/container';
 import { timeFromInt } from 'time-number';
+import ViewEmploymentTRT from '../components/ViewEmploymentTRT';
+import ViewEmploymentTUT from '../components/ViewEmploymentTUT';
 
 const handleEdit = (_id) => {
   browserHistory.push(`/employments/${_id}/edit`);
@@ -27,7 +29,7 @@ const handleRemove = (_id) => {
   }
 };
 
-const ViewEmployment = ({ employment }) => {
+const ViewEmployment = ({ employment, employmentId }) => {
   return employment ? (
     <div className="ViewEmployment">
       <div className="page-header clearfix">
@@ -52,12 +54,16 @@ const ViewEmployment = ({ employment }) => {
           : undefined
         }
       </ul>
+      <ViewEmploymentTUT employmentId={employmentId} />
+      <ViewEmploymentTRT employmentId={employmentId} />
+      <br />
     </div>
   ) : <NotFound />;
 };
 
 ViewEmployment.propTypes = {
   employment: PropTypes.object,
+  employmentId: PropTypes.string,
 };
 
 export default container((props, onData) => {
@@ -66,6 +72,6 @@ export default container((props, onData) => {
 
   if (subscription.ready()) {
     const employment = Employments.findOne(employmentId);
-    onData(null, { employment });
+    onData(null, { employment, employmentId });
   }
 }, ViewEmployment);
