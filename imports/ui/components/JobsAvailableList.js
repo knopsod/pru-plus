@@ -10,6 +10,7 @@ import { timeFromInt } from 'time-number';
 import { upsertEmployment } from '../../api/employments/methods';
 
 const handleNav = (_id, employees) => {
+  console.log(Meteor.user());
   if (employees.filter(emp => emp.userId === Meteor.userId()).length){
     return;
   } else {

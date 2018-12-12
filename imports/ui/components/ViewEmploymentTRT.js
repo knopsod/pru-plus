@@ -45,6 +45,14 @@ const ViewEmploymentTRT = ({ typings }) => (
         },
       },
       {
+        Header: 'Email',
+        accessor: 'employee',
+        Cell: ({ original: { employee } }) => (employee && employee.emails[0].address),
+        style: {
+          textAlign: 'center',
+        },
+      },
+      {
         Header: 'ป-ด-ว',
         accessor: 'createdAt',
         minWidth: 145,

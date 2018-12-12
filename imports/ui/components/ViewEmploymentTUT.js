@@ -28,7 +28,7 @@ const ViewEmploymentTUT = ({ employees, recordTotal, allIncome, allFee }) => (
             <td className="col-xs-3 col-sm-3 text-center">{ user.emails[0].address }</td>
             <td className="col-xs-1 col-sm-1 text-center">{ record }</td>
             <td className="col-xs-1 col-sm-1 text-center">{ income }</td>
-            <td className="col-xs-1 col-sm-1 text-center">{ fee }</td>
+            <td className="col-xs-1 col-sm-1 text-center" style={{ color: 'red' }}>{ fee }</td>
           </tr> )
         }
       )}
@@ -36,9 +36,9 @@ const ViewEmploymentTUT = ({ employees, recordTotal, allIncome, allFee }) => (
     <tfoot>
       <tr>
         <td colSpan={3} style={{ textAlign: 'center'}}>รวม</td>
-        <td style={{ textAlign: 'center', color: 'red' }}>{ recordTotal }</td>
-        <td style={{ textAlign: 'center', color: 'red' }}>{ allIncome }</td>
-        <td style={{ textAlign: 'center', color: 'red' }}>{ allFee }</td>
+        <td style={{ textAlign: 'center', fontWeight: 'bold' }}>{ recordTotal }</td>
+        <td style={{ textAlign: 'center', fontWeight: 'bold' }}>{ allIncome }</td>
+        <td style={{ textAlign: 'center', fontWeight: 'bold', color: 'red' }}>{ allFee }</td>
       </tr>
     </tfoot>
   </Table> : <div />

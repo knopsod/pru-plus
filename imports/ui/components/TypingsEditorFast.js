@@ -73,6 +73,12 @@ class TypingsEditorFast extends React.Component {
       employmentId = this.props.employmentId,
       employeeId = Meteor.userId();
 
+    const employee = { 
+      emails: Meteor.user().emails,
+      profile: Meteor.user().profile,
+      _id: Meteor.user()._id,
+    };
+
     if ( arr.length > 1 && 
       ( _.includes( arr[arr.length - 2], '+' ) || 
         _.includes( arr[arr.length - 2], '-' ) ||
@@ -194,6 +200,7 @@ class TypingsEditorFast extends React.Component {
         createdDate,
         employmentId,
         employeeId,
+        employee,
       };
       console.log(upsert);
 

@@ -88,6 +88,20 @@ Typings.schema = new SimpleSchema({
     label: 'The user ID of the typing.',
     optional: true,
   },
+  employee: {
+    type: Object,
+    label: 'The user of the typing.',
+    optional: true,
+  },
+  'employee.emails': { type: Array, optional: true },
+  'employee.emails.$': { type: Object, optional: true },
+  'employee.emails.$.address': { type: String, optional: true },
+  'employee.emails.$.verified': { type: Boolean, optional: true },
+  'employee.profile': { type: Object, optional: true },
+  'employee.profile.name': { type: Object, optional: true },
+  'employee.profile.name.first': { type: String, optional: true },
+  'employee.profile.name.last': { type: String, optional: true },
+  'employee._id': { type: String, optional: true },
 });
 
 Typings.attachSchema(Typings.schema);
@@ -107,4 +121,5 @@ Factory.define('typing', Typings, {
   createdDate: () => 'Factory Created date',
   employmentId: () => 'Factory User ID',
   employeeId: () => 'Factory User ID',
+  employee: () => 'Factory User',
 });
