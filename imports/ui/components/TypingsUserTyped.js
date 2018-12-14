@@ -5,7 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import Typings from '../../api/typings/typings';
 import container from '../../modules/container';
 
-const TypingsUserTyped = ({ users, recordTotal, allIncome }) => (
+const TypingsUserTyped = ({ users, recordTotal, allIncome, allFee }) => (
   users.length > 0 ? <Table className="BetsList"
     striped bordered condensed hover>
     <thead>
@@ -13,12 +13,13 @@ const TypingsUserTyped = ({ users, recordTotal, allIncome }) => (
         <th className="col-xs-1 col-sm-1 text-center"></th>
         <th className="col-xs-4 col-sm-4 text-center">ID</th>
         <th className="col-xs-3 col-sm-3 text-center">Email</th>
-        <th className="col-xs-2 col-sm-2 text-center">Recorded</th>
-        <th className="col-xs-2 col-sm-2 text-center">Recieved</th>
+        <th className="col-xs-1 col-sm-1 text-center">พิมพ์</th>
+        <th className="col-xs-1 col-sm-1 text-center">ยอดเงิน</th>
+        <th className="col-xs-1 col-sm-1 text-center">ค่าพิมพ์(0.5%)</th>
       </tr>
     </thead>
     <tbody>
-      { users.map(({ _id, emails, record, userIncome }, index) => 
+      { users.map(({ _id, emails, record, income, fee }, index) => 
         { 
           return ( <tr key={ _id }>
             <td className="col-xs-1 col-sm-1 text-center">{ (index + 1) }</td>
@@ -27,8 +28,9 @@ const TypingsUserTyped = ({ users, recordTotal, allIncome }) => (
               Meteor.userId() === _id ? emails[0].address
                 : emails[0].address.replace(/.{1,4}(?=\@.*?)/, '****')
             }</td>
-            <td className="col-xs-2 col-sm-2 text-center">{ record }</td>
-            <td className="col-xs-2 col-sm-2 text-center">{ userIncome }</td>
+            <td className="col-xs-1 col-sm-1 text-center">{ record }</td>
+            <td className="col-xs-1 col-sm-1 text-center">{ income }</td>
+            <td className="col-xs-1 col-sm-1 text-center" style={{ color: 'red' }}>{ fee }</td>
           </tr> )
         }
       )}
@@ -36,8 +38,9 @@ const TypingsUserTyped = ({ users, recordTotal, allIncome }) => (
     <tfoot>
       <tr>
         <td colSpan={3} style={{ textAlign: 'center'}}>รวม</td>
-        <td style={{ textAlign: 'center', color: 'red' }}>{ recordTotal }</td>
-        <td style={{ textAlign: 'center', color: 'red' }}>{ allIncome }</td>
+        <td style={{ textAlign: 'center', fontWeight: 'bold' }}>{ recordTotal }</td>
+        <td style={{ textAlign: 'center', fontWeight: 'bold' }}>{ allIncome }</td>
+        <td style={{ textAlign: 'center', fontWeight: 'bold', color: 'red' }}>{ allFee }</td>
       </tr>
     </tfoot>
   </Table> : <div />
@@ -48,6 +51,7 @@ TypingsUserTyped.propTypes = {
   users: PropTypes.array,
   recordTotal: PropTypes.number,
   allIncome: PropTypes.number,
+  allFee: PropTypes.number,
 };
 
 export default container((props, onData) => { 
@@ -58,6 +62,7 @@ export default container((props, onData) => {
   
   var recordTotal = 0;
   var allIncome = 0;
+  var allFee = 0;
 
   if (subscription.ready() && usersSubscription.ready()) {
     const typings = Typings.find({ employmentId }, { sort: { createdAt: 1 } }).fetch();
@@ -73,12 +78,15 @@ export default container((props, onData) => {
       obj.record = userTypings.length;
       recordTotal += obj.record;
 
-      obj.userIncome = userTypings.length ? userTypings.reduce(reducer, 0) : 0;
-      allIncome += obj.userIncome;
+      obj.income = userTypings.length ? userTypings.reduce(reducer, 0) : 0;
+      obj.fee = parseFloat((obj.income * 0.005).toFixed(2));
+      
+      allIncome += obj.income;
+      allFee += obj.fee;
     });
 
     console.log(users);
     
-    onData(null, { users, recordTotal, allIncome });
+    onData(null, { users, recordTotal, allIncome, allFee });
   }
 }, TypingsUserTyped);

@@ -6,6 +6,7 @@ import { Bert } from 'meteor/themeteorchef:bert';
 import Employments from '../../api/employments/employments';
 import container from '../../modules/container';
 import { timeFromInt } from 'time-number';
+import moment from 'moment';
 
 import { upsertEmployment } from '../../api/employments/methods';
 
@@ -55,7 +56,7 @@ JobsAvailableList.propTypes = {
 };
 
 export default container((props, onData) => {
-  const now = new Date().toISOString().substr(0, 10); // send now with format 'YYYY-MM-DD'
+  const now = moment().toISOString(true).substring(0, 10); // send now with format 'YYYY-MM-DD'
   const subscription = Meteor.subscribe('employments.available.list', now);
   if (subscription.ready()) {
     const employments = Employments.find(

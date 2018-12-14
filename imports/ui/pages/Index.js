@@ -16,11 +16,9 @@ const Index = ({ hasUser }) => (
         <span>Lotto Go Fast</span>
       </p>
       <br />
-      <hr />
-      <p><Link to="/employments" className="btn btn-success">จ้างงาน</Link></p>
-      <hr />
-      <p><Link to="/jobs" className="btn btn-success">หางาน</Link></p>
-      <hr />
+      <p><Link to="/employments" className="btn btn-primary btn-lg btn-block">จ้างงาน</Link></p>
+      <hr style={{ width: 200 }} />
+      <p><Link to="/jobs" className="btn btn-primary btn-lg btn-block">หางาน</Link></p>
     </Jumbotron>
   </div>
 );

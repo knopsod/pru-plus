@@ -14,7 +14,7 @@ const EmploymentsList = ({ employments }) => (
     {employments.map(({ _id, date, startTime, endTime, title, employees }) => (
       <ListGroupItem key={ _id } 
       onClick={ () => handleNav(_id) }>
-        { `${date.substr(0, 10)}, ${timeFromInt(startTime)}-${timeFromInt(endTime)} ${title} ` }<span className='pull-right'>{ `(ผู้พิมพ์ ${employees.filter(emp => emp.allowed).length} คน จากทั้งหมด ${employees.length} คน)` }</span>
+        { `${date.substr(0, 10)}, ${timeFromInt(startTime)}-${timeFromInt(endTime)} ${title} ` }<span className='pull-right'>{ `(ผู้พิมพ์ ${employees.filter(emp => emp.allowed).length} คน)` }</span>
       </ListGroupItem>
     ))}
   </ListGroup> :

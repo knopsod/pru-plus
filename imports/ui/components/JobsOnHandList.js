@@ -6,6 +6,7 @@ import { Meteor } from 'meteor/meteor';
 import Employments from '../../api/employments/employments';
 import container from '../../modules/container';
 import { timeFromInt } from 'time-number';
+import moment from 'moment';
 
 const handleNav = _id => {
   return browserHistory.push(`/typing/${_id}`);
@@ -28,7 +29,7 @@ JobsOnHandList.propTypes = {
 };
 
 export default container((props, onData) => {
-  const now = new Date().toISOString().substr(0, 10); // send now with format 'YYYY-MM-DD'
+  const now = new moment().toISOString(true).substring(0, 10); // send now with format 'YYYY-MM-DD'
   const subscription = Meteor.subscribe('employments.onHand.list', now, Meteor.userId());
   if (subscription.ready()) {
     const employments = Employments.find(

@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { browserHistory } from 'react-router';
 import { ListGroup, ListGroupItem, Alert } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import Employments from '../../api/employments/employments';
 import container from '../../modules/container';
 import { timeFromInt } from 'time-number';
+import moment from 'moment';
 
 const handleNav = _id => {
   console.log(_id);
@@ -28,7 +28,7 @@ JobsDoneList.propTypes = {
 };
 
 export default container((props, onData) => {
-  const now = new Date().toISOString().substr(0, 10); // send now with format 'YYYY-MM-DD'
+  const now = moment().toISOString(true).substring(0, 10); // send now with format 'YYYY-MM-DD'
   const subscription = Meteor.subscribe('employments.done.list', now, Meteor.userId());
   if (subscription.ready()) {
     const employments = Employments.find(

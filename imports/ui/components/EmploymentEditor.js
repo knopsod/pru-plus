@@ -7,8 +7,7 @@ import { FormGroup, ControlLabel, FormControl, Button, Checkbox } from 'react-bo
 import employmentEditor from '../../modules/employment-editor.js';
 import DatePicker from 'react-bootstrap-date-picker';
 import TimePicker from 'react-bootstrap-time-picker';
-// import Switch from 'react-bootstrap-switch';
-// import Toggle from 'react-bootstrap-toggle';
+import moment from 'moment';
 
 export default class EmploymentEditor extends React.Component {
   constructor(props) {
@@ -20,7 +19,7 @@ export default class EmploymentEditor extends React.Component {
     this.onToggle = this.onToggle.bind(this);
 
     this.state = { 
-      date: new Date().toISOString(),
+      date: moment().toISOString(true).substring(0, 10),
       formattedValue: '',
       startTime: 0,
       endTime: 0,

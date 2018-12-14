@@ -39,7 +39,7 @@ const ViewEmployment = ({ employment, employmentId }) => {
         <ButtonToolbar className="pull-right">
           <ButtonGroup bsSize="small">
             <Button onClick={ () => handleEdit(employment._id) }>แก้ไข</Button>
-            <Button onClick={ () => handleRemove(employment._id) } className="text-danger">ลบ</Button>
+            <Button onClick={ () => handleRemove(employment._id) } className="text-danger" disabled={employment && employment.employees.length > 1}>ลบ</Button>
           </ButtonGroup>
         </ButtonToolbar>
       </div>
