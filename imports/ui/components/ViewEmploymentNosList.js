@@ -2,17 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session';
-import Bets from '../../api/bets/bets';
+import Typings from '../../api/typings/typings';
 import container from '../../modules/container';
 import { Table, Alert } from 'react-bootstrap';
 
-const NosList = (props) => (
+const ViewEmploymentNosList = (props) => (
   props.nos.filter(obj => obj.up2 || obj.down2 || obj.up3 || obj.permute || obj.down3).length > 0 ? <Table className="NosList"
     striped bordered condensed hover>
     <thead>
       <tr>
-        <th className="col-xs-1 col-sm-1 text-center" style={{ verticalAlign: 'middle' }}
-          rowSpan={2}>ป-ด-ว</th>
         <th className="col-xs-1 col-sm-1 text-center" style={{ verticalAlign: 'middle' }}
           rowSpan={2}>เบอร์</th>
 
@@ -37,7 +35,6 @@ const NosList = (props) => (
     <tbody>
       { props.nos.filter(obj => obj.up2 || obj.down2 || obj.up3 || obj.permute || obj.down3).map((no, index) => (
         <tr key={index}>
-          <td className="col-xs-1 col-sm-1 text-center">{ no.createdDate }</td>
           <td className="col-xs-1 col-sm-1 text-center"><b>{ no.no }</b></td>
 
           <td className="col-xs-1 col-sm-1 text-center">{ no.up2 > 0 ? no.up2.toLocaleString() : '' }</td>
@@ -53,7 +50,7 @@ const NosList = (props) => (
   </Table> : <Alert bsStyle="warning">No sum total yet.</Alert>
 );
 
-NosList.propTypes = {
+ViewEmploymentNosList.propTypes = {
   up2Total: PropTypes.number,
   down2Total: PropTypes.number,
   up3Total: PropTypes.number,
@@ -66,8 +63,7 @@ NosList.propTypes = {
 };
 
 export default container((props, onData) => {
-  const createdDate = Session.get('nosCreatedDate') ? 
-    Session.get('nosCreatedDate').substring(0, 10) : '';
+  const employmentId = props.employmentId;
 
   const up2ROI = Session.get('up2ROI') ? Session.get('up2ROI') : 1;
   const down2ROI = Session.get('down2ROI') ? Session.get('down2ROI') : 1;
@@ -76,7 +72,7 @@ export default container((props, onData) => {
   const down3ROI = Session.get('down3ROI') ? Session.get('down3ROI') : 1;
   console.log(up2ROI, down2ROI, up3ROI, permuteROI, down3ROI);
 
-  const subscription = Meteor.subscribe('bets.list', createdDate);
+  const subscription = Meteor.subscribe('typings.list', employmentId);
 
   var nos = [],
     nosReds = [];
@@ -110,7 +106,7 @@ export default container((props, onData) => {
   var risk = 0;
 
   if (subscription.ready()) {
-    const bets = Bets.find({}, { sort: { createdAt: -1 } }).fetch();
+    const bets = Typings.find({ employmentId }).fetch();
 
     for (let i = 0; i < 100; i++) {
       no = String(i);
@@ -138,7 +134,7 @@ export default container((props, onData) => {
 
       allIncome += income;
 
-      nos.push({ createdDate, no, up2, down2, up3: 0, down3: 0, permute: 0, income });
+      nos.push({ no, up2, down2, up3: 0, down3: 0, permute: 0, income });
     }
 
 
@@ -172,7 +168,7 @@ export default container((props, onData) => {
 
       allIncome += income;
 
-      nos.push({ createdDate, no, up2: 0, down2: 0, up3, down3, permute, income });
+      nos.push({ no, up2: 0, down2: 0, up3, down3, permute, income });
     }
 
 
@@ -198,7 +194,6 @@ export default container((props, onData) => {
           (nos[i].up3 * up3ROI) + (nos[i].permute * permuteROI) + (nos[i].down3 * down3ROI);
 
         nosReds.push({
-          createdDate: nos[i].createdDate,
           no: nos[i].no,
           up2: nos[i].up2,
           down2: nos[i].down2,
@@ -215,8 +210,8 @@ export default container((props, onData) => {
       }
     }
 
-    Session.set('nosReds', nosReds);
+    Session.set('employmentNosReds', nosReds);
 
     onData(null, { nos, up2Total, down2Total, up3Total, permuteTotal, down3Total, allTotal, allIncome });
   }
-}, NosList);
+}, ViewEmploymentNosList);

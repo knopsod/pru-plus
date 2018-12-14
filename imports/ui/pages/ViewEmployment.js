@@ -9,8 +9,10 @@ import { removeEmployment } from '../../api/employments/methods';
 import NotFound from './NotFound';
 import container from '../../modules/container';
 import { timeFromInt } from 'time-number';
-import ViewEmploymentTRT from '../components/ViewEmploymentTRT';
-import ViewEmploymentTUT from '../components/ViewEmploymentTUT';
+import ViewEmploymentTRTable from '../components/ViewEmploymentTRTable';
+import ViewEmploymentTUTyped from '../components/ViewEmploymentTUTyped';
+import ViewEmploymentNosRed from '../components/ViewEmploymentNosRed';
+import ViewEmploymentNosList from '../components/ViewEmploymentNosList';
 
 const handleEdit = (_id) => {
   browserHistory.push(`/employments/${_id}/edit`);
@@ -49,14 +51,16 @@ const ViewEmployment = ({ employment, employmentId }) => {
         { employment && employment.employees.length ?
           employment.employees.map(({ user, allowed }) => 
             <li key={user._id}>
-              {`${user.profile.name.first} ${user.profile.name.last}`} { allowed ? <span style={{ color: 'green' }}>อนุญาต</span> : <span style={{ color: 'red' }}>บล็อค</span> }
+              {`${user.profile.name.first} ${user.profile.name.last} (${user.emails[0].address})`} { allowed ? <span style={{ color: 'green' }}>อนุญาต</span> : <span style={{ color: 'red' }}>บล็อค</span> }
             </li>)
           : undefined
         }
       </ul>
-      <ViewEmploymentTUT employmentId={employmentId} />
-      <ViewEmploymentTRT employmentId={employmentId} />
+      <ViewEmploymentTUTyped employmentId={employmentId} />
+      <ViewEmploymentTRTable employmentId={employmentId} />
       <br />
+      <ViewEmploymentNosRed />
+      <ViewEmploymentNosList employmentId={employmentId} />
     </div>
   ) : <NotFound />;
 };

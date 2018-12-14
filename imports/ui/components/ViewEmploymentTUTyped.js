@@ -6,13 +6,13 @@ import Employments from '../../api/employments/employments';
 import Typings from '../../api/typings/typings';
 import container from '../../modules/container';
 
-const ViewEmploymentTUT = ({ employees, recordTotal, allIncome, allFee }) => (
+const ViewEmploymentTUTyped = ({ employees, recordTotal, allIncome, allFee }) => (
   employees.length > 0 ? <Table className="BetsList"
     striped bordered condensed hover>
     <thead>
       <tr>
         <th className="col-xs-1 col-sm-1 text-center"></th>
-        <th className="col-xs-4 col-sm-4 text-center">ID</th>
+        <th className="col-xs-4 col-sm-4 text-center">ผู้พิมพ์</th>
         <th className="col-xs-3 col-sm-3 text-center">Email</th>
         <th className="col-xs-1 col-sm-1 text-center">พิมพ์</th>
         <th className="col-xs-1 col-sm-1 text-center">ยอดเงิน</th>
@@ -24,7 +24,7 @@ const ViewEmploymentTUT = ({ employees, recordTotal, allIncome, allFee }) => (
         { 
           return ( <tr key={ userId }>
             <td className="col-xs-1 col-sm-1 text-center">{ (index + 1) }</td>
-            <td className="col-xs-4 col-sm-4 text-center">{ userId }</td>
+            <td className="col-xs-4 col-sm-4 text-center">{ user.profile.name.first } { user.profile.name.last }</td>
             <td className="col-xs-3 col-sm-3 text-center">{ user.emails[0].address }</td>
             <td className="col-xs-1 col-sm-1 text-center">{ record }</td>
             <td className="col-xs-1 col-sm-1 text-center">{ income }</td>
@@ -45,7 +45,7 @@ const ViewEmploymentTUT = ({ employees, recordTotal, allIncome, allFee }) => (
   // <Alert bsStyle="warning">No bets yet.</Alert>
 );
 
-ViewEmploymentTUT.propTypes = {
+ViewEmploymentTUTyped.propTypes = {
   employees: PropTypes.array,
   recordTotal: PropTypes.number,
   allIncome: PropTypes.number,
@@ -88,4 +88,4 @@ export default container((props, onData) => {
 
     onData(null, { employees, recordTotal, allIncome, allFee });
   }
-}, ViewEmploymentTUT);
+}, ViewEmploymentTUTyped);

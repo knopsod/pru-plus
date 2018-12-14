@@ -24,7 +24,7 @@ const handleRemove = (_id) => {
   }
 };
 
-const ViewEmploymentTRT = ({ typings }) => (
+const ViewEmploymentTRTable = ({ typings }) => (
   typings.length > 0 ? <ReactTable
     data={typings}
     columns={[
@@ -37,9 +37,9 @@ const ViewEmploymentTRT = ({ typings }) => (
         },
       },
       {
-        Header: 'Employee ID',
+        Header: 'ผู้พิมพ์',
         accessor: 'employeeId',
-        Cell: ({ original: { employeeId } }) => (employeeId || undefined),
+        Cell: ({ original: { employee } }) => (employee && `${employee.profile.name.first} ${employee.profile.name.last}`),
         style: {
           textAlign: 'center',
         },
@@ -154,7 +154,7 @@ const ViewEmploymentTRT = ({ typings }) => (
   /> : <Alert bsStyle="warning">No bets yet.</Alert>
 );
 
-ViewEmploymentTRT.propTypes = {
+ViewEmploymentTRTable.propTypes = {
   typings: PropTypes.array,
 };
 
@@ -168,4 +168,4 @@ export default container((props, onData) => {
 
     onData(null, { typings });
   }
-}, ViewEmploymentTRT);
+}, ViewEmploymentTRTable);
