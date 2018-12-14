@@ -104,31 +104,26 @@ export default class EmploymentEditor extends React.Component {
       </FormGroup>
       { employment ?
         <FormGroup>
-          <ControlLabel>ผู้พิมพ์(คีย์ข้อมูล)</ControlLabel>
+          <ControlLabel>ผู้พิมพ์</ControlLabel>
           <ul>
             { employment && employment.employees.length ?
               employment.employees.map(({ userId, user, allowed }) =>
                 <li key={user._id}>
                   <Checkbox defaultChecked={allowed} disabled={user._id === Meteor.userId()} value={userId}>
-                    {`${user.profile.name.first} ${user.profile.name.last}`} { allowed ? <span style={{ color: 'green' }}>อนุญาต</span> : <span style={{ color: 'red' }}>บล็อค</span> }
+                    {`${user.profile.name.first} ${user.profile.name.last} (${user.emails[0].address})`} { allowed ? <span style={{ color: 'green' }}>อนุญาต</span> : <span style={{ color: 'red' }}>บล็อค</span> }
                   </Checkbox>
                 </li>
               ) : undefined
             }
           </ul>
-          {/* <Switch onChange={(el, state) => this.handleSwitch(el, state)} name='test' /> */}
-          {/* <Toggle
-            onClick={this.onToggle}
-            on={<h2>ON</h2>}
-            off={<h2>OFF</h2>}
-            active={this.state.toggleActive}
-          /> */}
         </FormGroup>
         : undefined
       }
       <Button type="submit" bsStyle="success">
         { employment && employment._id ? 'Save Changes' : 'Add Employment' }
       </Button>
+      <br />
+      <br />
     </form>);
   }
 }
