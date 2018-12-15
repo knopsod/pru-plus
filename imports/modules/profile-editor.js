@@ -2,7 +2,7 @@
 
 import { browserHistory } from 'react-router';
 import { Bert } from 'meteor/themeteorchef:bert';
-// import { upsertUser } from '../api/users/methods.js';
+import { upsertUser } from '../api/users/methods.js';
 import './validation.js';
 
 let component;
@@ -25,15 +25,15 @@ const handleUpsert = () => {
   }
 
   console.log(upsert);
-  // upsertUser.call(upsert, (error, response) => {
-  //   if (error) {
-  //     Bert.alert(error.reason, 'danger');
-  //   } else {
-  //     component.profileEditorForm.reset();
-  //     Bert.alert(confirmation, 'success');
-  //     browserHistory.push(`/profile`);
-  //   }
-  // });
+  upsertUser.call(upsert, (error, response) => {
+    if (error) {
+      Bert.alert(error.reason, 'danger');
+    } else {
+      // component.profileEditorForm.reset();
+      Bert.alert(confirmation, 'success');
+      // browserHistory.push(`/profile`);
+    }
+  });
 };
 
 const validate = () => {
