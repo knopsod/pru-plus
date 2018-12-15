@@ -38,7 +38,8 @@ const AuthenticatedNavigation = () => (
     </Nav>
     <Nav pullRight>
       <NavDropdown eventKey={ 3 } title={ userName() } id="basic-nav-dropdown">
-        <MenuItem eventKey={ 3.1 } onClick={ handleLogout }>ออกจากระบบ</MenuItem>
+        <MenuItem eventKey={ 3.1 } href="/profile">โปรไฟล์</MenuItem>
+        <MenuItem eventKey={ 3.2 } onClick={ handleLogout }>ออกจากระบบ</MenuItem>
       </NavDropdown>
     </Nav>
   </div>

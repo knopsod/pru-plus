@@ -101,6 +101,7 @@ Typings.schema = new SimpleSchema({
   'employee.profile.name': { type: Object, optional: true },
   'employee.profile.name.first': { type: String, optional: true },
   'employee.profile.name.last': { type: String, optional: true },
+  'employee.profile.lineId': { type: String, optional: true },
   'employee._id': { type: String, optional: true },
 });
 

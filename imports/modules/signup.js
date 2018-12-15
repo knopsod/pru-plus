@@ -15,6 +15,7 @@ const getUserData = () => ({
       first: document.querySelector('[name="firstName"]').value,
       last: document.querySelector('[name="lastName"]').value,
     },
+    lineId: document.querySelector('[name="lineId"]').value,
   },
 });
 
@@ -48,6 +49,9 @@ const validate = () => {
         required: true,
         minlength: 6,
       },
+      lineId: {
+        required: true,
+      },
     },
     messages: {
       firstName: {
@@ -63,6 +67,9 @@ const validate = () => {
       password: {
         required: 'Need a password here.',
         minlength: 'Use at least six characters, please.',
+      },
+      lineId: {
+        required: 'Need a LINE ID.',
       },
     },
     submitHandler() { signup(); },

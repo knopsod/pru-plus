@@ -75,10 +75,10 @@ const validate = () => {
         required: 'Need a end time in here.',
       },
       title: {
-        required: 'Need a title in here, Seuss.',
+        required: 'Need a title in here, please.',
       },
       body: {
-        required: 'This thneeds a body, please.',
+        required: 'Need a memo in here, please.',
       },
     },
     submitHandler() { handleUpsert(); },

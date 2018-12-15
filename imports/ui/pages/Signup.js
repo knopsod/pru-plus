@@ -47,6 +47,15 @@ export default class Signup extends React.Component {
                 </Col>
               </Row>
               <FormGroup>
+                <ControlLabel>LINE ID</ControlLabel>
+                <FormControl
+                  type="lineId"
+                  ref="lineId"
+                  name="lineId"
+                  placeholder="LINE ID"
+                />
+              </FormGroup>
+              <FormGroup>
                 <ControlLabel>อีเมล์</ControlLabel>
                 <FormControl
                   type="text"
