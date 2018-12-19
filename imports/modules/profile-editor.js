@@ -1,6 +1,5 @@
 /* eslint-disable no-undef */
 
-import { browserHistory } from 'react-router';
 import { Bert } from 'meteor/themeteorchef:bert';
 import { upsertUser } from '../api/users/methods.js';
 import './validation.js';
@@ -24,7 +23,6 @@ const handleUpsert = () => {
     upsert._id = user._id;
   }
 
-  console.log(upsert);
   upsertUser.call(upsert, (error, response) => {
     if (error) {
       Bert.alert(error.reason, 'danger');

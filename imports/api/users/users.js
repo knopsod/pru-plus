@@ -1,8 +1,9 @@
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 import { Factory } from 'meteor/dburles:factory';
+import { Meteor } from 'meteor/meteor';
 
-const Users = new Mongo.Collection('users');
+const Users = Meteor.users;
 export default Users;
 
 Users.allow({

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { FormGroup, ControlLabel, FormControl, Button, Row, Col } from 'react-bootstrap';
 import profileEditor from '../../modules/profile-editor.js';
 
-export default class EmploymentEditor extends React.Component {
+class ProfileEditor extends React.Component {
   constructor(props) {
     super(props);
 
@@ -63,6 +63,8 @@ export default class EmploymentEditor extends React.Component {
   }
 }
 
-EmploymentEditor.propTypes = {
-  employment: PropTypes.object,
+ProfileEditor.propTypes = {
+  user: PropTypes.object,
 };
+
+export default ProfileEditor;
