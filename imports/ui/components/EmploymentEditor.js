@@ -75,13 +75,13 @@ export default class EmploymentEditor extends React.Component {
       <FormGroup>
         <ControlLabel>เวลาเริ่มต้น</ControlLabel>
         {/* https://www.npmjs.com/package/react-bootstrap-time-picker */}
-        <TimePicker name="startTime" step={10} format={24}
+        <TimePicker name="startTime" format={24}
           onChange={this.handleStartTimeChange} value={ this.state.startTime } />
       </FormGroup>
       <FormGroup>
         <ControlLabel>เวลาสิ้นสุด</ControlLabel>
         {/* https://www.npmjs.com/package/react-bootstrap-time-picker */}
-        <TimePicker name="endTime" step={10} format={24}
+        <TimePicker name="endTime" format={24}
           onChange={this.handleEndTimeChange} value={ this.state.endTime } />
       </FormGroup>
       <FormGroup>
