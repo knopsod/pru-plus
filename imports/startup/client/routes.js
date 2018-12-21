@@ -40,6 +40,7 @@ import Jobs from '../../ui/pages/Jobs';
 import Profile from '../../ui/pages/Profile';
 
 import Typings from '../../ui/pages/Typings';
+import ViewUser from '../../ui/pages/ViewUser';
 
 const authenticate = (nextState, replace) => {
   if (!Meteor.loggingIn() && !Meteor.userId()) {
@@ -86,7 +87,7 @@ Meteor.startup(() => {
 
         <Route name="jobs" path="/jobs" component={ Jobs } onEnter={ authenticate } />
 
-        <Route name="user" path="/user/:_id" component={ NotFound } />
+        <Route name="viewUser" path="/users/:_id" component={ ViewUser } onEnter={ authenticate } />
 
         <Route name="profile" path="/profile" component={ Profile } onEnter={ authenticate } />
 

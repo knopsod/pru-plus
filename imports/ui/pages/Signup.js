@@ -55,6 +55,7 @@ export default class Signup extends React.Component {
                   placeholder="LINE ID"
                 />
               </FormGroup>
+              <hr />
               <FormGroup>
                 <ControlLabel>อีเมล์</ControlLabel>
                 <FormControl

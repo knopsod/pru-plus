@@ -57,7 +57,7 @@ class ProfileEditor extends React.Component {
         />
       </FormGroup>
       <Button type="submit" bsStyle="success">
-        { user && user._id ? 'Save Changes' : 'Add Employment' }
+        { user && user._id ? 'Save Changes' : 'Add User' }
       </Button>
     </form>);
   }

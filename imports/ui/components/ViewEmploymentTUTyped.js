@@ -13,7 +13,7 @@ const ViewEmploymentTUTyped = ({ employees, recordTotal, allIncome, allFee }) =>
       <tr>
         <th className="col-xs-1 col-sm-1 text-center"></th>
         <th className="col-xs-4 col-sm-4 text-center">ผู้พิมพ์</th>
-        <th className="col-xs-3 col-sm-3 text-center">Email</th>
+        <th className="col-xs-3 col-sm-3 text-center">LINE ID</th>
         <th className="col-xs-1 col-sm-1 text-center">พิมพ์</th>
         <th className="col-xs-1 col-sm-1 text-center">ยอดเงิน</th>
         <th className="col-xs-1 col-sm-1 text-center">ค่าพิมพ์(0.5%)</th>
@@ -25,7 +25,7 @@ const ViewEmploymentTUTyped = ({ employees, recordTotal, allIncome, allFee }) =>
           return ( <tr key={ userId }>
             <td className="col-xs-1 col-sm-1 text-center">{ (index + 1) }</td>
             <td className="col-xs-4 col-sm-4 text-center">{ user.profile.name.first } { user.profile.name.last }</td>
-            <td className="col-xs-3 col-sm-3 text-center">{ user.emails[0].address }</td>
+            <td className="col-xs-3 col-sm-3 text-center">{ user.profile.lineId }</td>
             <td className="col-xs-1 col-sm-1 text-center">{ record }</td>
             <td className="col-xs-1 col-sm-1 text-center">{ income }</td>
             <td className="col-xs-1 col-sm-1 text-center" style={{ color: 'red' }}>{ fee }</td>
@@ -84,7 +84,7 @@ export default container((props, onData) => {
       allFee += obj.fee;
     });
 
-    console.log(employees);
+    allFee = parseFloat(allFee.toFixed(2));
 
     onData(null, { employees, recordTotal, allIncome, allFee });
   }

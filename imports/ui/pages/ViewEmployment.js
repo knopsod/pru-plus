@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ButtonToolbar, ButtonGroup, Button } from 'react-bootstrap';
-import { browserHistory } from 'react-router';
+import { browserHistory, Link } from 'react-router';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
 import Employments from '../../api/employments/employments';
@@ -9,6 +9,8 @@ import { removeEmployment } from '../../api/employments/methods';
 import NotFound from './NotFound';
 import container from '../../modules/container';
 import { timeFromInt } from 'time-number';
+import moment from 'moment';
+
 import ViewEmploymentTRTable from '../components/ViewEmploymentTRTable';
 import ViewEmploymentTUTyped from '../components/ViewEmploymentTUTyped';
 import ViewEmploymentNosRed from '../components/ViewEmploymentNosRed';
@@ -32,6 +34,7 @@ const handleRemove = (_id) => {
 };
 
 const ViewEmployment = ({ employment, employmentId }) => {
+  const now = moment().toISOString(true).substring(0, 10);
   return employment ? (
     <div className="ViewEmployment">
       <div className="page-header clearfix">
@@ -51,7 +54,7 @@ const ViewEmployment = ({ employment, employmentId }) => {
         { employment && employment.employees.length ?
           employment.employees.map(({ user, allowed }) => 
             <li key={user._id}>
-              {`${user.profile.name.first} ${user.profile.name.last} (${user.emails[0].address})`} { allowed ? <span style={{ color: 'green' }}>อนุญาต</span> : <span style={{ color: 'red' }}>บล็อค</span> }
+              {`${user.profile.name.first} ${user.profile.name.last}`}{`(${user.profile.lineId})`}{ allowed ? <span style={{ color: 'green' }}> อนุญาต</span> : <span style={{ color: 'red' }}> บล็อค</span> }{ employment.date.substr(0, 10) < now ? (<Link to={`/users/${user._id}`} className="btn btn-link">ให้คะแนน</Link>) : undefined}
             </li>)
           : undefined
         }

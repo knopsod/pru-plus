@@ -31,7 +31,17 @@ const handleUpsert = () => {
   } else {
     upsert.userId = Meteor.userId();
     upsert.employer = Meteor.user();
-    upsert.employees = [{ userId: Meteor.userId(), user: Meteor.user(), allowed: true, feedbackLeft: true, feedbackReceived: true }];
+    upsert.employees = [
+      { 
+        userId: Meteor.userId(),
+        user: Meteor.user(),
+        allowed: true,
+        feedbackLeft: false,
+        feedbackReceived: false,
+        employerComment: '',
+        employeeComment: '',
+      }
+    ];
   }
 
   upsertEmployment.call(upsert, (error, response) => {

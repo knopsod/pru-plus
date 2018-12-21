@@ -45,6 +45,8 @@ export const upsertEmployment = new ValidatedMethod({
     'employees.$.allowed': { type: Boolean, optional: true },
     'employees.$.feedbackLeft': { type: Boolean, optional: true },
     'employees.$.feedbackReceived': { type: Boolean, optional: true },
+    'employees.$.employerComment': { type: String, optional: true },
+    'employees.$.employeeComment': { type: String, optional: true },
   }).validator(),
   run(employment) {
     return Employments.upsert({ _id: employment._id },

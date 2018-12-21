@@ -45,9 +45,9 @@ const ViewEmploymentTRTable = ({ typings }) => (
         },
       },
       {
-        Header: 'Email',
+        Header: 'LINE ID',
         accessor: 'employee',
-        Cell: ({ original: { employee } }) => (employee && employee.emails[0].address),
+        Cell: ({ original: { employee } }) => (employee && employee.profile.lineId),
         style: {
           textAlign: 'center',
         },

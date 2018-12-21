@@ -3,6 +3,10 @@ import { browserHistory } from 'react-router';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
+import PropTypes from 'prop-types';
+import Employments from '../../api/employments/employments';
+import container from '../../modules/container';
+import moment from 'moment';
 
 const handleLogout = () => Meteor.logout(() => browserHistory.push('/login'));
 
@@ -12,7 +16,7 @@ const userName = () => {
   return user ? `${name.first} ${name.last}` : '';
 };
 
-const AuthenticatedNavigation = () => (
+const AuthenticatedNavigation = ({ employments }) => (
   <div>
     <Nav>
       {/* <LinkContainer to="/documents">
@@ -25,7 +29,7 @@ const AuthenticatedNavigation = () => (
         <NavItem eventKey={ 4 } href="/employments">จ้างงาน</NavItem>
       </LinkContainer>
       <LinkContainer to="/jobs">
-        <NavItem eventKey={ 5 } href="/jobs">หางาน</NavItem>
+        <NavItem eventKey={ 5 } href="/jobs">หางาน({ employments.length })</NavItem>
       </LinkContainer>
       <NavDropdown eventKey={ 6 } title="เริ่มต้น" id="begin-nav-dropdown">
         <LinkContainer to="/bets">
@@ -45,4 +49,19 @@ const AuthenticatedNavigation = () => (
   </div>
 );
 
-export default AuthenticatedNavigation;
+AuthenticatedNavigation.propTypes = {
+  employments: PropTypes.array,
+};
+
+export default container((props, onData) => {
+  const now = moment().toISOString(true).substring(0, 10); // send now with format 'YYYY-MM-DD'
+  const subscription = Meteor.subscribe('employments.available.list', now);
+  if (subscription.ready()) {
+    const employments = Employments.find(
+      { date: { $gte: now } },
+      { sort: { date: -1 } }
+    ).fetch();
+
+    onData(null, { employments });
+  }
+}, AuthenticatedNavigation);

@@ -6,17 +6,18 @@ import Employments from '../../api/employments/employments';
 import container from '../../modules/container';
 import { timeFromInt } from 'time-number';
 import moment from 'moment';
+import { browserHistory } from 'react-router';
 
-const handleNav = _id => {
-  console.log(_id);
+const handleNav = (employerId) => {
+  browserHistory.push(`/users/${employerId}`);
 };
 
 const JobsDoneList = ({ employments }) => (
   employments.length > 0 ? <ListGroup className="EmploymentsList">
     {employments.map(({ _id, date, startTime, endTime, title, employer }) => (
       <ListGroupItem key={ _id } 
-      onClick={ () => handleNav(_id) }>
-        { `${date.substr(0, 10)}, ${timeFromInt(startTime)}-${timeFromInt(endTime)}, Title : ${title}, by : ${employer.profile.name.first} ${employer.profile.name.last.substr(0, 1)}.` }<a className="btn btn-link btn-xs pull-right">ให้คะแนน</a>
+      onClick={ () => handleNav(employer._id) }>
+        { `${date.substr(0, 10)}, ${timeFromInt(startTime)}-${timeFromInt(endTime)}, ${title}, by : ${employer.profile.name.first} ${employer.profile.name.last.substr(0, 1)}.` }<a className="btn btn-link btn-xs pull-right">ให้คะแนน</a>
       </ListGroupItem>
     ))}
   </ListGroup> :

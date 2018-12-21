@@ -5,12 +5,13 @@ import { Jumbotron } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import container from '../../modules/container';
 
-const Index = ({ hasUser }) => (
+const Index = ({ user }) => (
   <div className="Index">
-    <Jumbotron className="text-center" 
-      style={{ 
-        height: '64rem',
+    <Jumbotron className="text-center"
+      style={{
+        height: '48rem',
         paddingTop: '8rem',
+        paddingBottom: '8rem',
       }}>
       <p>
         <span>Lotto Go Fast</span>
@@ -24,10 +25,10 @@ const Index = ({ hasUser }) => (
 );
 
 Index.propTypes = {
-  hasUser: PropTypes.object,
+  user: PropTypes.object,
 };
 
 export default container((props, onData) => {
-  onData(null, { hasUser: Meteor.user() });
+  onData(null, { user: Meteor.user() });
 }, Index);
 
