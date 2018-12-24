@@ -16,7 +16,7 @@ const Index = ({ user }) => (
         <span>โปรแกรมเจ้ามือหวย</span>
       </p>
       <p>
-        <span style={{ fontSize: 16 }}>ระบบที่คัดเลข/ตัดเลขได้เร็วที่สุด รวมผู้พิมพ์โพยหวยไว้มากที่สุด</span>
+        <span style={{ fontSize: 16 }}>ช่วยคัดเลข/ตัดเลขได้เร็วที่สุด รวมผู้พิมพ์โพยหวยไว้มากที่สุด</span>
       </p>
       <br />
       <p><Link to="/employments" className="btn btn-primary btn-lg btn-block">จ้างงาน</Link></p>

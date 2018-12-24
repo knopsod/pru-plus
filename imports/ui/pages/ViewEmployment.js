@@ -54,7 +54,9 @@ const ViewEmployment = ({ employment, employmentId }) => {
         { employment && employment.employees.length ?
           employment.employees.map(({ user, allowed }) => 
             <li key={user._id}>
-              {`${user.profile.name.first} ${user.profile.name.last}`}{`(${user.profile.lineId}), `}{ allowed ? <span style={{ color: 'green' }}>อนุญาต</span> : <span style={{ color: 'red' }}>บล็อค</span> },<Link to={`/users/${user._id}`} className="btn btn-link">{ employment.date.substr(0, 10) >= now ? 'ดูประวัติ' : 'ให้คะแนน' } </Link>
+              {`${user.profile.name.first} ${user.profile.name.last}`}{`(${user.profile.lineId})`}
+              <Link to={`/users/${user._id}`} className="btn btn-link">{ employment.date.substr(0, 10) >= now ? 'ดูประวัติ' : 'ให้คะแนน' } </Link>
+              { allowed ? <span style={{ color: 'green' }}>อนุญาต</span> : <span style={{ color: 'red' }}>บล็อค</span> }
             </li>)
           : undefined
         }

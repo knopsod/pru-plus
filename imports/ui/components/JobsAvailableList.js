@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ListGroup, ListGroupItem, Alert } from 'react-bootstrap';
+import { Link } from 'react-router';
+import { ListGroup, ListGroupItem, Alert, Button } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
 import Employments from '../../api/employments/employments';
@@ -44,9 +45,12 @@ const handleNav = (_id, employees) => {
 const JobsAvailableList = ({ employments }) => (
   employments.length > 0 ? <ListGroup className="EmploymentsList">
     {employments.map(({ _id, date, startTime, endTime, title, employer, employees }) => (
-      <ListGroupItem key={ _id } 
-      onClick={ () => handleNav(_id, employees) }>
-        { `${date.substr(0, 10)}, ${timeFromInt(startTime)}-${timeFromInt(endTime)}, ${title}, by : ${employer.profile.name.first} ${employer.profile.name.last.substr(0, 1)}.` }<a className="btn btn-link btn-xs pull-right">ร่วมงาน</a>
+      <ListGroupItem key={ _id }>
+        { `${date.substr(0, 10)}, ${timeFromInt(startTime)}-${timeFromInt(endTime)}, ${title}` }
+        <Link to={`/users/${employer._id}`} className="btn btn-link btn-xs">
+          { `${employer.profile.name.first} ${employer.profile.name.last.substr(0, 1)}.` }
+        </Link>
+        <Button className="btn btn-link btn-xs pull-right" onClick={ () => handleNav(_id, employees) }>ร่วมงาน</Button>
       </ListGroupItem>
     ))}
   </ListGroup> :
