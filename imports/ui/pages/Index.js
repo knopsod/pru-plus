@@ -13,10 +13,10 @@ const Index = ({ user }) => (
         paddingTop: '5rem',
       }}>
       <p>
-        <span>โปรแกรมเจ้ามือหวย</span>
+        <span>โปรแกรมเจ้ามือเงินล้าน</span>
       </p>
       <p>
-        <span style={{ fontSize: 16 }}>ช่วยคัดเลข/ตัดเลขได้เร็วที่สุด รวมผู้พิมพ์โพยหวยไว้มากที่สุด</span>
+        <span style={{ fontSize: 16 }}>คัดเลข/ตัดเลขได้เร็ว</span>
       </p>
       <br />
       <p><Link to="/employments" className="btn btn-primary btn-lg btn-block">จ้างงาน</Link></p>
@@ -24,10 +24,10 @@ const Index = ({ user }) => (
       <p><Link to="/jobs" className="btn btn-primary btn-lg btn-block">หางาน</Link></p>
       <br />
       <p>
-        <span style={{ fontSize: 16 }}>ช่วยลดความเสี่ยง ช่วยหาคนทำงาน ไม่มีขั้นต่ำในการจ้าง (ยอด 1,000.- จ่าย 5.-)</span>
+        <span style={{ fontSize: 16 }}>ลดความเสี่ยง คำนวณค่าแรงตามเปอร์เช็นต์ของยอดขาย(0.5%)</span>
       </p>
       <p>
-        <span style={{ fontSize: 16 }}>เลือกคนทำงานได้ง่าย ด้วยระบบคะแนน</span>
+        <span style={{ fontSize: 16 }}>เลือกคนทำงานได้ง่ายด้วยระบบคะแนน</span>
       </p>
     </Jumbotron>
   </div>
