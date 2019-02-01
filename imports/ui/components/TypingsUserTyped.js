@@ -84,8 +84,6 @@ export default container((props, onData) => {
       allIncome += obj.income;
       allFee += obj.fee;
     });
-
-    console.log(users);
     
     onData(null, { users, recordTotal, allIncome, allFee });
   }

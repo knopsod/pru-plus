@@ -22,7 +22,7 @@ const typings = (props) => {
         <TypingsEditorFast employmentId={employmentId} />
       </Col>
       <Col xs={9} sm={9} md={9}>
-        {/* <TypingsReactTable employmentId={employmentId} /> */}
+        <TypingsReactTable employmentId={employmentId} />
         <br />
         <TypingsUserTyped employmentId={employmentId} />
       </Col>

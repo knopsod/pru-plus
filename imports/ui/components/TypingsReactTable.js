@@ -30,7 +30,7 @@ const TypingsReactTable = ({ typings }) => (
     columns={[
       {
         id: "row",
-        Cell: (row) => (1 + row.index),
+        Cell: (row) => (<div>{ 1 + row.index }</div>),
         maxWidth: 48,
         style: {
           textAlign: 'center',
@@ -40,7 +40,7 @@ const TypingsReactTable = ({ typings }) => (
         Header: 'ป-ด-ว',
         accessor: 'createdAt',
         minWidth: 145,
-        Cell: ({ original: { createdAt } }) => (moment(createdAt).format('YYYY-MM-DD HH:mm:ss')),
+        Cell: ({ original: { createdAt } }) => (<div>{ moment(createdAt).format('YYYY-MM-DD HH:mm:ss') }</div>),
         style: {
           textAlign: 'center',
         },
@@ -73,14 +73,14 @@ const TypingsReactTable = ({ typings }) => (
       {
         maxWidth: 96,
         Cell: ({ original: { up2, down2, up3, permute, down3 } }) => {
-          if (up2 && !down2 && !up3 && !permute && !down3) return 'บน';
-          else if (!up2 && down2 && !up3 && !permute && !down3) return 'ล่าง';
-          else if (up2 && down2 && !up3 && !permute && !down3) return '' + up2 + 'x' + down2;
-          else if (!up2 && !down2 && up3 && !permute && !down3) return 'ตรง';
-          else if (!up2 && !down2 && !up3 && permute && !down3) return 'โต๊ด';
-          else if (!up2 && !down2 && !up3 && !permute && down3) return 'ล่าง';
-          else if (!up2 && !down2 && up3 && permute && !down3) return '' + up3 + 'x' + permute;
-          return '';
+          if (up2 && !down2 && !up3 && !permute && !down3) return <div>บน</div>;
+          else if (!up2 && down2 && !up3 && !permute && !down3) return <div>ล่าง</div>;
+          else if (up2 && down2 && !up3 && !permute && !down3) return <div>{`${up2}x${down2}`}</div>;
+          else if (!up2 && !down2 && up3 && !permute && !down3) return <div>ตรง</div>;
+          else if (!up2 && !down2 && !up3 && permute && !down3) return <div>โต๊ด</div>;
+          else if (!up2 && !down2 && !up3 && !permute && down3) return <div>ล่าง</div>;
+          else if (!up2 && !down2 && up3 && permute && !down3) return <div>{`${up3}x${permute}`}</div>;
+          return undefined;
         },
         style: {
           textAlign: 'center',
@@ -90,7 +90,7 @@ const TypingsReactTable = ({ typings }) => (
         Header: '2บน',
         accessor: 'up2',
         maxWidth: 64,
-        Cell: ({ original: { up2 } }) => (up2 || undefined),
+        Cell: ({ original: { up2 } }) => (<div>{ up2 || undefined }</div>),
         style: {
           textAlign: 'center',
         },
@@ -99,7 +99,7 @@ const TypingsReactTable = ({ typings }) => (
         Header: '2ล่าง',
         accessor: 'down2',
         maxWidth: 64,
-        Cell: ({ original: { down2 } }) => (down2 || undefined),
+        Cell: ({ original: { down2 } }) => (<div>{ down2 || undefined }</div>),
         style: {
           textAlign: 'center',
         },
@@ -108,7 +108,7 @@ const TypingsReactTable = ({ typings }) => (
         Header: '3ตรง',
         accessor: 'up3',
         maxWidth: 64,
-        Cell: ({ original: { up3 } }) => (up3 || undefined),
+        Cell: ({ original: { up3 } }) => (<div>{ up3 || undefined }</div>),
         style: {
           textAlign: 'center',
         },
@@ -117,7 +117,7 @@ const TypingsReactTable = ({ typings }) => (
         Header: '3โต๊ด',
         accessor: 'permute',
         maxWidth: 64,
-        Cell: ({ original: { permute } }) => (permute || undefined),
+        Cell: ({ original: { permute } }) => (<div>{ permute || undefined }</div>),
         style: {
           textAlign: 'center',
         },
@@ -126,7 +126,7 @@ const TypingsReactTable = ({ typings }) => (
         Header: '3ล่าง',
         accessor: 'down3',
         maxWidth: 64,
-        Cell: ({ original: { down3 } }) => (down3 || undefined),
+        Cell: ({ original: { down3 } }) => (<div>{ down3 || undefined }</div>),
         style: {
           textAlign: 'center',
         },
@@ -150,6 +150,28 @@ const TypingsReactTable = ({ typings }) => (
 );
 
 TypingsReactTable.propTypes = {
+  typings: PropTypes.array,
+};
+
+const TypingsReactTableCell = ({ typings }) => (
+  typings.length > 0 ? <ReactTable
+    data={typings}
+    columns={[
+      {
+        id: "row",
+        Cell: (row) => (<div>{ 1 + row.index }</div>),
+        maxWidth: 48,
+        style: {
+          textAlign: 'center',
+        },
+      }
+    ]}
+    defaultPageSize={10}
+    className="-striped -highlight"
+  /> : <Alert bsStyle="warning">No bets yet.</Alert>
+);
+
+TypingsReactTableCell.propTypes = {
   typings: PropTypes.array,
 };
 
