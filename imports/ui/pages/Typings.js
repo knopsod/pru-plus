@@ -18,10 +18,10 @@ const typings = (props) => {
       </Col>
     </Row>
     <Row>
-      <Col xs={3} sm={3} md={3}>
+      <Col xs={12} sm={3} md={3}>
         <TypingsEditorFast employmentId={employmentId} />
       </Col>
-      <Col xs={9} sm={9} md={9}>
+      <Col xs={12} sm={9} md={9}>
         <TypingsReactTable employmentId={employmentId} />
         <br />
         <TypingsUserTyped employmentId={employmentId} />
