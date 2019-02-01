@@ -29,12 +29,12 @@ const Jobs = () => (
         <JobsOnHandList />
       </Col>
     </Row>
-    <Row>
+    { false ? <Row>
       <Col xs={ 12 }>
         <span>ให้คะแนนงาน</span>
         <JobsDoneList />
       </Col>
-    </Row>
+    </Row> : undefined }
   </div>
 );
 
