@@ -27,7 +27,7 @@ const Index = ({ user }) => (
         <span style={{ fontSize: 16 }}>ลดความเสี่ยง คำนวณค่าแรงตามเปอร์เช็นต์ของยอดขาย(0.5%)</span>
       </p>
       <p>
-        <span style={{ fontSize: 16 }}>เลือกคนทำงานได้ง่ายด้วยระบบคะแนน</span>
+        <span style={{ fontSize: 16 }}>เลือกคนทำงานได้ง่าย ดูข้อมูลการคีย์ย้อนหลังได้</span>
       </p>
     </Jumbotron>
   </div>
