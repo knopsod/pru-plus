@@ -25,7 +25,7 @@ const Jobs = () => (
     </Row>
     <Row>
       <Col xs={ 12 }>
-        <span>ตอบรับแล้ว</span>
+        <span>คีย์ข้อมูล</span>
         <JobsOnHandList />
       </Col>
     </Row>
