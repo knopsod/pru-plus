@@ -16,10 +16,10 @@ const Bets = () => (
       </Col>
     </Row>
     <Row>
-      <Col xs={3} sm={3} md={3}>
+      <Col xs={12} sm={3} md={3}>
         <BetEditorFast />
       </Col>
-      <Col xs={9} sm={9} md={9}>
+      <Col xs={12} sm={9} md={9}>
         <BetsReactTable />
         <br />
         <BetsUsersList />
