@@ -31,8 +31,8 @@ const BetsReactTable = ({ bets }) => (
     data={bets}
     columns={[
       {
-        id: "row",
-        Cell: (row) => (<div>{1 + row.index}</div>),
+        id: 'row',
+        Cell: (row) => (<div>{ 1 + row.index }</div>),
         maxWidth: 48,
         style: {
           textAlign: 'center',
@@ -69,7 +69,7 @@ const BetsReactTable = ({ bets }) => (
         accessor: 'percent',
         maxWidth: 32,
         style: {
-          textAlign: 'center'
+          textAlign: 'center',
         },
       },
       {
@@ -82,7 +82,7 @@ const BetsReactTable = ({ bets }) => (
           else if (!up2 && !down2 && !up3 && permute && !down3) return <div>โต๊ด</div>;
           else if (!up2 && !down2 && !up3 && !permute && down3) return <div>ล่าง</div>;
           else if (!up2 && !down2 && up3 && permute && !down3) return <div>{`${up3}x${permute}`}</div>;
-          return undefined;
+          return <div />;
         },
         style: {
           textAlign: 'center',

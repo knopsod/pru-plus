@@ -47,7 +47,12 @@ class TypingsEditorFast extends React.Component {
   }
 
   handleChangeV2(e) {
-    const betMessage = e.target.value;
+    const value = e.target.value;
+    this.decodeValue(value);
+  }
+
+  decodeValue(value) {
+    const betMessage = value;
     this.setState({
       ...this.state,
       betMessage,

@@ -80,7 +80,7 @@ const TypingsReactTable = ({ typings }) => (
           else if (!up2 && !down2 && !up3 && permute && !down3) return <div>โต๊ด</div>;
           else if (!up2 && !down2 && !up3 && !permute && down3) return <div>ล่าง</div>;
           else if (!up2 && !down2 && up3 && permute && !down3) return <div>{`${up3}x${permute}`}</div>;
-          return undefined;
+          return <div />;
         },
         style: {
           textAlign: 'center',
