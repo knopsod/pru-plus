@@ -13,18 +13,6 @@ const Jobs = () => (
         <div className="page-header clearfix">
           <h4 className="pull-left">หางาน</h4>
         </div>
-        <span>งานใหม่</span>
-        <JobsAvailableList />
-      </Col>
-    </Row>
-    <Row>
-      <Col xs={ 12 }>
-      <span>รอการตอบรับ</span>
-        <JobsPengingList />
-      </Col>
-    </Row>
-    <Row>
-      <Col xs={ 12 }>
         <span>คีย์ข้อมูล</span>
         <JobsOnHandList />
       </Col>
@@ -35,6 +23,18 @@ const Jobs = () => (
         <JobsDoneList />
       </Col>
     </Row> */}
+    <Row>
+      <Col xs={ 12 }>
+        <span>รอการตอบรับ</span>
+        <JobsPengingList />
+      </Col>
+    </Row>
+    <Row>
+      <Col xs={ 12 }>
+        <span>งานใหม่</span>
+        <JobsAvailableList />
+      </Col>
+    </Row>
   </div>
 );
 
