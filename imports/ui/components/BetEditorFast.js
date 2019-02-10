@@ -269,7 +269,7 @@ class BetEditorFast extends React.Component {
 
     return (<form>      
       <FormGroup>
-        <ControlLabel>ป-ด-ว d</ControlLabel>
+        <ControlLabel>ป-ด-ว</ControlLabel>
         <DatePicker dateFormat="YYYY-MM-DD" 
           name="createdDate" ref="createdDate"
           value={this.state.createdDate}
