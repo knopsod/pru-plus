@@ -14,7 +14,7 @@ import { timeFromInt } from 'time-number';
 import Employments from '../../api/employments/employments';
 import { upsertTyping } from '../../api/typings/methods.js';
 
-class TypingsEditorFast extends React.Component {
+class TypingsEditorFastMobile extends React.Component {
   constructor(props) {
     super(props);
 
@@ -285,20 +285,22 @@ class TypingsEditorFast extends React.Component {
           onChange={this.handlePercentChange}/>
       </FormGroup>
 
-      <FormGroup>
-        <ControlLabel>เบอร์</ControlLabel>
-        <FormControl
-          componentClass="textarea"
-          type="number"
-          name="bet"
-          style={this.state.betMessage.length > 0 ? yellowStyle : redStyle}
-          bsSize="large"
-          value={this.state.betMessage}
-          onChange={this.handleChangeV2}
-        />
-      </FormGroup>
+      { false && 
+        <FormGroup>
+          <ControlLabel>เบอร์</ControlLabel>
+          <FormControl
+            componentClass="textarea"
+            type="number"
+            name="bet"
+            style={this.state.betMessage.length > 0 ? yellowStyle : redStyle}
+            bsSize="large"
+            value={this.state.betMessage}
+            onChange={this.handleChangeV2}
+          />
+        </FormGroup>
+      }
 
-      { false &&
+      { true &&
         <FormGroup>
           <ControlLabel>เบอร์</ControlLabel>
           <FormControl type="tel" name="betMobileNo" maxLength={3}
@@ -308,7 +310,7 @@ class TypingsEditorFast extends React.Component {
         </FormGroup>
       }
 
-      { false &&
+      { true &&
         <FormGroup>
           <ControlLabel>ราคา</ControlLabel>
           <FormControl type="tel" name="betMobileAmount"
@@ -318,14 +320,14 @@ class TypingsEditorFast extends React.Component {
         </FormGroup>
       }
       
-      { false &&
+      { true &&
         <FormGroup>
           <Button bsStyle="primary" bsSize="large" block
             onClick={this.handleClickMobile}>บันทึก</Button>
         </FormGroup>
       }
 
-      { this.state.showKeyDocs &&
+      { this.state.showKeyDocs && false &&
         <Table bordered condensed hover
           >
           <thead>
@@ -388,7 +390,7 @@ class TypingsEditorFast extends React.Component {
         </Table>
       }
 
-      { this.state.showKeyDocs && false &&
+      { this.state.showKeyDocs &&
         <Table bordered condensed hover
           >
           <thead>
@@ -463,7 +465,7 @@ class TypingsEditorFast extends React.Component {
   }
 }
 
-TypingsEditorFast.propTypes = {
+TypingsEditorFastMobile.propTypes = {
   Session: PropTypes.object,
   employmentId: PropTypes.string,
   employment: PropTypes.object,
@@ -477,4 +479,4 @@ export default container((props, onData) => {
     const employment = Employments.findOne(employmentId);
     onData(null, { employment, Session });
   }
-}, TypingsEditorFast);
+}, TypingsEditorFastMobile);
