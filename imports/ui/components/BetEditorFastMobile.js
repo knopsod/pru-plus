@@ -13,7 +13,7 @@ import container from '../../modules/container';
 
 import { upsertBet } from '../../api/bets/methods.js';
 
-class BetEditorFast extends React.Component {
+class BetEditorFastMobile extends React.Component {
   constructor(props) {
     super(props);
 
@@ -269,7 +269,7 @@ class BetEditorFast extends React.Component {
 
     return (<form>      
       <FormGroup>
-        <ControlLabel>ป-ด-ว d</ControlLabel>
+        <ControlLabel>ป-ด-ว m</ControlLabel>
         <DatePicker dateFormat="YYYY-MM-DD" 
           name="createdDate" ref="createdDate"
           value={this.state.createdDate}
@@ -292,47 +292,43 @@ class BetEditorFast extends React.Component {
           onChange={this.handlePercentChange}/>
       </FormGroup>
 
-      <FormGroup>
-        <ControlLabel>เบอร์</ControlLabel>
-        <FormControl
-          componentClass="textarea"
-          type="number"
-          name="bet"
-          style={this.state.betMessage.length > 0 ? yellowStyle : redStyle}
-          bsSize="large"
-          value={this.state.betMessage}
-          onChange={this.handleChangeV2}
-        />
-      </FormGroup>
-
       { false &&
         <FormGroup>
           <ControlLabel>เบอร์</ControlLabel>
-          <FormControl type="tel" name="betMobileNo" maxLength={3}
+          <FormControl
+            componentClass="textarea"
+            type="number"
+            name="bet"
+            style={this.state.betMessage.length > 0 ? yellowStyle : redStyle}
             bsSize="large"
-            value={this.state.betMobileNo}
-            onChange={this.handleChangeMobile} />
+            value={this.state.betMessage}
+            onChange={this.handleChangeV2}
+          />
         </FormGroup>
       }
 
-      { false &&
-        <FormGroup>
-          <ControlLabel>ราคา</ControlLabel>
-          <FormControl type="tel" name="betMobileAmount"
-            bsSize="large"
-            value={this.state.betMobileAmount}
-            onChange={this.handleChangeMobile} />
-        </FormGroup>
-      }
+      <FormGroup>
+        <ControlLabel>เบอร์</ControlLabel>
+        <FormControl type="tel" name="betMobileNo" maxLength={3}
+          bsSize="large"
+          value={this.state.betMobileNo}
+          onChange={this.handleChangeMobile} />
+      </FormGroup>
       
-      { false &&
-        <FormGroup>
-          <Button bsStyle="primary" bsSize="large" block
-            onClick={this.handleClickMobile}>บันทึก</Button>
-        </FormGroup>
-      }
+      <FormGroup>
+      <ControlLabel>ราคา</ControlLabel>
+        <FormControl type="tel" name="betMobileAmount"
+          bsSize="large"
+          value={this.state.betMobileAmount}
+          onChange={this.handleChangeMobile} />
+      </FormGroup>
 
-      { this.state.showKeyDocs &&
+      <FormGroup>
+        <Button bsStyle="primary" bsSize="large" block
+          onClick={this.handleClickMobile}>บันทึก</Button>
+      </FormGroup>
+
+      { this.state.showKeyDocs && false &&
         <Table bordered condensed hover
           >
           <thead>
@@ -395,7 +391,7 @@ class BetEditorFast extends React.Component {
         </Table>
       }
 
-      { this.state.showKeyDocs && false &&
+      { this.state.showKeyDocs &&
         <Table bordered condensed hover
           >
           <thead>
@@ -471,10 +467,10 @@ class BetEditorFast extends React.Component {
   }
 }
 
-BetEditorFast.propTypes = {
+BetEditorFastMobile.propTypes = {
   Session: PropTypes.object,
 };
 
 export default container((props, onData) => {
   onData(null, { Session });
-}, BetEditorFast);
+}, BetEditorFastMobile);
