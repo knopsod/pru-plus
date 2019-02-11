@@ -77,13 +77,20 @@ class BetEditorFast extends React.Component {
 
   handleClickMobile(e) {
     const { betMobileNo, betMobileAmount } = this.state;
+
+    if (betMobileNo === '') {
+      return;
+    }
+
     if (betMobileAmount.substring(0, 1) === '+' ||
       betMobileAmount.substring(0, 1) === '-' ||
       betMobileAmount.substring(0, 1) === '*') 
     {
       this.decodeValue('' + betMobileNo + betMobileAmount + '\n');
-    } else {
+    } else if (betMobileAmount !== '') {
       this.decodeValue('' + betMobileNo + '\n' + betMobileAmount + '\n');
+    } else {
+      this.decodeValue('' + betMobileNo + '\n\n');
     }
   }
 
@@ -427,6 +434,11 @@ class BetEditorFast extends React.Component {
               <td>100<strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
             </tr>
             <tr>
+              <td>67 = ราคาเดิม</td>
+              <td>67</td>
+              <td><strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
+            </tr>
+            <tr>
               <td>456 = 100 บน</td>
               <td>456</td>
               <td>+100<strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
@@ -450,6 +462,11 @@ class BetEditorFast extends React.Component {
               <td>456 = 100x100 บนxโต๊ด เท่ากัน</td>
               <td>456</td>
               <td>100<strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
+            </tr>
+            <tr>
+              <td>789 = ราคาเดิม</td>
+              <td>789</td>
+              <td><strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
             </tr>
           </tbody>
           <tfoot>
