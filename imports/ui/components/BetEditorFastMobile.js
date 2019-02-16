@@ -259,6 +259,10 @@ class BetEditorFastMobile extends React.Component {
         }
       });
 
+      if (this.state.betMobileNo !== '') {
+        setTimeout(() => { document.querySelector('[name="betMobileNo"]').focus(); }, 0);
+      }
+
       this.setState({
         ...this.state,
         betMessage: '',
