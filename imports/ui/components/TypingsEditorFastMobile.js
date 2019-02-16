@@ -69,11 +69,11 @@ class TypingsEditorFastMobile extends React.Component {
       return;
     }
 
-    if (betMobileAmount.substring(0, 1) === '+' ||
-      betMobileAmount.substring(0, 1) === '-' ||
-      betMobileAmount.substring(0, 1) === '*') 
+    if (betMobileNo.includes('+') ||
+      betMobileNo.includes('-') ||
+      betMobileNo.includes('*')) 
     {
-      this.decodeValue('' + betMobileNo + betMobileAmount + '\n');
+      this.decodeValue('' + betMobileNo + '\n');
     } else if (betMobileAmount !== '') {
       this.decodeValue('' + betMobileNo + '\n' + betMobileAmount + '\n');
     } else {
@@ -338,7 +338,7 @@ class TypingsEditorFastMobile extends React.Component {
         </FormGroup>
       }
 
-      { this.state.showKeyDocs && false &&
+      { this.state.showKeyDocs &&
         <Table bordered condensed hover
           >
           <thead>
@@ -350,127 +350,52 @@ class TypingsEditorFastMobile extends React.Component {
           <tbody>
             <tr>
               <td>45 = 100 บน</td>
-              <td>45+100<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+              <td>45+100<strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
             </tr>
             <tr>
               <td>45 = 100 ล่าง</td>
-              <td>45-100<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+              <td>45-100<strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
             </tr>
             <tr>
               <td>45 = 100x50 บนxล่าง</td>
-              <td>45+100-50<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+              <td>45+100-50<strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
             </tr>
             <tr>
               <td>45 = 100x100 บนxล่าง เท่ากัน</td>
-              <td>45<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>100<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+              <td>45<strong style={{ color: '#2E86C1', fontSize: 12 }}>[ถัดไป, Next]</strong>100<strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
             </tr>
             <tr>
               <td>67 = ราคาเดิม</td>
-              <td>67<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong><strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+              <td>67<strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
             </tr>
             <tr>
               <td>456 = 100 บน</td>
-              <td>456+100<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+              <td>456+100<strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
             </tr>
             <tr>
               <td>456 = 100 ล่าง</td>
-              <td>456-100<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+              <td>456-100<strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
             </tr>
             <tr>
               <td>456 = 100 โต๊ด</td>
-              <td>456*100<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+              <td>456*100<strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
             </tr>
             <tr>
               <td>456 = 100x50 บนxโต๊ด</td>
-              <td>456+100*50<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+              <td>456+100*50<strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
             </tr>
             <tr>
               <td>456 = 100x100 บนxโต๊ด เท่ากัน</td>
-              <td>456<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong>100<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+              <td>456<strong style={{ color: '#2E86C1', fontSize: 12 }}>[ถัดไป, Next]</strong>100<strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
             </tr>
             <tr>
               <td>789 = ราคาเดิม</td>
-              <td>789<strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong><strong style={{ color: 'red', fontSize: 12 }}>[Enter]</strong></td>
+              <td>789<strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
               <td colSpan={2} style={{textAlign: 'center'}}>+ บน, - ล่าง, * โต๊ด</td>
-            </tr>
-          </tfoot>
-        </Table>
-      }
-
-      { this.state.showKeyDocs &&
-        <Table bordered condensed hover
-          >
-          <thead>
-            <tr>
-              <th>ตัวอย่าง</th>
-              <th>เบอร์</th>
-              <th>ราคา</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>45 = 100 บน</td>
-              <td>45</td>
-              <td>+100<strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
-            </tr>
-            <tr>
-              <td>45 = 100 ล่าง</td>
-              <td>45</td>
-              <td>-100<strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
-            </tr>
-            <tr>
-              <td>45 = 100x50 บนxล่าง</td>
-              <td>45</td>
-              <td>+100-50<strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
-            </tr>
-            <tr>
-              <td>45 = 100x100 บนxล่าง เท่ากัน</td>
-              <td>45</td>
-              <td>100<strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
-            </tr>
-            <tr>
-              <td>67 = ราคาเดิม</td>
-              <td>67</td>
-              <td><strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
-            </tr>
-            <tr>
-              <td>456 = 100 บน</td>
-              <td>456</td>
-              <td>+100<strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
-            </tr>
-            <tr>
-              <td>456 = 100 ล่าง</td>
-              <td>456</td>
-              <td>-100<strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
-            </tr>
-            <tr>
-              <td>456 = 100 โต๊ด</td>
-              <td>456</td>
-              <td>*100<strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
-            </tr>
-            <tr>
-              <td>456 = 100x50 บนxโต๊ด</td>
-              <td>456</td>
-              <td>+100*50<strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
-            </tr>
-            <tr>
-              <td>456 = 100x100 บนxโต๊ด เท่ากัน</td>
-              <td>456</td>
-              <td>100<strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
-            </tr>
-            <tr>
-              <td>789 = ราคาเดิม</td>
-              <td>789</td>
-              <td><strong style={{ color: '#2E86C1', fontSize: 12 }}>[บันทึก]</strong></td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colSpan={3} style={{textAlign: 'center'}}>+ บน, - ล่าง, * โต๊ด</td>
             </tr>
           </tfoot>
         </Table>
