@@ -25,7 +25,7 @@ class BetEditorFastMobile extends React.Component {
       betMessage: '',
       betMobileNo: '',
       betMobileAmount: '',
-      showKeyDocs: true,
+      showKeyDocs: false,
     };
 
     this.props.Session.set('createdDate', moment().toISOString(true).substring(0, 10));

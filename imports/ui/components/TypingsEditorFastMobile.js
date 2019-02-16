@@ -25,7 +25,7 @@ class TypingsEditorFastMobile extends React.Component {
       betMessage: '',
       betMobileNo: '',
       betMobileAmount: '',
-      showKeyDocs: true,
+      showKeyDocs: false,
     };
 
     this.handleBrokerChange = this.handleBrokerChange.bind(this);
