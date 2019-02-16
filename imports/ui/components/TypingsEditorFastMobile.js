@@ -311,32 +311,26 @@ class TypingsEditorFastMobile extends React.Component {
         </FormGroup>
       }
 
-      { true &&
-        <FormGroup>
-          <ControlLabel>เบอร์</ControlLabel>
-          <FormControl type="tel" name="betMobileNo" maxLength={3}
-            bsSize="large"
-            value={this.state.betMobileNo}
-            onChange={this.handleChangeMobile} />
-        </FormGroup>
-      }
+      <FormGroup>
+        <ControlLabel>เบอร์</ControlLabel>
+        <FormControl type="tel" name="betMobileNo"
+          bsSize="large"
+          value={this.state.betMobileNo}
+          onChange={this.handleChangeMobile} />
+      </FormGroup>
 
-      { true &&
-        <FormGroup>
-          <ControlLabel>ราคา</ControlLabel>
-          <FormControl type="tel" name="betMobileAmount"
-            bsSize="large"
-            value={this.state.betMobileAmount}
-            onChange={this.handleChangeMobile} />
-        </FormGroup>
-      }
+      <FormGroup>
+        <ControlLabel>ราคา</ControlLabel>
+        <FormControl type="tel" name="betMobileAmount"
+          bsSize="large"
+          value={this.state.betMobileAmount}
+          onChange={this.handleChangeMobile} />
+      </FormGroup>
       
-      { true &&
-        <FormGroup>
-          <Button bsStyle="primary" bsSize="large" block
-            onClick={this.handleClickMobile}>บันทึก</Button>
-        </FormGroup>
-      }
+      <FormGroup>
+        <Button bsStyle="primary" bsSize="large" block
+          onClick={this.handleClickMobile}>บันทึก</Button>
+      </FormGroup>
 
       { this.state.showKeyDocs &&
         <Table bordered condensed hover

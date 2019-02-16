@@ -320,7 +320,7 @@ class BetEditorFastMobile extends React.Component {
 
       <FormGroup>
         <ControlLabel>เบอร์</ControlLabel>
-        <FormControl type="tel" name="betMobileNo" maxLength={3}
+        <FormControl type="tel" name="betMobileNo"
           bsSize="large"
           value={this.state.betMobileNo}
           onChange={this.handleChangeMobile} />
