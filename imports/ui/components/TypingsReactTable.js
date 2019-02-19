@@ -29,6 +29,18 @@ const TypingsReactTable = ({ typings }) => (
     data={typings}
     columns={[
       {
+        Cell: ({ original: { _id, employeeId } }) => (
+          Meteor.userId() === employeeId ?
+            <button className="btn btn-xs btn-danger"
+              onClick={() => handleRemove(_id)}>X</button>
+            : undefined
+        ),
+        maxWidth: 48,
+        style: {
+          textAlign: 'center',
+        },
+      },
+      {
         id: "row",
         Cell: (row) => (<div>{ 1 + row.index }</div>),
         maxWidth: 48,
@@ -127,18 +139,6 @@ const TypingsReactTable = ({ typings }) => (
         accessor: 'down3',
         maxWidth: 64,
         Cell: ({ original: { down3 } }) => (<div>{ down3 || undefined }</div>),
-        style: {
-          textAlign: 'center',
-        },
-      },
-      {
-        Cell: ({ original: { _id, employeeId } }) => (
-          Meteor.userId() === employeeId ?
-            <button className="btn btn-xs btn-danger"
-              onClick={() => handleRemove(_id)}>X</button>
-            : undefined
-        ),
-        maxWidth: 48,
         style: {
           textAlign: 'center',
         },
